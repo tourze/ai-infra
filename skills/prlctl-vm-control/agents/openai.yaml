@@ -1,0 +1,4 @@
+interface:
+  display_name: "Parallels VM Control"
+  short_description: "用 prlctl 管理 Parallels Desktop 虚拟机并执行客体任务"
+  default_prompt: "使用 $prlctl-vm-control 帮我定位目标 PD 虚拟机，并在客体系统里执行需要的命令。"
