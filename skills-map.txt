@@ -10,6 +10,9 @@ https://github.com/anthropics/skills/tree/main/skills/pptx => pptx
 https://github.com/anthropics/skills/tree/main/skills/xlsx => xlsx
 https://github.com/anthropics/skills/tree/main/skills/pdf => pdf
 
+https://github.com/anthropics/claude-cookbooks/tree/main/skills/custom_skills/analyzing-financial-statements => analyzing-financial-statements
+https://github.com/anthropics/claude-cookbooks/tree/main/skills/custom_skills/creating-financial-models => creating-financial-models
+
 https://github.com/openai/skills/tree/main/skills/.curated/screenshot => screenshot
 
 https://github.com/antvis/chart-visualization-skills/tree/master/skills/icon-retrieval => icon-retrieval
@@ -98,7 +101,18 @@ https://github.com/new-silvermoon/awesome-android-agent-skills/tree/main/.github
 https://github.com/new-silvermoon/awesome-android-agent-skills/tree/main/.github/skills/android-testing => android-testing
 https://github.com/new-silvermoon/awesome-android-agent-skills/tree/main/.github/skills/gradle-build-performance => gradle-build-performance
 
-https://github.com/alirezarezvani/claude-code-aso-skill/tree/main/.claude/skills/aso => app-store-optimization
+https://github.com/alirezarezvani/claude-skills/tree/main/finance/financial-analyst => financial-analyst
+https://github.com/alirezarezvani/claude-skills/tree/main/marketing-skill/app-store-optimization => app-store-optimization
+https://github.com/alirezarezvani/claude-skills/tree/main/marketing-skill/analytics-tracking => analytics-tracking
+https://github.com/alirezarezvani/claude-skills/tree/main/marketing-skill/campaign-analytics => campaign-analytics
+https://github.com/alirezarezvani/claude-skills/tree/main/marketing-skill/competitor-alternatives => competitor-alternatives
+https://github.com/alirezarezvani/claude-skills/tree/main/marketing-skill/content-humanizer => content-humanizer
+https://github.com/alirezarezvani/claude-skills/tree/main/marketing-skill/content-production => content-production
+https://github.com/alirezarezvani/claude-skills/tree/main/marketing-skill/copy-editing => copy-editing
+https://github.com/alirezarezvani/claude-skills/tree/main/product-team/agile-product-owner => agile-product-owner
+https://github.com/alirezarezvani/claude-skills/tree/main/product-team/competitive-teardown => competitive-teardown
+https://github.com/alirezarezvani/claude-skills/tree/main/product-team/ui-design-system => ui-design-system
+https://github.com/alirezarezvani/claude-skills/tree/main/product-team/ux-researcher-designer => ux-researcher-designer
 
 https://github.com/smnandre/symfony-ux-skills/tree/main/skills/symfony-ux => symfony-ux
 
@@ -128,3 +142,53 @@ https://github.com/github/awesome-copilot/tree/main/skills/sql-code-review => sq
 https://github.com/github/awesome-copilot/tree/main/skills/sql-optimization => sql-optimization
 https://github.com/github/awesome-copilot/tree/main/skills/update-markdown-file-index => update-markdown-file-index
 https://github.com/github/awesome-copilot/tree/main/skills/webapp-testing => webapp-testing
+
+https://github.com/wshobson/agents/tree/main/plugins/business-analytics/skills/data-storytelling => data-storytelling
+https://github.com/wshobson/agents/tree/main/plugins/database-design/skills/postgresql => postgresql-table-design
+https://github.com/wshobson/agents/tree/main/plugins/developer-essentials/skills/debugging-strategies => debugging-strategies
+https://github.com/wshobson/agents/tree/main/plugins/documentation-generation/skills/openapi-spec-generation => openapi-spec-generation
+https://github.com/wshobson/agents/tree/main/plugins/frontend-mobile-development/skills/tailwind-design-system => tailwind-design-system
+https://github.com/wshobson/agents/tree/main/plugins/hr-legal-compliance/skills/employment-contract-templates => employment-contract-templates
+https://github.com/wshobson/agents/tree/main/plugins/hr-legal-compliance/skills/gdpr-data-handling => gdpr-data-handling
+https://github.com/wshobson/agents/tree/main/plugins/javascript-typescript/skills/typescript-advanced-types => typescript-advanced-types
+https://github.com/wshobson/agents/tree/main/plugins/javascript-typescript/skills/modern-javascript-patterns => modern-javascript-patterns
+https://github.com/wshobson/agents/tree/main/plugins/kubernetes-operations/skills/helm-chart-scaffolding => helm-chart-scaffolding
+https://github.com/wshobson/agents/tree/main/plugins/kubernetes-operations/skills/k8s-manifest-generator => k8s-manifest-generator
+https://github.com/wshobson/agents/tree/main/plugins/kubernetes-operations/skills/k8s-security-policies => k8s-security-policies
+https://github.com/wshobson/agents/tree/main/plugins/llm-application-dev/skills/embedding-strategies => embedding-strategies
+https://github.com/wshobson/agents/tree/main/plugins/llm-application-dev/skills/llm-evaluation => llm-evaluation
+https://github.com/wshobson/agents/tree/main/plugins/llm-application-dev/skills/prompt-engineering-patterns => prompt-engineering-patterns
+https://github.com/wshobson/agents/tree/main/plugins/llm-application-dev/skills/similarity-search-patterns => similarity-search-patterns
+https://github.com/wshobson/agents/tree/main/plugins/llm-application-dev/skills/vector-index-tuning => vector-index-tuning
+https://github.com/wshobson/agents/tree/main/plugins/python-development/skills/async-python-patterns => async-python-patterns
+https://github.com/wshobson/agents/tree/main/plugins/python-development/skills/python-anti-patterns => python-anti-patterns
+https://github.com/wshobson/agents/tree/main/plugins/python-development/skills/python-background-jobs => python-background-jobs
+https://github.com/wshobson/agents/tree/main/plugins/python-development/skills/python-code-style => python-code-style
+https://github.com/wshobson/agents/tree/main/plugins/python-development/skills/python-design-patterns => python-design-patterns
+https://github.com/wshobson/agents/tree/main/plugins/python-development/skills/python-error-handling => python-error-handling
+https://github.com/wshobson/agents/tree/main/plugins/python-development/skills/python-observability => python-observability
+https://github.com/wshobson/agents/tree/main/plugins/python-development/skills/python-performance-optimization => python-performance-optimization
+https://github.com/wshobson/agents/tree/main/plugins/python-development/skills/python-testing-patterns => python-testing-patterns
+https://github.com/wshobson/agents/tree/main/plugins/python-development/skills/python-type-safety => python-type-safety
+https://github.com/wshobson/agents/tree/main/plugins/python-development/skills/uv-package-manager => uv-package-manager
+https://github.com/wshobson/agents/tree/main/plugins/reverse-engineering/skills/binary-analysis-patterns => binary-analysis-patterns
+https://github.com/wshobson/agents/tree/main/plugins/reverse-engineering/skills/protocol-reverse-engineering => protocol-reverse-engineering
+https://github.com/wshobson/agents/tree/main/plugins/reverse-engineering/skills/anti-reversing-techniques => anti-reversing-techniques
+https://github.com/wshobson/agents/tree/main/plugins/reverse-engineering/skills/memory-forensics => memory-forensics
+https://github.com/wshobson/agents/tree/main/plugins/security-scanning/skills/attack-tree-construction => attack-tree-construction
+https://github.com/wshobson/agents/tree/main/plugins/security-scanning/skills/security-requirement-extraction => security-requirement-extraction
+https://github.com/wshobson/agents/tree/main/plugins/security-scanning/skills/stride-analysis-patterns => stride-analysis-patterns
+https://github.com/wshobson/agents/tree/main/plugins/security-scanning/skills/threat-mitigation-mapping => threat-mitigation-mapping
+https://github.com/wshobson/agents/tree/main/plugins/shell-scripting/skills/bash-defensive-patterns => bash-defensive-patterns
+https://github.com/wshobson/agents/tree/main/plugins/shell-scripting/skills/shellcheck-configuration => shellcheck-configuration
+https://github.com/wshobson/agents/tree/main/plugins/startup-business-analyst/skills/market-sizing-analysis => market-sizing-analysis
+https://github.com/wshobson/agents/tree/main/plugins/startup-business-analyst/skills/team-composition-analysis => team-composition-analysis
+https://github.com/wshobson/agents/tree/main/plugins/systems-programming/skills/rust-async-patterns => rust-async-patterns
+https://github.com/wshobson/agents/tree/main/plugins/systems-programming/skills/memory-safety-patterns => memory-safety-patterns
+https://github.com/wshobson/agents/tree/main/plugins/systems-programming/skills/go-concurrency-patterns => go-concurrency-patterns
+https://github.com/wshobson/agents/tree/main/plugins/ui-design/skills/accessibility-compliance => accessibility-compliance
+https://github.com/wshobson/agents/tree/main/plugins/ui-design/skills/design-system-patterns => design-system-patterns
+https://github.com/wshobson/agents/tree/main/plugins/ui-design/skills/interaction-design => interaction-design
+https://github.com/wshobson/agents/tree/main/plugins/ui-design/skills/react-native-design => react-native-design
+https://github.com/wshobson/agents/tree/main/plugins/ui-design/skills/responsive-design => responsive-design
+https://github.com/wshobson/agents/tree/main/plugins/ui-design/skills/visual-design-foundations => visual-design-foundations
