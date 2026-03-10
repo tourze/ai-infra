@@ -1,0 +1,4 @@
+interface:
+  display_name: "小红书商业增长"
+  short_description: "面向品牌与个体的小红书起号、增长、变现实战与投放手册"
+  default_prompt: "Use $xiaohongshu-commercial-growth to design a Xiaohongshu growth and monetization plan for my business."
