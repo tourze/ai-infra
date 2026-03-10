@@ -1,0 +1,4 @@
+interface:
+  display_name: "参与感与口碑增长"
+  short_description: "面向品牌与产品团队的参与感、口碑增长与用户共创手册"
+  default_prompt: "Use $participation-driven-growth to design a participation-led word-of-mouth growth plan for my product or brand."
