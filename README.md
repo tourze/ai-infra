@@ -258,7 +258,7 @@ npm run validate:repo
 | [wiki-architect](skills/wiki-architect/SKILL.md) | 为代码库生成分层 wiki 结构和入门文档。 |
 | [wiki-researcher](skills/wiki-researcher/SKILL.md) | 对代码库主题做多轮、深入、跨文件研究。 |
 | [xlsx](skills/xlsx/SKILL.md) | 读取、清洗、编辑和生成 Excel/CSV 等电子表格。 |
-
+| [react-hooks-master](skills/react-hooks-master/SKILL.md) | 定义 React Hooks 专家的技能规范、响应结构和示例模板 |
 ## 数据来源
 
 - https://github.com/vercel-labs/skills#available-agents
