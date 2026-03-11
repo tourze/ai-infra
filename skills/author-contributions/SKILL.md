@@ -9,7 +9,7 @@ When asked to find all files a specific author contributed to on a branch (compa
 
 This skill involves many sequential git commands. Delegate it to a subagent with a prompt like:
 
-> Find every file that author "Full Name" contributed to on branch `<branch>` compared to `<upstream>`. Trace contributions through file renames. Return a markdown table with columns: Status (DIRECT or VIA_RENAME), File Path, and Lines (+/-). Include a summary line at the end.
+> 查找作者 "Full Name" 在分支 `<branch>` 相对于 `<upstream>` 贡献的所有文件。跟踪文件重命名。返回包含以下列的 markdown 表格：状态（直接贡献或通过重命名）、文件路径和行数变化（+/-）。在最后包含汇总行。
 
 ## Procedure
 
@@ -71,13 +71,13 @@ git diff --stat <upstream>..<branch> -- <file1> <file2> ...
 Format the result as a markdown table:
 
 ```
-| Status | File | +/- |
-|--------|------|-----|
-| DIRECT | src/vs/foo/bar.ts | +120/-5 |
-| VIA_RENAME | src/vs/baz/qux.ts | +300 |
+| 状态 | 文件 | 行数变化 |
+|------|------|---------|
+| 直接贡献 | src/vs/foo/bar.ts | +120/-5 |
+| 通过重命名 | src/vs/baz/qux.ts | +300 |
 | ... | ... | ... |
 
-**Total: N files, +X/-Y lines**
+**总计：N 个文件，+X/-Y 行**
 ```
 
 ## Important Notes
@@ -147,6 +147,10 @@ for f in (x for x in diff_files if x):
         if chain & author_files:
             results.append(('VIA_RENAME', f))
 
+# 状态映射为中文
+status_map = {'DIRECT': '直接贡献', 'VIA_RENAME': '通过重命名'}
+results = [(status_map[kind], f) for kind, f in results]
+
 # Step 6: stats
 if results:
     stat = subprocess.check_output(
@@ -155,9 +159,11 @@ if results:
     print(stat)
 
 # Step 7: table
+print('| 状态 | 文件 |')
+print('|------|------|')
 for kind, f in sorted(results, key=lambda x: x[1]):
     print(f'| {kind:12s} | {f} |')
-print(f'\nTotal: {len(results)} files')
+print(f'\n总计：{len(results)} 个文件')
 ```
 
 ### Alternative Script
