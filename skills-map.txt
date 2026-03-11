@@ -192,3 +192,25 @@ https://github.com/wshobson/agents/tree/main/plugins/ui-design/skills/interactio
 https://github.com/wshobson/agents/tree/main/plugins/ui-design/skills/react-native-design => react-native-design
 https://github.com/wshobson/agents/tree/main/plugins/ui-design/skills/responsive-design => responsive-design
 https://github.com/wshobson/agents/tree/main/plugins/ui-design/skills/visual-design-foundations => visual-design-foundations
+
+https://github.com/zebbern/claude-code-guide/tree/main/skills/active-directory-attacks => active-directory-attacks
+https://github.com/zebbern/claude-code-guide/tree/main/skills/api-fuzzing-bug-bounty => api-fuzzing-bug-bounty
+https://github.com/zebbern/claude-code-guide/tree/main/skills/broken-authentication => broken-authentication
+https://github.com/zebbern/claude-code-guide/tree/main/skills/ethical-hacking-methodology => ethical-hacking-methodology
+https://github.com/zebbern/claude-code-guide/tree/main/skills/file-path-traversal => file-path-traversal
+https://github.com/zebbern/claude-code-guide/tree/main/skills/linux-privilege-escalation => linux-privilege-escalation
+https://github.com/zebbern/claude-code-guide/tree/main/skills/linux-shell-scripting => linux-shell-scripting
+https://github.com/zebbern/claude-code-guide/tree/main/skills/pentest-checklist => pentest-checklist
+https://github.com/zebbern/claude-code-guide/tree/main/skills/top-web-vulnerabilities => top-web-vulnerabilities
+https://github.com/zebbern/claude-code-guide/tree/main/skills/wireshark-analysis => wireshark-analysis
+
+https://github.com/MakFly/superpowers-symfony/tree/main/skills/doctrine-batch-processing => doctrine-batch-processing
+https://github.com/MakFly/superpowers-symfony/tree/main/skills/doctrine-fetch-modes => doctrine-fetch-modes
+https://github.com/MakFly/superpowers-symfony/tree/main/skills/doctrine-relations => doctrine-relations
+https://github.com/MakFly/superpowers-symfony/tree/main/skills/doctrine-transactions => doctrine-transactions
+https://github.com/MakFly/superpowers-symfony/tree/main/skills/symfony-cache => symfony-cache
+https://github.com/MakFly/superpowers-symfony/tree/main/skills/symfony-messenger => symfony-messenger
+https://github.com/MakFly/superpowers-symfony/tree/main/skills/symfony-scheduler => symfony-scheduler
+https://github.com/MakFly/superpowers-symfony/tree/main/skills/symfony-voters => symfony-voters
+https://github.com/MakFly/superpowers-symfony/tree/main/skills/tdd-with-phpunit => tdd-with-phpunit
+https://github.com/MakFly/superpowers-symfony/tree/main/skills/twig-components => twig-components
