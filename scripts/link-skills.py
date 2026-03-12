@@ -6,58 +6,21 @@ Supports both Windows (using junctions) and Unix-like systems (using symlinks).
 
 import argparse
 import os
-import shutil
 import subprocess
 import sys
-from datetime import datetime
 from pathlib import Path
 
-# ANSI color codes for terminal output
-class Colors:
-    """ANSI color codes for cross-platform terminal output."""
-    HEADER = '\033[95m'
-    OKBLUE = '\033[94m'
-    OKCYAN = '\033[96m'
-    OKGREEN = '\033[92m'
-    WARNING = '\033[93m'
-    FAIL = '\033[91m'
-    ENDC = '\033[0m'
-    BOLD = '\033[1m'
-    UNDERLINE = '\033[4m'
-
-    @staticmethod
-    def disable():
-        """Disable colors if not in a terminal."""
-        Colors.HEADER = ''
-        Colors.OKBLUE = ''
-        Colors.OKCYAN = ''
-        Colors.OKGREEN = ''
-        Colors.WARNING = ''
-        Colors.FAIL = ''
-        Colors.ENDC = ''
-        Colors.BOLD = ''
-        Colors.UNDERLINE = ''
-
-# Disable colors on Windows if not supported
-if sys.platform == 'win32':
-    try:
-        import colorama
-        colorama.init()
-    except ImportError:
-        # Check if we're in a terminal that supports ANSI
-        if not sys.stdout.isatty():
-            Colors.disable()
-
-# Platform detection
-IS_WINDOWS = sys.platform == 'win32'
+# Import shared utilities
+from utils import (
+    Colors,
+    IS_WINDOWS,
+    backup_existing,
+    get_home_dir,
+    is_junction,
+)
 
 
-def get_home_dir() -> Path:
-    """Get the user's home directory in a cross-platform way."""
-    return Path.home()
-
-
-def get_default_paths() -> dict:
+def get_default_paths() -> dict[str, Path]:
     """Get default target paths for different agents."""
     home = get_home_dir()
     return {
@@ -65,35 +28,6 @@ def get_default_paths() -> dict:
         'codex': home / '.codex' / 'skills',
         'gemini': home / '.gemini' / 'skills',
     }
-
-
-def backup_existing(target: Path) -> None:
-    """Backup existing file/directory by moving it with a timestamp suffix."""
-    if not target.exists():
-        return
-
-    timestamp = datetime.now().strftime('%Y%m%d%H%M%S')
-    backup = Path(f'{target}.bak.{timestamp}')
-
-    try:
-        shutil.move(str(target), str(backup))
-        print(f'{Colors.OKGREEN}Backup created:{Colors.ENDC} {target} -> {backup}')
-    except Exception as e:
-        print(f'{Colors.WARNING}Warning:{Colors.ENDC} Could not backup {target}: {e}')
-        raise
-
-
-def is_junction(path: Path) -> bool:
-    """
-    Check if a path is a junction on Windows.
-
-    Note: From Python 3.8+, pathlib.Path.is_symlink() correctly
-    identifies junctions on Windows, so we can rely on it.
-    """
-    if not IS_WINDOWS:
-        return False
-    # is_symlink() returns True for both symlinks and junctions on Windows (Python 3.8+)
-    return path.is_symlink()
 
 
 def create_symlink(source: Path, target: Path, label: str) -> None:

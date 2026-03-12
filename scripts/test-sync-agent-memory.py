@@ -1,34 +1,14 @@
 #!/usr/bin/env python3
 """Cross-platform test script for sync-agent-memory.py."""
 
-import hashlib
 import os
 import subprocess
 import sys
 import tempfile
 from pathlib import Path
 
-# ANSI color codes
-class Colors:
-    OKGREEN = '\033[92m'
-    FAIL = '\033[91m'
-    ENDC = '\033[0m'
-
-if sys.platform == 'win32':
-    try:
-        import colorama
-        colorama.init()
-    except ImportError:
-        pass
-
-
-def get_file_hash(filepath: Path) -> str:
-    """Calculate SHA256 hash of a file."""
-    hasher = hashlib.sha256()
-    with open(filepath, 'rb') as f:
-        while chunk := f.read(65536):
-            hasher.update(chunk)
-    return hasher.hexdigest()
+# Import shared utilities
+from utils import Colors, files_match
 
 
 def assert_same_file(file1: Path, file2: Path) -> None:
@@ -38,10 +18,7 @@ def assert_same_file(file1: Path, file2: Path) -> None:
     if not file2.exists():
         raise AssertionError(f'File does not exist: {file2}')
 
-    hash1 = get_file_hash(file1)
-    hash2 = get_file_hash(file2)
-
-    if hash1 != hash2:
+    if not files_match(file1, file2):
         raise AssertionError(f'Content mismatch: {file1} != {file2}')
 
 

@@ -6,36 +6,19 @@ Supports both Windows and Unix-like systems.
 
 import argparse
 import os
-import shutil
 import sys
-from datetime import datetime
 from pathlib import Path
 
-# ANSI color codes
-class Colors:
-    HEADER = '\033[95m'
-    OKBLUE = '\033[94m'
-    OKCYAN = '\033[96m'
-    OKGREEN = '\033[92m'
-    WARNING = '\033[93m'
-    FAIL = '\033[91m'
-    ENDC = '\033[0m'
-
-if sys.platform == 'win32':
-    try:
-        import colorama
-        colorama.init()
-    except ImportError:
-        if not sys.stdout.isatty():
-            Colors.disable()
+# Import shared utilities
+from utils import (
+    Colors,
+    backup_existing,
+    files_match,
+    get_home_dir,
+)
 
 
-def get_home_dir() -> Path:
-    """Get the user's home directory."""
-    return Path.home()
-
-
-def get_default_targets() -> dict:
+def get_default_targets() -> dict[str, Path]:
     """Get default target paths for different agents."""
     home = get_home_dir()
     return {
@@ -43,32 +26,6 @@ def get_default_targets() -> dict:
         'codex': home / '.codex' / 'AGENTS.md',
         'gemini': home / '.gemini' / 'GEMINI.md',
     }
-
-
-def backup_existing(target: Path) -> None:
-    """Backup existing file by moving it with a timestamp suffix."""
-    if not target.exists():
-        return
-
-    timestamp = datetime.now().strftime('%Y%m%d%H%M%S')
-    backup = Path(f'{target}.bak.{timestamp}')
-
-    try:
-        shutil.move(str(target), str(backup))
-        print(f'{Colors.OKGREEN}Backup created:{Colors.ENDC} {target} -> {backup}')
-    except Exception as e:
-        print(f'{Colors.WARNING}Warning:{Colors.ENDC} Could not backup {target}: {e}')
-        raise
-
-
-def get_file_hash(filepath: Path) -> str:
-    """Calculate SHA256 hash of a file."""
-    import hashlib
-    hasher = hashlib.sha256()
-    with open(filepath, 'rb') as f:
-        while chunk := f.read(65536):
-            hasher.update(chunk)
-    return hasher.hexdigest()
 
 
 def sync_one(label: str, target: Path, source: Path) -> None:
@@ -83,10 +40,7 @@ def sync_one(label: str, target: Path, source: Path) -> None:
     # Check if file already exists and has the same content
     if target.exists():
         try:
-            source_hash = get_file_hash(source)
-            target_hash = get_file_hash(target)
-
-            if source_hash == target_hash:
+            if files_match(source, target):
                 msg = f'{Colors.OKCYAN}Already up-to-date [{label}]:{Colors.ENDC} {target}'
                 print(msg)
                 return
@@ -99,6 +53,7 @@ def sync_one(label: str, target: Path, source: Path) -> None:
 
     # Copy the file
     try:
+        import shutil
         shutil.copy2(str(source), str(target))
         msg = f'{Colors.OKGREEN}Synced [{label}]:{Colors.ENDC} {target}'
         print(msg)

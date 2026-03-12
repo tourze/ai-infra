@@ -7,18 +7,8 @@ import sys
 import tempfile
 from pathlib import Path
 
-# ANSI color codes
-class Colors:
-    OKGREEN = '\033[92m'
-    FAIL = '\033[91m'
-    ENDC = '\033[0m'
-
-if sys.platform == 'win32':
-    try:
-        import colorama
-        colorama.init()
-    except ImportError:
-        pass
+# Import shared utilities
+from utils import Colors
 
 
 def assert_symlink_target(target: Path, expected_source: Path) -> None:

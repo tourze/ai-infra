@@ -4,28 +4,11 @@ Cross-platform script to run repository quality gate tests.
 Runs all test scripts and reports results.
 """
 
-import subprocess
 import sys
 from pathlib import Path
 
-# ANSI color codes
-class Colors:
-    HEADER = '\033[95m'
-    OKBLUE = '\033[94m'
-    OKCYAN = '\033[96m'
-    OKGREEN = '\033[92m'
-    WARNING = '\033[93m'
-    FAIL = '\033[91m'
-    ENDC = '\033[0m'
-    BOLD = '\033[1m'
-
-if sys.platform == 'win32':
-    try:
-        import colorama
-        colorama.init()
-    except ImportError:
-        if not sys.stdout.isatty():
-            Colors.disable()
+# Import shared utilities
+from utils import Colors
 
 
 def run_test(script_name: str, script_dir: Path) -> bool:
@@ -39,6 +22,7 @@ def run_test(script_name: str, script_dir: Path) -> bool:
     print(f'{Colors.OKCYAN}Running {script_name}...{Colors.ENDC}')
 
     try:
+        import subprocess
         result = subprocess.run(
             [sys.executable, str(script_path)],
             capture_output=True,
