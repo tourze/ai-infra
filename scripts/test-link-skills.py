@@ -8,22 +8,21 @@ import tempfile
 from pathlib import Path
 
 # Import shared utilities
-from utils import Colors
+from utils import Colors, is_link_or_junction
 
 
 def assert_symlink_target(target: Path, expected_source: Path) -> None:
-    """Assert that target is a symlink pointing to expected_source."""
-    if not target.exists() and not target.is_symlink():
+    """
+    Assert that target is a symlink or junction pointing to expected_source.
+
+    Uses os.readlink() to detect both symlinks and junctions on Windows.
+    """
+    if not target.exists() and not is_link_or_junction(target):
         raise AssertionError(f'Missing symlink: {target}')
 
-    # Check if it's a symlink
-    if sys.platform == 'win32':
-        is_link = target.is_symlink() or target.is_dir()
-    else:
-        is_link = target.is_symlink()
-
-    if not is_link:
-        raise AssertionError(f'Not a symlink: {target}')
+    # Check if it's a symlink or junction
+    if not is_link_or_junction(target):
+        raise AssertionError(f'Not a symlink or junction: {target}')
 
     # Resolve and compare
     try:
@@ -31,20 +30,17 @@ def assert_symlink_target(target: Path, expected_source: Path) -> None:
         expected = expected_source.resolve()
 
         if resolved != expected:
-            # On Windows junctions may resolve differently
-            if sys.platform != 'win32':
-                raise AssertionError(
-                    f'Symlink target incorrect: {target} -> {resolved} '
-                    f'(expected: {expected})'
-                )
-    except Exception:
-        if sys.platform != 'win32':
-            raise
+            raise AssertionError(
+                f'Symlink target incorrect: {target} -> {resolved} '
+                f'(expected: {expected})'
+            )
+    except Exception as e:
+        raise AssertionError(f'Failed to resolve symlink: {e}')
 
 
 def assert_not_exists(target: Path) -> None:
     """Assert that target does not exist."""
-    if target.exists() or target.is_symlink():
+    if target.exists() or is_link_or_junction(target):
         raise AssertionError(f'Target should not exist: {target}')
 
 

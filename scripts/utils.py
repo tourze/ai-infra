@@ -161,19 +161,48 @@ def is_junction(path: Path) -> bool:
     """
     Check if a path is a junction on Windows.
 
-    Note: From Python 3.8+, pathlib.Path.is_symlink() correctly
-    identifies junctions on Windows, so we rely on it.
+    Uses os.readlink() which works for both symlinks and junctions on Windows.
+    Note that this will also return True for symlinks - to distinguish between
+    them, you would need additional Windows API calls.
 
     Args:
         path: Path to check
 
     Returns:
-        True if path is a junction, False otherwise
+        True if path is a symlink or junction, False otherwise
     """
     if not IS_WINDOWS:
         return False
-    # is_symlink() returns True for both symlinks and junctions on Windows (Python 3.8+)
-    return path.is_symlink()
+    try:
+        os.readlink(path)
+        return True
+    except (OSError, ValueError):
+        return False
+
+
+def is_link_or_junction(path: Path) -> bool:
+    """
+    Check if a path is a symlink or junction.
+
+    This is a cross-platform helper that uses os.readlink() to detect
+    both symlinks and junctions. On Windows, this detects directory
+    junctions created by mklink. On Unix, it detects symlinks.
+
+    Args:
+        path: Path to check
+
+    Returns:
+        True if path is a symlink or junction, False otherwise
+
+    Example:
+        >>> is_link_or_junction(Path('/some/path'))
+        True if it's a symlink/junction, False otherwise
+    """
+    try:
+        os.readlink(path)
+        return True
+    except (OSError, ValueError):
+        return False
 
 
 def get_env_path(env_var: str, default: Path) -> Path:
