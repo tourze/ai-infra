@@ -1,0 +1,12 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(cd D:/ai-infra && python scripts/link-skills.py --help 2>&1 | head -30)",
+      "Bash(cd D:/ai-infra && python scripts/sync-agent-memory.py --help 2>&1 | head -30)",
+      "Bash(cd D:/ai-infra && rm -f scripts/link-skills.py scripts/sync-agent-memory.py scripts/validate-repo.py scripts/test-link-skills.py scripts/test-sync-agent-memory.py scripts/test-claude-hooks.py)",
+      "Bash(cd D:/ai-infra && python scripts/link-skills.py --help 2>&1)",
+      "Bash(cd D:/ai-infra && python scripts/sync-agent-memory.py --help 2>&1)",
+      "Bash(cd D:/ai-infra && python scripts/validate-repo.py 2>&1)"
+    ]
+  }
+}

@@ -9,6 +9,13 @@
     "link:gemini": "bash ./scripts/link-skills.sh gemini",
     "sync:memory": "bash ./scripts/sync-agent-memory.sh",
     "test:claude-hooks": "bash ./scripts/test-claude-hooks.sh",
-    "validate:repo": "bash ./scripts/validate-repo.sh"
+    "validate:repo": "bash ./scripts/validate-repo.sh",
+    "link:skills:py": "python ./scripts/link-skills.py",
+    "link:cc:py": "python ./scripts/link-skills.py cc",
+    "link:codex:py": "python ./scripts/link-skills.py codex",
+    "link:gemini:py": "python ./scripts/link-skills.py gemini",
+    "sync:memory:py": "python ./scripts/sync-agent-memory.py",
+    "test:claude-hooks:py": "python ./scripts/test-claude-hooks.py",
+    "validate:repo:py": "python ./scripts/validate-repo.py"
   }
 }

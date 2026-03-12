@@ -12,6 +12,8 @@
 
 ## 常用命令
 
+### Shell 脚本 (Mac/Linux)
+
 ```bash
 # 1) 按映射同步远程 skills 到本地 ./skills
 python3 sync-skills.py
@@ -28,6 +30,35 @@ npm run sync:memory
 # 5) 运行当前仓库最小质量门
 npm run validate:repo
 ```
+
+### Python 脚本 (跨平台)
+
+```bash
+# 1) 按映射同步远程 skills 到本地 ./skills
+python sync-skills.py
+
+# 2) 一键把本仓库 skills 软链到 cc + codex + gemini
+python scripts/link-skills.py
+# 或使用 NPM 命令
+npm run link:skills:py
+
+# 3) 仅链接 Gemini CLI
+python scripts/link-skills.py gemini
+# 或使用 NPM 命令
+npm run link:gemini:py
+
+# 4) 同步仓库级 agent memory 到 Claude/Codex/Gemini
+python scripts/sync-agent-memory.py
+# 或使用 NPM 命令
+npm run sync:memory:py
+
+# 5) 运行当前仓库最小质量门
+python scripts/validate-repo.py
+# 或使用 NPM 命令
+npm run validate:repo:py
+```
+
+> 💡 **跨平台使用**：Python 脚本支持 Mac/Linux/Windows，详细说明请查看 [PYTHON_SCRIPTS.md](PYTHON_SCRIPTS.md)
 
 ## Agent 协作约定
 
