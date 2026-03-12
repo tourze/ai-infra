@@ -84,13 +84,16 @@ def backup_existing(target: Path) -> None:
 
 
 def is_junction(path: Path) -> bool:
-    """Check if a path is a junction on Windows."""
+    """
+    Check if a path is a junction on Windows.
+
+    Note: From Python 3.8+, pathlib.Path.is_symlink() correctly
+    identifies junctions on Windows, so we can rely on it.
+    """
     if not IS_WINDOWS:
         return False
-    try:
-        return path.is_symlink() or path.is_dir()
-    except OSError:
-        return False
+    # is_symlink() returns True for both symlinks and junctions on Windows (Python 3.8+)
+    return path.is_symlink()
 
 
 def create_symlink(source: Path, target: Path, label: str) -> None:
