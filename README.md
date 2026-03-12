@@ -31,7 +31,7 @@ npm run sync:memory
 npm run validate:repo
 ```
 
-### Python 脚本 (跨平台)
+### Python 脚本 (跨平台)，注意：windows下需要管理员权限
 
 ```bash
 # 1) 按映射同步远程 skills 到本地 ./skills
