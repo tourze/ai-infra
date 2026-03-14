@@ -121,10 +121,8 @@ https://github.com/microsoft/vscode/tree/main/.github/skills/author-contribution
 https://github.com/github/awesome-copilot/tree/main/skills/debian-linux-triage => debian-linux-triage
 https://github.com/github/awesome-copilot/tree/main/skills/centos-linux-triage => centos-linux-triage
 https://github.com/github/awesome-copilot/tree/main/skills/arch-linux-triage => arch-linux-triage
-https://github.com/github/awesome-copilot/tree/main/skills/ai-prompt-engineering-safety-review => ai-prompt-engineering-safety-review
 https://github.com/github/awesome-copilot/tree/main/skills/apple-appstore-reviewer => apple-appstore-reviewer
 https://github.com/github/awesome-copilot/tree/main/skills/architecture-blueprint-generator => architecture-blueprint-generator
-https://github.com/github/awesome-copilot/tree/main/skills/boost-prompt => boost-prompt
 https://github.com/github/awesome-copilot/tree/main/skills/chrome-devtools => chrome-devtools
 https://github.com/github/awesome-copilot/tree/main/skills/context-map => context-map
 https://github.com/github/awesome-copilot/tree/main/skills/create-specification => create-specification
@@ -268,3 +266,23 @@ https://github.com/Mathews-Tom/praxis-skills/tree/main/skills/youtube-search => 
 https://github.com/google-labs-code/stitch-skills/tree/main/skills/shadcn-ui => shadcn-ui
 
 https://github.com/sickn33/antigravity-awesome-skills/tree/main/skills/app-store-optimization => app-store-optimization
+
+# Spec-Kit Antigravity Skills
+https://github.com/compnew2006/Spec-Kit-Antigravity-Skills/tree/main/skills/scripts/bash => scripts/bash
+https://github.com/compnew2006/Spec-Kit-Antigravity-Skills/tree/main/skills/speckit.analyze => speckit.analyze
+https://github.com/compnew2006/Spec-Kit-Antigravity-Skills/tree/main/skills/speckit.checker => speckit.checker
+https://github.com/compnew2006/Spec-Kit-Antigravity-Skills/tree/main/skills/speckit.checklist => speckit.checklist
+https://github.com/compnew2006/Spec-Kit-Antigravity-Skills/tree/main/skills/speckit.clarify => speckit.clarify
+https://github.com/compnew2006/Spec-Kit-Antigravity-Skills/tree/main/skills/speckit.constitution => speckit.constitution
+https://github.com/compnew2006/Spec-Kit-Antigravity-Skills/tree/main/skills/speckit.diff => speckit.diff
+https://github.com/compnew2006/Spec-Kit-Antigravity-Skills/tree/main/skills/speckit.implement => speckit.implement
+https://github.com/compnew2006/Spec-Kit-Antigravity-Skills/tree/main/skills/speckit.migrate => speckit.migrate
+https://github.com/compnew2006/Spec-Kit-Antigravity-Skills/tree/main/skills/speckit.plan => speckit.plan
+https://github.com/compnew2006/Spec-Kit-Antigravity-Skills/tree/main/skills/speckit.quizme => speckit.quizme
+https://github.com/compnew2006/Spec-Kit-Antigravity-Skills/tree/main/skills/speckit.reviewer => speckit.reviewer
+https://github.com/compnew2006/Spec-Kit-Antigravity-Skills/tree/main/skills/speckit.specify => speckit.specify
+https://github.com/compnew2006/Spec-Kit-Antigravity-Skills/tree/main/skills/speckit.status => speckit.status
+https://github.com/compnew2006/Spec-Kit-Antigravity-Skills/tree/main/skills/speckit.tasks => speckit.tasks
+https://github.com/compnew2006/Spec-Kit-Antigravity-Skills/tree/main/skills/speckit.taskstoissues => speckit.taskstoissues
+https://github.com/compnew2006/Spec-Kit-Antigravity-Skills/tree/main/skills/speckit.tester => speckit.tester
+https://github.com/compnew2006/Spec-Kit-Antigravity-Skills/tree/main/skills/speckit.validate => speckit.validate
