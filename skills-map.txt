@@ -91,7 +91,6 @@ https://github.com/K-Dense-AI/claude-scientific-skills/tree/main/scientific-skil
 https://github.com/K-Dense-AI/claude-scientific-skills/tree/main/scientific-skills/what-if-oracle => what-if-oracle
 https://github.com/K-Dense-AI/claude-scientific-skills/tree/main/scientific-skills/scientific-brainstorming => scientific-brainstorming
 
-https://github.com/obra/superpowers/tree/main/skills/systematic-debugging => systematic-debugging
 https://github.com/obra/superpowers/tree/main/skills/test-driven-development => test-driven-development
 https://github.com/obra/superpowers/tree/main/skills/verification-before-completion => verification-before-completion
 
@@ -147,7 +146,6 @@ https://github.com/github/awesome-copilot/tree/main/skills/webapp-testing => web
 
 https://github.com/wshobson/agents/tree/main/plugins/business-analytics/skills/data-storytelling => data-storytelling
 https://github.com/wshobson/agents/tree/main/plugins/database-design/skills/postgresql => postgresql-table-design
-https://github.com/wshobson/agents/tree/main/plugins/developer-essentials/skills/debugging-strategies => debugging-strategies
 https://github.com/wshobson/agents/tree/main/plugins/documentation-generation/skills/openapi-spec-generation => openapi-spec-generation
 https://github.com/wshobson/agents/tree/main/plugins/frontend-mobile-development/skills/tailwind-design-system => tailwind-design-system
 https://github.com/wshobson/agents/tree/main/plugins/hr-legal-compliance/skills/employment-contract-templates => employment-contract-templates
@@ -217,11 +215,9 @@ https://github.com/MakFly/superpowers-symfony/tree/main/skills/symfony-voters =>
 https://github.com/MakFly/superpowers-symfony/tree/main/skills/twig-components => twig-components
 
 https://github.com/jeremylongshore/claude-code-plugins-plus-skills/tree/main/skills/01-devops-basics/branch-naming-helper => branch-naming-helper
-https://github.com/jeremylongshore/claude-code-plugins-plus-skills/tree/main/skills/01-devops-basics/docker-compose-creator => docker-compose-creator
-https://github.com/jeremylongshore/claude-code-plugins-plus-skills/tree/main/skills/01-devops-basics/dockerfile-generator => dockerfile-generator
 
 https://github.com/NeverSight/learn-skills.dev/tree/main/data/skills-md/pluginagentmarketplace/custom-plugin-qa/test-strategy => test-strategy
-https://github.com/NeverSight/learn-skills.dev/tree/main/data/skills-md/nikhilbhansali/enterprise-proposal => enterprise-proposal
+https://github.com/NeverSight/learn-skills.dev/tree/main/data/skills-md/nikhilbhansali/enterprise-proposal/enterprise-proposal => enterprise-proposal
 
 https://github.com/qiao-925/qiao-skills/tree/main/global/single-responsibility => single-responsibility
 https://github.com/qiao-925/qiao-skills/tree/main/global/code-complexity-control/core-first-simplicity => core-first-simplicity
@@ -306,7 +302,6 @@ https://github.com/softaworks/agent-toolkit/tree/main/skills/lesson-learned => l
 https://github.com/softaworks/agent-toolkit/tree/main/skills/skill-judge => skill-judge
 
 https://github.com/skyvanguard/infra-ops/tree/master/skills/network-troubleshooter => network-troubleshooter
-https://github.com/skyvanguard/infra-ops/tree/master/skills/container-ops => container-ops
 https://github.com/skyvanguard/infra-ops/tree/master/skills/disk-cleanup => disk-cleanup
 https://github.com/skyvanguard/infra-ops/tree/master/skills/incident-triage => incident-triage
 https://github.com/skyvanguard/infra-ops/tree/master/skills/log-analyzer => log-analyzer
