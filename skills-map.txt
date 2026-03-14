@@ -9,6 +9,7 @@ https://github.com/anthropics/skills/tree/main/skills/docx => docx
 https://github.com/anthropics/skills/tree/main/skills/pptx => pptx
 https://github.com/anthropics/skills/tree/main/skills/xlsx => xlsx
 https://github.com/anthropics/skills/tree/main/skills/pdf => pdf
+https://github.com/anthropics/skills/tree/main/skills/skill-creator => skill-creator
 
 https://github.com/anthropics/claude-cookbooks/tree/main/skills/custom_skills/analyzing-financial-statements => analyzing-financial-statements
 https://github.com/anthropics/claude-cookbooks/tree/main/skills/custom_skills/creating-financial-models => creating-financial-models
