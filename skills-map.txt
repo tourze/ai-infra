@@ -210,7 +210,6 @@ https://github.com/MakFly/superpowers-symfony/tree/main/skills/symfony-cache => 
 https://github.com/MakFly/superpowers-symfony/tree/main/skills/symfony-messenger => symfony-messenger
 https://github.com/MakFly/superpowers-symfony/tree/main/skills/symfony-scheduler => symfony-scheduler
 https://github.com/MakFly/superpowers-symfony/tree/main/skills/symfony-voters => symfony-voters
-https://github.com/MakFly/superpowers-symfony/tree/main/skills/tdd-with-phpunit => tdd-with-phpunit
 https://github.com/MakFly/superpowers-symfony/tree/main/skills/twig-components => twig-components
 
 https://github.com/jeremylongshore/claude-code-plugins-plus-skills/tree/main/skills/01-devops-basics/branch-naming-helper => branch-naming-helper
@@ -289,3 +288,10 @@ https://github.com/compnew2006/Spec-Kit-Antigravity-Skills/tree/main/skills/spec
 
 https://github.com/alibaba/arthas/tree/master/skills/cpu-high => arthas-cpu-high
 https://github.com/alibaba/arthas/tree/master/skills/spring-context => arthas-springcontext-issues-resolve
+
+https://github.com/majiayu000/claude-skill-registry/tree/main/skills/data/feature-dev => feature-dev
+
+https://github.com/nette/claude-code/tree/master/plugins/nette-dev/skills/phpstan-analysis => phpstan-analysis
+https://github.com/nette/claude-code/tree/master/plugins/nette-dev/skills/php-doc => php-doc
+
+https://github.com/pentiminax/agent-skills/tree/main/skills/phpunit-best-practices => phpunit-best-practices
