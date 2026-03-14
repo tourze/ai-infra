@@ -3,12 +3,13 @@
   "version": "0.1.0",
   "description": "本地 skills 管理与多 Agent 软链工具",
   "scripts": {
-    "link:skills:py": "python ./scripts/link-skills.py",
-    "link:cc:py": "python ./scripts/link-skills.py cc",
-    "link:codex:py": "python ./scripts/link-skills.py codex",
-    "link:gemini:py": "python ./scripts/link-skills.py gemini",
-    "sync:memory:py": "python ./scripts/sync-agent-memory.py",
-    "test:claude-hooks:py": "python ./scripts/test-claude-hooks.py",
-    "validate:repo:py": "python ./scripts/validate-repo.py"
+    "sync:skills": "node ./sync-skills.js",
+    "link:skills": "node ./scripts/link-skills.js",
+    "link:cc": "node ./scripts/link-skills.js cc",
+    "link:codex": "node ./scripts/link-skills.js codex",
+    "link:gemini": "node ./scripts/link-skills.js gemini",
+    "sync:memory": "node ./scripts/sync-agent-memory.js",
+    "test:claude-hooks": "node ./scripts/test-claude-hooks.js",
+    "validate:repo": "node ./scripts/validate-repo.js"
   }
 }

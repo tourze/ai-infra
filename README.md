@@ -6,17 +6,17 @@
 
 - 技能目录：`./skills`
 - 映射文件：`./skills-map.txt`
-- 同步脚本：`./sync-skills.py`
+- 同步脚本：`./sync-skills.js`
 - Agent memory：`./AGENTS.md`
 - Claude Code 脚手架：`./.claude/`
 
 ## 常用命令
 
-### Shell 脚本 (Mac/Linux)
+### 推荐命令（跨平台）
 
 ```bash
 # 1) 按映射同步远程 skills 到本地 ./skills
-python3 sync-skills.py
+npm run sync:skills
 
 # 2) 一键把本仓库 skills 软链到 cc + codex + gemini
 npm run link:skills
@@ -31,38 +31,30 @@ npm run sync:memory
 npm run validate:repo
 ```
 
-### Python 脚本 (跨平台)，注意：windows下需要管理员权限
+### 直接执行 Node 脚本
 
 ```bash
 # 1) 按映射同步远程 skills 到本地 ./skills
-python sync-skills.py
+node ./sync-skills.js
 
 # 2) 一键把本仓库 skills 软链到 cc + codex + gemini
-python scripts/link-skills.py
-# 或使用 NPM 命令
-npm run link:skills:py
+node ./scripts/link-skills.js
 
 # 3) 仅链接 Gemini CLI
-python scripts/link-skills.py gemini
-# 或使用 NPM 命令
-npm run link:gemini:py
+node ./scripts/link-skills.js gemini
 
 # 4) 同步仓库级 agent memory 到 Claude/Codex/Gemini
-python scripts/sync-agent-memory.py
-# 或使用 NPM 命令
-npm run sync:memory:py
+node ./scripts/sync-agent-memory.js
 
 # 5) 运行当前仓库最小质量门
-python scripts/validate-repo.py
-# 或使用 NPM 命令
-npm run validate:repo:py
+node ./scripts/validate-repo.js
 ```
 
-> 💡 **跨平台使用**：Python 脚本支持 Mac/Linux/Windows，详细说明请查看 [PYTHON_SCRIPTS.md](PYTHON_SCRIPTS.md)
+> 💡 **跨平台使用**：仓库自维护脚本已统一为 Node.js，执行这些命令不再依赖本机 Python。`sync:memory` 现在会直接创建文件链接，修改源 `AGENTS.md` 后目标文件会同步反映。
 
 ## Agent 协作约定
 
-- `AGENTS.md` 是仓库级 agent memory 的单一事实来源；需要同步到本机的 Claude Code、Codex、Gemini CLI 时，统一执行 `npm run sync:memory`。
+- `AGENTS.md` 是仓库级 agent memory 的单一事实来源；需要同步到本机的 Claude Code、Codex、Gemini CLI 时，统一执行 `npm run sync:memory`。该命令会直接创建文件链接，而不是复制内容。
 - `.claude/` 提供了从 `tele-backend` 提炼并适配后的轻量 Claude Code 脚手架，包括：
   - `settings.example.json`：项目级权限与 hook 示例
   - `hooks/`：通用风险拦截与 prompt 提示

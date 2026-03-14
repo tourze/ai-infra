@@ -11,7 +11,7 @@
       "Bash(head:*)",
       "Bash(tail:*)",
       "Bash(sort:*)",
-      "Bash(python3:*)",
+      "Bash(node:*)",
       "Bash(bash:*)",
       "Bash(npm:*)"
     ],
@@ -29,7 +29,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "python3 \"$CLAUDE_PROJECT_DIR\"/.claude/hooks/protect-worktree.py"
+            "command": "node \"$CLAUDE_PROJECT_DIR\"/.claude/hooks/protect-worktree.js"
           }
         ]
       }
@@ -39,7 +39,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "python3 \"$CLAUDE_PROJECT_DIR\"/.claude/hooks/force-think.py"
+            "command": "node \"$CLAUDE_PROJECT_DIR\"/.claude/hooks/force-think.js"
           }
         ]
       }
