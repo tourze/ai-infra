@@ -304,3 +304,12 @@ https://github.com/softaworks/agent-toolkit/tree/main/skills/session-handoff => 
 https://github.com/softaworks/agent-toolkit/tree/main/skills/backend-to-frontend-handoff-docs => backend-to-frontend-handoff-docs
 https://github.com/softaworks/agent-toolkit/tree/main/skills/lesson-learned => lesson-learned
 https://github.com/softaworks/agent-toolkit/tree/main/skills/skill-judge => skill-judge
+
+https://github.com/skyvanguard/infra-ops/tree/master/skills/network-troubleshooter => network-troubleshooter
+https://github.com/skyvanguard/infra-ops/tree/master/skills/container-ops => container-ops
+https://github.com/skyvanguard/infra-ops/tree/master/skills/disk-cleanup => disk-cleanup
+https://github.com/skyvanguard/infra-ops/tree/master/skills/incident-triage => incident-triage
+https://github.com/skyvanguard/infra-ops/tree/master/skills/log-analyzer => log-analyzer
+https://github.com/skyvanguard/infra-ops/tree/master/skills/performance-optimizer => performance-optimizer
+https://github.com/skyvanguard/infra-ops/tree/master/skills/service-monitor => service-monitor
+https://github.com/skyvanguard/infra-ops/tree/master/skills/system-diagnostics => system-diagnostics
