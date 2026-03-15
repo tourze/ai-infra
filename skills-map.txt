@@ -38,7 +38,6 @@ https://github.com/kepano/obsidian-skills/tree/main/skills/obsidian-cli => obsid
 https://github.com/kepano/obsidian-skills/tree/main/skills/obsidian-markdown => obsidian-markdown
 https://github.com/kepano/obsidian-skills/tree/main/skills/obsidian-bases => obsidian-bases
 
-https://github.com/vercel-labs/agent-skills/tree/main/skills/composition-patterns => vercel-composition-patterns
 https://github.com/vercel-labs/agent-skills/tree/main/skills/react-best-practices => vercel-react-best-practices
 
 https://github.com/callstackincubator/agent-skills/tree/main/skills/react-native-best-practices => react-native-best-practices
