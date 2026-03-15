@@ -110,7 +110,7 @@ node ./scripts/validate-repo.js
 
 以下清单按仓库中实际存在的公共 `skills/*/SKILL.md` 整理，不包含 `.system` 内置 skill。名称可直接跳转到对应说明文件。
 
-### 公共 Skills（252）
+### 公共 Skills（255）
 
 | 名称 | 作用简介 |
 |------|----------|
@@ -223,6 +223,7 @@ node ./scripts/validate-repo.js
 | [javascript-typescript-jest](skills/javascript-typescript-jest/SKILL.md) | 编写 JavaScript/TypeScript 的 Jest 测试与 mock 策略。 |
 | [k8s-manifest-generator](skills/k8s-manifest-generator/SKILL.md) | 生成生产可用的 Kubernetes 资源清单。 |
 | [k8s-security-policies](skills/k8s-security-policies/SKILL.md) | 为 Kubernetes 实施网络隔离、RBAC 与安全策略。 |
+| [laravel-specialist](skills/laravel-specialist/SKILL.md) | Build and configure Laravel 10+ applications, including creating Eloquent mod...。 |
 | [lesson-learned](skills/lesson-learned/SKILL.md) | Analyze recent code changes via git history and extract software engineering...。 |
 | [linting-neostandard-eslint9](skills/linting-neostandard-eslint9/SKILL.md) | Configures ESLint v9 flat config and neostandard for JavaScript and TypeScrip...。 |
 | [linux-privilege-escalation](skills/linux-privilege-escalation/SKILL.md) | This skill should be used when the user asks to "escalate privileges on Linux...。 |
@@ -240,7 +241,9 @@ node ./scripts/validate-repo.js
 | [microsoft-code-reference](skills/microsoft-code-reference/SKILL.md) | 查询微软 API/SDK 正确用法与官方代码示例。 |
 | [microsoft-docs](skills/microsoft-docs/SKILL.md) | 从微软官方文档获取 Azure、.NET 等技术信息。 |
 | [modern-javascript-patterns](skills/modern-javascript-patterns/SKILL.md) | 采用 ES6+ 现代 JavaScript 语法与模式。 |
+| [nestjs-expert](skills/nestjs-expert/SKILL.md) | Creates and configures NestJS modules, controllers, services, DTOs, guards, a...。 |
 | [network-troubleshooter](skills/network-troubleshooter/SKILL.md) | Use when the user has connectivity issues, DNS problems, can't reach a servic...。 |
+| [nextjs-developer](skills/nextjs-developer/SKILL.md) | Use when building Next.js 14+ applications with App Router, server components...。 |
 | [obsidian-bases](skills/obsidian-bases/SKILL.md) | 创建和编辑 Obsidian Bases 数据视图。 |
 | [obsidian-cli](skills/obsidian-cli/SKILL.md) | 通过 CLI 读写 Obsidian 笔记、任务与插件状态。 |
 | [obsidian-markdown](skills/obsidian-markdown/SKILL.md) | 编写和编辑 Obsidian 风格 Markdown 语法。 |
@@ -251,6 +254,7 @@ node ./scripts/validate-repo.js
 | [pdf](skills/pdf/SKILL.md) | 读取、拆分、合并、OCR 和生成 PDF 文档。 |
 | [performance-optimizer](skills/performance-optimizer/SKILL.md) | Use when the user wants to speed up their system, free resources, or resolve...。 |
 | [php-doc](skills/php-doc/SKILL.md) | Invoke BEFORE writing phpDoc。 |
+| [php-pro](skills/php-pro/SKILL.md) | Use when building PHP applications with modern PHP 8.3+ features, Laravel, or...。 |
 | [phpstan-analysis](skills/phpstan-analysis/SKILL.md) | Invoke BEFORE running PHPStan or fixing PHPStan errors。 |
 | [phpunit-best-practices](skills/phpunit-best-practices/SKILL.md) | PHPUnit testing best practices and conventions guide。 |
 | [plan-review](skills/plan-review/SKILL.md) | Pre-implementation plan audit that stress-tests scope, assumptions, risks, an...。 |
@@ -351,7 +355,6 @@ node ./scripts/validate-repo.js
 | [uv-package-manager](skills/uv-package-manager/SKILL.md) | 用 uv 管理 Python 依赖、虚拟环境和项目工作流。 |
 | [ux-researcher-designer](skills/ux-researcher-designer/SKILL.md) | 支持用户研究、画像、旅程图与可用性验证。 |
 | [vector-index-tuning](skills/vector-index-tuning/SKILL.md) | 调优向量索引的延迟、召回和内存占用。 |
-| [vercel-composition-patterns](skills/vercel-composition-patterns/SKILL.md) | 待补充说明。 |
 | [vercel-react-best-practices](skills/vercel-react-best-practices/SKILL.md) | 采用 Vercel 推荐的 React/Next.js 性能最佳实践。 |
 | [verification-before-completion](skills/verification-before-completion/SKILL.md) | 宣称完成前先跑验证并用结果说话。 |
 | [visual-design-foundations](skills/visual-design-foundations/SKILL.md) | 用字体、色彩、间距和图标基础提升视觉一致性。 |
