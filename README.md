@@ -110,7 +110,7 @@ node ./scripts/validate-repo.js
 
 以下清单按仓库中实际存在的公共 `skills/*/SKILL.md` 整理，不包含 `.system` 内置 skill。名称可直接跳转到对应说明文件。
 
-### 公共 Skills（229）
+### 公共 Skills（252）
 
 | 名称 | 作用简介 |
 |------|----------|
@@ -118,10 +118,7 @@ node ./scripts/validate-repo.js
 | [active-directory-attacks](skills/active-directory-attacks/SKILL.md) | This skill should be used when the user asks to "attack Active Directory", "e...。 |
 | [ad-creative](skills/ad-creative/SKILL.md) | 批量生成和迭代付费广告文案素材。 |
 | [agile-product-owner](skills/agile-product-owner/SKILL.md) | 编写用户故事、验收标准与迭代计划的敏捷产品管理。 |
-| [ai-prompt-engineering-safety-review](skills/ai-prompt-engineering-safety-review/SKILL.md) | 评审提示词的安全性、偏见和效果并给出改进建议。 |
-| [ai-seo](skills/ai-seo/SKILL.md) | 优化内容在 AI 搜索与 LLM 回答中的可见性和引用率。 |
 | [analytics-tracking](skills/analytics-tracking/SKILL.md) | 搭建、审计和排查 GA4/GTM 等埋点与转化追踪。 |
-| [analyzing-financial-statements](skills/analyzing-financial-statements/SKILL.md) | 计算财务报表关键比率并做投资分析。 |
 | [android-accessibility](skills/android-accessibility/SKILL.md) | 审核并修复 Android 尤其是 Jetpack Compose 的无障碍问题。 |
 | [android-architecture](skills/android-architecture/SKILL.md) | 设计基于 Clean Architecture 与 Hilt 的现代 Android 架构。 |
 | [android-coroutines](skills/android-coroutines/SKILL.md) | 在 Android 中落地高质量 Kotlin 协程与结构化并发。 |
@@ -138,15 +135,17 @@ node ./scripts/validate-repo.js
 | [architecture-blueprint-generator](skills/architecture-blueprint-generator/SKILL.md) | 自动分析代码库并生成架构蓝图与文档。 |
 | [architecture-diagram](skills/architecture-diagram/SKILL.md) | Generate detailed layered architecture diagrams as self-contained HTML artifa...。 |
 | [architecture-reviewer](skills/architecture-reviewer/SKILL.md) | Architecture reviews across 7 dimensions: structural integrity, scalability,...。 |
+| [arthas-cpu-high](skills/arthas-cpu-high/SKILL.md) | 排查 JVM / 应用 CPU 飙高（线程定位 + 代码路径分析）。 |
+| [arthas-springcontext-issues-resolve](skills/arthas-springcontext-issues-resolve/SKILL.md) | 排查 Spring ApplicationContext / Bean / 配置注入等问题。 |
 | [async-python-patterns](skills/async-python-patterns/SKILL.md) | 构建高性能 Python asyncio 并发与异步模式。 |
 | [attack-tree-construction](skills/attack-tree-construction/SKILL.md) | 构建攻击树以梳理威胁路径与防御缺口。 |
 | [author-contributions](skills/author-contributions/SKILL.md) | 追踪某作者在分支上的文件贡献及重命名历史。 |
+| [backend-to-frontend-handoff-docs](skills/backend-to-frontend-handoff-docs/SKILL.md) | Create API handoff documentation for frontend developers。 |
 | [baoyu-article-illustrator](skills/baoyu-article-illustrator/SKILL.md) | 为文章识别配图点并生成插图方案。 |
 | [baoyu-compress-image](skills/baoyu-compress-image/SKILL.md) | 压缩图片并转换为 WebP/PNG。 |
 | [bash-defensive-patterns](skills/bash-defensive-patterns/SKILL.md) | 编写具备容错与安全性的生产级 Bash 脚本。 |
 | [benchmark-runner](skills/benchmark-runner/SKILL.md) | Designs structured benchmarks for comparing algorithms, models, or implementa...。 |
 | [binary-analysis-patterns](skills/binary-analysis-patterns/SKILL.md) | 进行反汇编、反编译和控制流等二进制静态分析。 |
-| [boost-prompt](skills/boost-prompt/SKILL.md) | 通过结构化提问打磨提示词并复制最终 Markdown。 |
 | [branch-naming-helper](skills/branch-naming-helper/SKILL.md) | Configure with branch naming helper operations. Auto-activating skill for Dev...。 |
 | [broken-authentication](skills/broken-authentication/SKILL.md) | This skill should be used when the user asks to "test for broken authenticati...。 |
 | [brutal-honesty-review](skills/brutal-honesty-review/SKILL.md) | Unvarnished technical criticism combining Linus Torvalds' precision, Gordon R...。 |
@@ -169,7 +168,7 @@ node ./scripts/validate-repo.js
 | [conventional-commits](skills/conventional-commits/SKILL.md) | 按 Conventional Commits 规范生成提交信息。 |
 | [copy-editing](skills/copy-editing/SKILL.md) | 对现有营销文案做多轮编辑、润色与校对。 |
 | [core-first-simplicity](skills/core-first-simplicity/SKILL.md) | 基于 KISS（Keep It Simple, Stupid）与“最小光辉点”的复杂度控制原则。用于项目、系统、模块、代码、函数各层级的设计与实现决策，帮...。 |
-| [create-adaptable-composable](skills/create-adaptable-composable/SKILL.md) | 创建接收 MaybeRef/Getter 的可复用 Vue composable。 |
+| [create-github-action-workflow-specification](skills/create-github-action-workflow-specification/SKILL.md) | Create a formal specification for an existing GitHub Actions CI/CD workflow,...。 |
 | [create-implementation-plan](skills/create-implementation-plan/SKILL.md) | 为新功能、重构或升级编写实施计划文件。 |
 | [create-oo-component-documentation](skills/create-oo-component-documentation/SKILL.md) | 为面向对象组件生成标准化技术文档。 |
 | [create-prd](skills/create-prd/SKILL.md) | 用 8 部分模板编写产品需求文档。 |
@@ -182,23 +181,25 @@ node ./scripts/validate-repo.js
 | [data-storytelling](skills/data-storytelling/SKILL.md) | 把数据结果组织成面向管理层的叙事和呈现。 |
 | [debian-linux-triage](skills/debian-linux-triage/SKILL.md) | 排查 Debian 上的 apt、systemd 和 AppArmor 问题。 |
 | [debug-investigator](skills/debug-investigator/SKILL.md) | Hypothesis-driven debugging methodology: ranked hypotheses with confirming/re...。 |
-| [debugging-strategies](skills/debugging-strategies/SKILL.md) | 用系统化方法定位 bug、性能瓶颈和根因。 |
 | [deep-research](skills/deep-research/SKILL.md) | 在联网任务中做多轮深度研究，而不是浅层搜索。 |
 | [design-system-patterns](skills/design-system-patterns/SKILL.md) | 设计和实现可扩展的设计系统、token 与主题机制。 |
 | [dhdna-profiler](skills/dhdna-profiler/SKILL.md) | 从文本中提取认知风格与思维特征。 |
+| [disk-cleanup](skills/disk-cleanup/SKILL.md) | Use when disk space is low, the user wants to free space, or needs to find wh...。 |
 | [doc-coauthoring](skills/doc-coauthoring/SKILL.md) | 引导用户协作式编写文档、提案和技术说明。 |
-| [docker-compose-creator](skills/docker-compose-creator/SKILL.md) | Create docker compose creator operations. Auto-activating skill for DevOps Ba...。 |
 | [docker-essentials](skills/docker-essentials/SKILL.md) | 提供常用 Docker 容器、镜像与排障工作流。 |
-| [dockerfile-generator](skills/dockerfile-generator/SKILL.md) | Generate dockerfile generator operations. Auto-activating skill for DevOps Ba...。 |
 | [doctrine-batch-processing](skills/doctrine-batch-processing/SKILL.md) | Evolve Symfony Doctrine models and schema safely with integrity, performance,...。 |
+| [doctrine-fetch-modes](skills/doctrine-fetch-modes/SKILL.md) | Evolve Symfony Doctrine models and schema safely with integrity, performance,...。 |
+| [doctrine-relations](skills/doctrine-relations/SKILL.md) | Evolve Symfony Doctrine models and schema safely with integrity, performance,...。 |
+| [doctrine-transactions](skills/doctrine-transactions/SKILL.md) | Evolve Symfony Doctrine models and schema safely with integrity, performance,...。 |
 | [docx](skills/docx/SKILL.md) | 读取、创建和编辑 Word `.docx` 文档。 |
 | [domain-name-brainstormer](skills/domain-name-brainstormer/SKILL.md) | 生成域名创意并检查多种后缀可用性。 |
-| [drawio-logical-diagrams](skills/drawio-logical-diagrams/SKILL.md) | Creates professional logical flow diagrams and logical system architecture di...。 |
 | [embedding-strategies](skills/embedding-strategies/SKILL.md) | 为语义检索/RAG 选择并优化向量嵌入方案。 |
 | [employment-contract-templates](skills/employment-contract-templates/SKILL.md) | 编写雇佣合同、offer 和 HR 政策模板。 |
 | [engineering-retro](skills/engineering-retro/SKILL.md) | Git-based engineering retrospective analyzing commit history, PR patterns, an...。 |
+| [enterprise-proposal](skills/enterprise-proposal/SKILL.md) | Create comprehensive, BCG/McKinsey-style enterprise proposals with profession...。 |
 | [estimate-calibrator](skills/estimate-calibrator/SKILL.md) | Produces calibrated three-point estimates (best/likely/worst case) with expli...。 |
 | [ethical-hacking-methodology](skills/ethical-hacking-methodology/SKILL.md) | This skill should be used when the user asks to "learn ethical hacking", "und...。 |
+| [feature-dev](skills/feature-dev/SKILL.md) | Feature Development Workflow - 7-phase structured approach for building featu...。 |
 | [figma-implement-design](skills/figma-implement-design/SKILL.md) | 按 Figma 设计上下文高保真实现页面或组件。 |
 | [file-header-comments](skills/file-header-comments/SKILL.md) | 代码文件顶部注释规范，适用于所有代码文件（.sh, .js, .ts, .py, .java, .go 等）。要求所有代码文件在顶部包含功能描述注释。 |
 | [file-path-traversal](skills/file-path-traversal/SKILL.md) | This skill should be used when the user asks to "test for directory traversal...。 |
@@ -207,12 +208,14 @@ node ./scripts/validate-repo.js
 | [first-principles-decomposer](skills/first-principles-decomposer/SKILL.md) | 用第一性原理拆解问题并重建方案。 |
 | [frontend-design-review](skills/frontend-design-review/SKILL.md) | 审查或设计高质量前端界面，兼顾美感、可用性与设计系统。 |
 | [gdpr-data-handling](skills/gdpr-data-handling/SKILL.md) | 实现 GDPR 合规的数据处理、同意与权利响应。 |
+| [github-actions-templates](skills/github-actions-templates/SKILL.md) | Create production-ready GitHub Actions workflows for automated testing, build...。 |
 | [github-deep-research](skills/github-deep-research/SKILL.md) | 对 GitHub 仓库做多轮深度研究和时间线分析。 |
 | [go-concurrency-patterns](skills/go-concurrency-patterns/SKILL.md) | 编写和调试 Go 的 goroutine、channel 与并发模式。 |
 | [graalvm-native-image](skills/graalvm-native-image/SKILL.md) | Provides expert guidance for building GraalVM Native Image executables from J...。 |
 | [gradle-build-performance](skills/gradle-build-performance/SKILL.md) | 诊断并优化 Android/Gradle 构建性能。 |
 | [helm-chart-scaffolding](skills/helm-chart-scaffolding/SKILL.md) | 搭建可复用、可验证的 Helm Chart。 |
 | [icon-retrieval](skills/icon-retrieval/SKILL.md) | 检索图标库并返回可直接使用的 SVG。 |
+| [incident-triage](skills/incident-triage/SKILL.md) | Use when a user reports something isn't working, a service is down, or an err...。 |
 | [interaction-design](skills/interaction-design/SKILL.md) | 设计并实现微交互、动效和反馈体验。 |
 | [inversion-strategist](skills/inversion-strategist/SKILL.md) | 从“如何失败”反推风险，得到更稳的决策。 |
 | [java-expert](skills/java-expert/SKILL.md) | Java and Spring Boot expert including REST APIs, JPA, and microservices。 |
@@ -220,13 +223,14 @@ node ./scripts/validate-repo.js
 | [javascript-typescript-jest](skills/javascript-typescript-jest/SKILL.md) | 编写 JavaScript/TypeScript 的 Jest 测试与 mock 策略。 |
 | [k8s-manifest-generator](skills/k8s-manifest-generator/SKILL.md) | 生成生产可用的 Kubernetes 资源清单。 |
 | [k8s-security-policies](skills/k8s-security-policies/SKILL.md) | 为 Kubernetes 实施网络隔离、RBAC 与安全策略。 |
+| [lesson-learned](skills/lesson-learned/SKILL.md) | Analyze recent code changes via git history and extract software engineering...。 |
 | [linting-neostandard-eslint9](skills/linting-neostandard-eslint9/SKILL.md) | Configures ESLint v9 flat config and neostandard for JavaScript and TypeScrip...。 |
 | [linux-privilege-escalation](skills/linux-privilege-escalation/SKILL.md) | This skill should be used when the user asks to "escalate privileges on Linux...。 |
 | [linux-shell-scripting](skills/linux-shell-scripting/SKILL.md) | This skill should be used when the user asks to "create bash scripts", "autom...。 |
 | [llm-evaluation](skills/llm-evaluation/SKILL.md) | 为 LLM 应用建立自动化与人工结合的评测体系。 |
+| [log-analyzer](skills/log-analyzer/SKILL.md) | Use when the user needs to investigate logs, find errors, trace issues across...。 |
 | [markdown-mermaid-writing](skills/markdown-mermaid-writing/SKILL.md) | 用 Markdown 和 Mermaid 统一写作与图表表达。 |
 | [market-sizing-analysis](skills/market-sizing-analysis/SKILL.md) | 估算 TAM、SAM、SOM 等市场规模。 |
-| [marketing-ideas](skills/marketing-ideas/SKILL.md) | 为 SaaS 或软件产品提供营销创意和增长思路。 |
 | [marketing-psychology](skills/marketing-psychology/SKILL.md) | 用行为科学与心理学原理优化营销。 |
 | [markitdown](skills/markitdown/SKILL.md) | 将文档、网页、媒体等多种格式转换为 Markdown。 |
 | [md-to-pdf](skills/md-to-pdf/SKILL.md) | Convert Markdown files to professionally styled PDF documents with full suppo...。 |
@@ -236,6 +240,7 @@ node ./scripts/validate-repo.js
 | [microsoft-code-reference](skills/microsoft-code-reference/SKILL.md) | 查询微软 API/SDK 正确用法与官方代码示例。 |
 | [microsoft-docs](skills/microsoft-docs/SKILL.md) | 从微软官方文档获取 Azure、.NET 等技术信息。 |
 | [modern-javascript-patterns](skills/modern-javascript-patterns/SKILL.md) | 采用 ES6+ 现代 JavaScript 语法与模式。 |
+| [network-troubleshooter](skills/network-troubleshooter/SKILL.md) | Use when the user has connectivity issues, DNS problems, can't reach a servic...。 |
 | [obsidian-bases](skills/obsidian-bases/SKILL.md) | 创建和编辑 Obsidian Bases 数据视图。 |
 | [obsidian-cli](skills/obsidian-cli/SKILL.md) | 通过 CLI 读写 Obsidian 笔记、任务与插件状态。 |
 | [obsidian-markdown](skills/obsidian-markdown/SKILL.md) | 编写和编辑 Obsidian 风格 Markdown 语法。 |
@@ -244,13 +249,14 @@ node ./scripts/validate-repo.js
 | [paid-ads](skills/paid-ads/SKILL.md) | 制定 Google/Meta/LinkedIn 等付费投放策略。 |
 | [participation-driven-growth](skills/participation-driven-growth/SKILL.md) | 用户参与驱动的口碑增长与品牌建设技能，覆盖爆品策略、粉丝经营、用户共创、自媒体运营、事件传播、服务体验、设计表达与互联网转型。用户提到“参与感”“口碑营销...。 |
 | [pdf](skills/pdf/SKILL.md) | 读取、拆分、合并、OCR 和生成 PDF 文档。 |
-| [pentest-checklist](skills/pentest-checklist/SKILL.md) | This skill should be used when the user asks to "plan a penetration test", "c...。 |
+| [performance-optimizer](skills/performance-optimizer/SKILL.md) | Use when the user wants to speed up their system, free resources, or resolve...。 |
+| [php-doc](skills/php-doc/SKILL.md) | Invoke BEFORE writing phpDoc。 |
+| [phpstan-analysis](skills/phpstan-analysis/SKILL.md) | Invoke BEFORE running PHPStan or fixing PHPStan errors。 |
+| [phpunit-best-practices](skills/phpunit-best-practices/SKILL.md) | PHPUnit testing best practices and conventions guide。 |
 | [plan-review](skills/plan-review/SKILL.md) | Pre-implementation plan audit that stress-tests scope, assumptions, risks, an...。 |
 | [plantuml-ascii](skills/plantuml-ascii/SKILL.md) | 用 PlantUML 生成终端友好的 ASCII 图。 |
 | [popup-cro](skills/popup-cro/SKILL.md) | 优化弹窗、浮层、通知条等转化组件。 |
 | [porters-five-forces](skills/porters-five-forces/SKILL.md) | 开展波特五力行业竞争分析。 |
-| [postgresql-code-review](skills/postgresql-code-review/SKILL.md) | 从 PostgreSQL 特性和规范角度审查数据库代码。 |
-| [postgresql-optimization](skills/postgresql-optimization/SKILL.md) | 利用 PostgreSQL 高级特性做查询与结构优化。 |
 | [postgresql-table-design](skills/postgresql-table-design/SKILL.md) | 设计符合 PostgreSQL 最佳实践的表结构。 |
 | [pptx](skills/pptx/SKILL.md) | 读取、创建、编辑和拆分 `.pptx` 演示文稿。 |
 | [pre-landing-review](skills/pre-landing-review/SKILL.md) | Gate-oriented safety audit for code changes before landing, using a structure...。 |
@@ -261,7 +267,6 @@ node ./scripts/validate-repo.js
 | [prompt-engineering-patterns](skills/prompt-engineering-patterns/SKILL.md) | 设计高可靠、可控的高级提示工程方案。 |
 | [prompt-lab](skills/prompt-lab/SKILL.md) | Systematic LLM prompt engineering: analyzes existing prompts for failure mode...。 |
 | [protocol-reverse-engineering](skills/protocol-reverse-engineering/SKILL.md) | 逆向网络协议、报文结构和通信流程。 |
-| [pytest-coverage](skills/pytest-coverage/SKILL.md) | 运行 pytest 覆盖率并补齐缺失测试。 |
 | [python-anti-patterns](skills/python-anti-patterns/SKILL.md) | 审查并规避常见 Python 反模式。 |
 | [python-background-jobs](skills/python-background-jobs/SKILL.md) | 实现 Python 后台任务、队列和事件驱动处理。 |
 | [python-code-style](skills/python-code-style/SKILL.md) | 统一 Python 代码风格、命名与文档规范。 |
@@ -281,17 +286,39 @@ node ./scripts/validate-repo.js
 | [rust-async-patterns](skills/rust-async-patterns/SKILL.md) | 实践 Rust/Tokio 异步编程与并发模式。 |
 | [scientific-brainstorming](skills/scientific-brainstorming/SKILL.md) | 为科研问题做开放式创意发散和假设探索。 |
 | [screenshot](skills/screenshot/SKILL.md) | 在桌面或系统层面抓取屏幕截图。 |
+| [security-ownership-map](skills/security-ownership-map/SKILL.md) | Analyze git repositories to build a security ownership topology (people-to-fi...。 |
 | [security-requirement-extraction](skills/security-requirement-extraction/SKILL.md) | 从威胁模型和业务上下文中提炼安全需求。 |
+| [service-monitor](skills/service-monitor/SKILL.md) | Use when the user wants to check if services are running, verify endpoints ar...。 |
+| [session-handoff](skills/session-handoff/SKILL.md) | Creates comprehensive handoff documents for seamless AI agent session transfe...。 |
 | [shadcn-ui](skills/shadcn-ui/SKILL.md) | Expert guidance for integrating and building applications with shadcn/ui comp...。 |
 | [shellcheck-configuration](skills/shellcheck-configuration/SKILL.md) | 配置并使用 ShellCheck 提升 shell 脚本质量。 |
 | [similarity-search-patterns](skills/similarity-search-patterns/SKILL.md) | 构建向量数据库语义检索与近邻搜索方案。 |
 | [single-responsibility](skills/single-responsibility/SKILL.md) | 单一职责原则，确保代码文件、函数、模块职责清晰单一。适用于所有代码文件。 |
+| [site-analyze](skills/site-analyze/SKILL.md) | 网站机房溯源全维度分析工具。当用户要求分析某个网站的机房位置、CDN、IP归属、路由链路、响应延迟、SSL证书、子域名等信息时使用。支持通过 DNS ov...。 |
 | [site-architecture](skills/site-architecture/SKILL.md) | 规划网站结构、导航、URL 与内链体系。 |
 | [six-thinking-hats](skills/six-thinking-hats/SKILL.md) | Apply Edward de Bono's Six Thinking Hats methodology to software testing for...。 |
 | [skill-creator](skills/skill-creator/SKILL.md) | Create new skills, modify and improve existing skills, and measure skill perf...。 |
+| [skill-judge](skills/skill-judge/SKILL.md) | Evaluate Agent Skill design quality against official specifications and best...。 |
 | [skills-prune-and-sync-readme](skills/skills-prune-and-sync-readme/SKILL.md) | 遍历当前仓库的 `skills/` 目录，依据证据定位低质量、重复或触发冲突的 skill，按明确名单删除目标目录，并重建 `README.md` 中的...。 |
 | [slash-command-bridge](skills/slash-command-bridge/SKILL.md) | 在不原生支持 Claude Code slash command 的环境中桥接并执行命令。用户输入以 `/` 开头，且当前运行时不会自动解析 `.clau...。 |
 | [software-team-metrics](skills/software-team-metrics/SKILL.md) | 软件团队度量与改进技能，覆盖指标设计、试点引入、团队诊断、角色画像、招聘参照、辅导反馈与绩效对话。用户提到“程序员度量”“工程团队度量”“研发效能分析”“...。 |
+| [speckit.analyze](skills/speckit.analyze/SKILL.md) | Perform a non-destructive cross-artifact consistency and quality analysis acr...。 |
+| [speckit.checker](skills/speckit.checker/SKILL.md) | Run static analysis tools and aggregate results。 |
+| [speckit.checklist](skills/speckit.checklist/SKILL.md) | Generate a custom checklist for the current feature based on user requirements。 |
+| [speckit.clarify](skills/speckit.clarify/SKILL.md) | Identify underspecified areas in the current feature spec by asking up to 5 h...。 |
+| [speckit.constitution](skills/speckit.constitution/SKILL.md) | Create or update the project constitution from interactive or provided princi...。 |
+| [speckit.diff](skills/speckit.diff/SKILL.md) | Compare two versions of a spec or plan to highlight changes。 |
+| [speckit.implement](skills/speckit.implement/SKILL.md) | Execute the implementation plan by processing and executing all tasks defined...。 |
+| [speckit.migrate](skills/speckit.migrate/SKILL.md) | Migrate existing projects into the speckit structure by generating spec.md, p...。 |
+| [speckit.plan](skills/speckit.plan/SKILL.md) | Execute the implementation planning workflow using the plan template to gener...。 |
+| [speckit.quizme](skills/speckit.quizme/SKILL.md) | Challenge the specification with Socratic questioning to identify logical gap...。 |
+| [speckit.reviewer](skills/speckit.reviewer/SKILL.md) | Perform code review with actionable feedback and suggestions。 |
+| [speckit.specify](skills/speckit.specify/SKILL.md) | Create or update the feature specification from a natural language feature de...。 |
+| [speckit.status](skills/speckit.status/SKILL.md) | Display a dashboard showing feature status, completion percentage, and blockers。 |
+| [speckit.tasks](skills/speckit.tasks/SKILL.md) | Generate an actionable, dependency-ordered tasks.md for the feature based on...。 |
+| [speckit.taskstoissues](skills/speckit.taskstoissues/SKILL.md) | Convert existing tasks into actionable, dependency-ordered GitHub issues for...。 |
+| [speckit.tester](skills/speckit.tester/SKILL.md) | Execute tests, measure coverage, and report results。 |
+| [speckit.validate](skills/speckit.validate/SKILL.md) | Validate that implementation matches specification requirements。 |
 | [sql-code-review](skills/sql-code-review/SKILL.md) | 对通用 SQL 做安全性、可维护性和规范审查。 |
 | [sql-optimization](skills/sql-optimization/SKILL.md) | 跨数据库优化 SQL 查询、索引和分页性能。 |
 | [stakeholder-communication](skills/stakeholder-communication/SKILL.md) | 结构化管理干系人沟通，让决策、风险、审批和行动项保持可追溯。跨团队协作、需求澄清、进度汇报、阻塞升级或需要沉淀决策记录时使用。 |
@@ -303,13 +330,14 @@ node ./scripts/validate-repo.js
 | [swiftui-ui-patterns](skills/swiftui-ui-patterns/SKILL.md) | Best practices and example-driven guidance for building SwiftUI views and com...。 |
 | [swiftui-view-refactor](skills/swiftui-view-refactor/SKILL.md) | Refactor and review SwiftUI view files for consistent structure, dependency i...。 |
 | [swot-analysis](skills/swot-analysis/SKILL.md) | 产出 SWOT 分析及对应行动建议。 |
+| [symfony-cache](skills/symfony-cache/SKILL.md) | Implement resilient Symfony async workflows with idempotency, retries, and op...。 |
 | [symfony-messenger](skills/symfony-messenger/SKILL.md) | Implement resilient Symfony async workflows with idempotency, retries, and op...。 |
+| [symfony-scheduler](skills/symfony-scheduler/SKILL.md) | Implement resilient Symfony async workflows with idempotency, retries, and op...。 |
 | [symfony-ux](skills/symfony-ux/SKILL.md) | 在 Symfony 中组合 Stimulus、Turbo、LiveComponent 等 UX 工具。 |
 | [symfony-voters](skills/symfony-voters/SKILL.md) | Strengthen Symfony authorization and validation boundaries with explicit, tes...。 |
-| [systematic-debugging](skills/systematic-debugging/SKILL.md) | 先系统化排查，再提出修复方案。 |
+| [system-diagnostics](skills/system-diagnostics/SKILL.md) | Use when the user reports system slowness, wants a health check, or needs to...。 |
 | [tailwind-design-system](skills/tailwind-design-system/SKILL.md) | 基于 Tailwind CSS v4 构建设计系统。 |
 | [task-decomposer](skills/task-decomposer/SKILL.md) | Produces structured phased task boards from feature requests: dependency-mapp...。 |
-| [tdd-with-phpunit](skills/tdd-with-phpunit/SKILL.md) | Drive Symfony delivery with deterministic tests and strong regression protect...。 |
 | [team-composition-analysis](skills/team-composition-analysis/SKILL.md) | 规划团队结构、招聘、薪酬与股权配置。 |
 | [test-driven-development](skills/test-driven-development/SKILL.md) | 先写失败测试，再实现功能或修复。 |
 | [test-strategy](skills/test-strategy/SKILL.md) | Production-grade test strategy skill with risk-based testing, coverage analys...。 |
@@ -318,21 +346,16 @@ node ./scripts/validate-repo.js
 | [twig-components](skills/twig-components/SKILL.md) | Apply production-grade Symfony architecture and execution workflows with cont...。 |
 | [typescript-advanced-types](skills/typescript-advanced-types/SKILL.md) | 运用 TypeScript 高级类型构建强类型抽象。 |
 | [typescript-magician](skills/typescript-magician/SKILL.md) | Designs complex generic types, refactors `any` types to strict alternatives,...。 |
-| [ui-design-system](skills/ui-design-system/SKILL.md) | 为资深设计师/研发协作构建设计系统工具包。 |
 | [update-markdown-file-index](skills/update-markdown-file-index/SKILL.md) | 更新 Markdown 文件中的目录或文件索引区块。 |
+| [upgrading-react-native](skills/upgrading-react-native/SKILL.md) | Upgrades React Native apps to newer versions by applying rn-diff-purge templa...。 |
 | [uv-package-manager](skills/uv-package-manager/SKILL.md) | 用 uv 管理 Python 依赖、虚拟环境和项目工作流。 |
 | [ux-researcher-designer](skills/ux-researcher-designer/SKILL.md) | 支持用户研究、画像、旅程图与可用性验证。 |
 | [vector-index-tuning](skills/vector-index-tuning/SKILL.md) | 调优向量索引的延迟、召回和内存占用。 |
+| [vercel-composition-patterns](skills/vercel-composition-patterns/SKILL.md) | 待补充说明。 |
 | [vercel-react-best-practices](skills/vercel-react-best-practices/SKILL.md) | 采用 Vercel 推荐的 React/Next.js 性能最佳实践。 |
 | [verification-before-completion](skills/verification-before-completion/SKILL.md) | 宣称完成前先跑验证并用结果说话。 |
 | [visual-design-foundations](skills/visual-design-foundations/SKILL.md) | 用字体、色彩、间距和图标基础提升视觉一致性。 |
-| [vue-best-practices](skills/vue-best-practices/SKILL.md) | 按 Vue 3、`<script setup>` 和 TypeScript 最佳实践开发。 |
-| [vue-debug-guides](skills/vue-debug-guides/SKILL.md) | 诊断 Vue 3 运行时、异步和 SSR/Hydration 问题。 |
-| [vue-jsx-best-practices](skills/vue-jsx-best-practices/SKILL.md) | 处理 Vue JSX 语法与插件配置细节。 |
-| [vue-options-api-best-practices](skills/vue-options-api-best-practices/SKILL.md) | 以 Vue 3 Options API 风格编写组件。 |
-| [vue-pinia-best-practices](skills/vue-pinia-best-practices/SKILL.md) | 设计和使用 Pinia 状态管理模式。 |
-| [vue-router-best-practices](skills/vue-router-best-practices/SKILL.md) | 实践 Vue Router 4 导航、守卫和路由生命周期。 |
-| [vue-testing-best-practices](skills/vue-testing-best-practices/SKILL.md) | 建立 Vue 组件、Vitest 与 Playwright 测试方式。 |
+| [vue-expert-js](skills/vue-expert-js/SKILL.md) | Creates Vue 3 components, builds vanilla JS composables, configures Vite proj...。 |
 | [webapp-testing](skills/webapp-testing/SKILL.md) | 用 Playwright 测试本地 Web 应用并采集日志/截图。 |
 | [what-if-oracle](skills/what-if-oracle/SKILL.md) | 对不确定情境做多分支 What-if 情景推演。 |
 | [whetstone](skills/whetstone/SKILL.md) | 把「原文 + 读者批注」整理成「编号批注 + 对应原文」的结构化笔记，并产出 AI 总结。人写批注，技能负责编号、对应、格式与总结。触发：批注式整理 /...。 |

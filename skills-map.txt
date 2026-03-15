@@ -11,7 +11,6 @@ https://github.com/anthropics/skills/tree/main/skills/xlsx => xlsx
 https://github.com/anthropics/skills/tree/main/skills/pdf => pdf
 https://github.com/anthropics/skills/tree/main/skills/skill-creator => skill-creator
 
-https://github.com/anthropics/claude-cookbooks/tree/main/skills/custom_skills/analyzing-financial-statements => analyzing-financial-statements
 https://github.com/anthropics/claude-cookbooks/tree/main/skills/custom_skills/creating-financial-models => creating-financial-models
 
 https://github.com/openai/skills/tree/main/skills/.curated/screenshot => screenshot
@@ -101,7 +100,6 @@ https://github.com/alirezarezvani/claude-skills/tree/main/marketing-skill/conten
 https://github.com/alirezarezvani/claude-skills/tree/main/marketing-skill/copy-editing => copy-editing
 https://github.com/alirezarezvani/claude-skills/tree/main/product-team/agile-product-owner => agile-product-owner
 https://github.com/alirezarezvani/claude-skills/tree/main/product-team/competitive-teardown => competitive-teardown
-https://github.com/alirezarezvani/claude-skills/tree/main/product-team/ui-design-system => ui-design-system
 https://github.com/alirezarezvani/claude-skills/tree/main/product-team/ux-researcher-designer => ux-researcher-designer
 
 https://github.com/smnandre/symfony-ux-skills/tree/main/skills/symfony-ux => symfony-ux
@@ -178,7 +176,6 @@ https://github.com/wshobson/agents/tree/main/plugins/ui-design/skills/react-nati
 https://github.com/wshobson/agents/tree/main/plugins/ui-design/skills/responsive-design => responsive-design
 https://github.com/wshobson/agents/tree/main/plugins/ui-design/skills/visual-design-foundations => visual-design-foundations
 https://github.com/wshobson/agents/tree/main/plugins/cicd-automation/skills/github-actions-templates => github-actions-templates
-https://github.com/wshobson/agents/tree/main/plugins/developer-essentials/skills/code-review-excellence => code-review-excellence
 
 https://github.com/zebbern/claude-code-guide/tree/main/skills/active-directory-attacks => active-directory-attacks
 https://github.com/zebbern/claude-code-guide/tree/main/skills/api-fuzzing-bug-bounty => api-fuzzing-bug-bounty
