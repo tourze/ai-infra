@@ -1,0 +1,12 @@
+{
+  "version": "1.0.0",
+  "organization": "Pentiminax",
+  "date": "March 2026",
+  "abstract": "Comprehensive testing best practices guide for PHPUnit applications, designed for AI agents and LLMs. Contains 40+ rules across 8 categories, prioritized by impact from critical (test structure principles, coding standards) to incremental (configuration tuning). Each rule includes detailed explanations, real-world examples comparing incorrect vs. correct implementations, and specific rationale to guide automated test generation, refactoring, and code review.",
+  "references": [
+    "https://phpunit.de",
+    "https://gnugat.github.io/2025/07/31/phpunit-best-practices.html",
+    "https://www.php.net/manual/en/language.attributes.php",
+    "https://docs.phpunit.de/en/11.5/"
+  ]
+}

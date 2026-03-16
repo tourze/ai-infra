@@ -1,0 +1,4 @@
+interface:
+  display_name: "Skills Cleanup"
+  short_description: "审计 skills 并同步 README"
+  default_prompt: "审计当前仓库的 skills/，定位低质量、重复和冲突 skill，按明确名单删除目标，并更新 README.md 的 Skill 清单。"

@@ -133,7 +133,7 @@ Full procedures: [references/workflow.md](references/workflow.md#step-5-generate
 
 ### Step 6: Finalize
 
-Insert `![description](path/NN-{type}-{slug}.png)` after paragraphs.
+Insert `![description]({relative-path}/NN-{type}-{slug}.png)` after paragraphs. Path computed relative to article file based on output directory setting.
 
 ```
 Article Illustration Complete!
@@ -143,14 +143,26 @@ Images: X/N generated
 
 ## Output Directory
 
+Output directory is determined by `default_output_dir` in EXTEND.md (set during first-time setup):
+
+| `default_output_dir` | Output Path | Markdown Insert Path |
+|----------------------|-------------|----------------------|
+| `imgs-subdir` (default) | `{article-dir}/imgs/` | `imgs/NN-{type}-{slug}.png` |
+| `same-dir` | `{article-dir}/` | `NN-{type}-{slug}.png` |
+| `illustrations-subdir` | `{article-dir}/illustrations/` | `illustrations/NN-{type}-{slug}.png` |
+| `independent` | `illustrations/{topic-slug}/` | `illustrations/{topic-slug}/NN-{type}-{slug}.png` (relative to cwd) |
+
+All auxiliary files (outline, prompts) are saved inside the output directory:
+
 ```
-illustrations/{topic-slug}/
-├── source-{slug}.{ext}
-├── references/           # if provided
+{output-dir}/
 ├── outline.md
 ├── prompts/
+│   └── NN-{type}-{slug}.md
 └── NN-{type}-{slug}.png
 ```
+
+When input is **pasted content** (no file path), always uses `illustrations/{topic-slug}/` with `source-{slug}.{ext}` saved alongside.
 
 **Slug**: 2-4 words, kebab-case. **Conflict**: append `-YYYYMMDD-HHMMSS`.
 

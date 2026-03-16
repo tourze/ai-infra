@@ -55,7 +55,7 @@ Reference Style Extracted (no file):
 
 | Input | Output Directory | Next |
 |-------|------------------|------|
-| File path | Ask user (1.2) | → 1.2 |
+| File path | EXTEND.md `default_output_dir` (default: `imgs-subdir`). If not configured, confirm in 1.2. | → 1.2 |
 | Pasted content | `illustrations/{topic-slug}/` | → 1.4 |
 
 **Backup rule for pasted content**: If `source.md` exists in target directory, rename to `source-backup-YYYYMMDD-HHMMSS.md` before saving.
@@ -68,7 +68,7 @@ Check preferences and existing state, then ask ALL needed questions in ONE AskUs
 
 | Question | When to Ask | Options |
 |----------|-------------|---------|
-| Output directory | No `default_output_dir` in EXTEND.md | `{article-dir}/`, `{article-dir}/imgs/` (Recommended), `{article-dir}/illustrations/`, `illustrations/{topic-slug}/` |
+| Output directory | No `default_output_dir` in EXTEND.md | `{article-dir}/imgs/` (Recommended), `{article-dir}/`, `{article-dir}/illustrations/`, `illustrations/{topic-slug}/` |
 | Existing images | Target dir has `.png/.jpg/.webp` files | `supplement`, `overwrite`, `regenerate` |
 | Article update | Always (file path input) | `update`, `copy` |
 
@@ -237,7 +237,7 @@ Reference Images:
 
 ## Step 4: Generate Outline
 
-Save as `outline.md`:
+Save as `{output-dir}/outline.md` (all paths below are relative to the output directory determined in Step 1.1/1.2):
 
 ```yaml
 ---
@@ -285,7 +285,7 @@ references:                    # Only if references provided
 
 For each illustration in the outline:
 
-1. **Create prompt file**: `prompts/NN-{type}-{slug}.md`
+1. **Create prompt file**: `{output-dir}/prompts/NN-{type}-{slug}.md`
 2. **Include YAML frontmatter**:
    ```yaml
    ---
@@ -381,10 +381,14 @@ Add: `Include a subtle watermark "[content]" at [position].`
 
 ### 6.1 Update Article
 
-Insert after corresponding paragraph:
-```markdown
-![description](illustrations/{slug}/NN-{type}-{slug}.png)
-```
+Insert after corresponding paragraph, using path relative to article file:
+
+| `default_output_dir` | Insert Path |
+|----------------------|-------------|
+| `imgs-subdir` | `![description](imgs/NN-{type}-{slug}.png)` |
+| `same-dir` | `![description](NN-{type}-{slug}.png)` |
+| `illustrations-subdir` | `![description](illustrations/NN-{type}-{slug}.png)` |
+| `independent` | `![description](illustrations/{topic-slug}/NN-{type}-{slug}.png)` (relative to cwd) |
 
 Alt text: concise description in article's language.
 

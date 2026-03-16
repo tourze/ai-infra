@@ -69,7 +69,23 @@ options:
     description: "Friendly, approachable, personal"
 ```
 
-### Question 3: Save Location
+### Question 3: Output Directory
+
+```
+header: "Output Directory"
+question: "Where to save generated illustrations when illustrating a file?"
+options:
+  - label: "imgs-subdir (Recommended)"
+    description: "{article-dir}/imgs/ — images in a subdirectory next to the article"
+  - label: "same-dir"
+    description: "{article-dir}/ — images alongside the article file"
+  - label: "illustrations-subdir"
+    description: "{article-dir}/illustrations/ — separate illustrations subdirectory"
+  - label: "independent"
+    description: "illustrations/{topic-slug}/ — standalone directory in cwd"
+```
+
+### Question 4: Save Location
 
 ```
 header: "Save"
@@ -108,6 +124,7 @@ watermark:
 preferred_style:
   name: [selected style or null]
   description: ""
+default_output_dir: imgs-subdir  # same-dir | imgs-subdir | illustrations-subdir | independent
 language: null
 custom_styles: []
 ---

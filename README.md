@@ -87,12 +87,11 @@ npm run validate:repo
 
 以下清单按仓库中实际存在的公共 `skills/*/SKILL.md` 整理，不包含 `.system` 内置 skill。名称可直接跳转到对应说明文件。
 
-### 公共 Skills（197）
+### 公共 Skills（167）
 
 | 名称 | 作用简介 |
 |------|----------|
 | [accessibility-compliance](skills/accessibility-compliance/SKILL.md) | 实现符合 WCAG 2.2 的无障碍界面与辅助技术支持。 |
-| [active-directory-attacks](skills/active-directory-attacks/SKILL.md) | Active Directory 攻击技能，当用户请求攻击 AD、Kerberoasting、DCSync、pass-the-hash、BloodHound 枚举、Golden Ticket、Silver Ticket、AS-REP roasting、NTLM relay 或需要 Windows 域渗透测试指导时使用。 |
 | [ad-creative](skills/ad-creative/SKILL.md) | 批量生成和迭代付费广告文案素材。 |
 | [agile-product-owner](skills/agile-product-owner/SKILL.md) | 编写用户故事、验收标准与迭代计划的敏捷产品管理。 |
 | [ai-prompt-engineering-safety-review](skills/ai-prompt-engineering-safety-review/SKILL.md) | 评审提示词的安全性、偏见和效果并给出改进建议。 |
@@ -105,7 +104,6 @@ npm run validate:repo
 | [android-emulator-skill](skills/android-emulator-skill/SKILL.md) | 用于 Android 构建、测试、自动化和模拟器管理的脚本集。 |
 | [android-testing](skills/android-testing/SKILL.md) | 为 Android 应用建立单测、集成、Hilt 与截图测试策略。 |
 | [anti-reversing-techniques](skills/anti-reversing-techniques/SKILL.md) | 分析反调试、混淆与软件保护技术。 |
-| [api-fuzzing-bug-bounty](skills/api-fuzzing-bug-bounty/SKILL.md) | API 模糊测试与漏洞挖掘技能，用于测试 REST、SOAP 和 GraphQL API 安全，发现 IDOR、认证绕过、SQL 注入等漏洞，适合漏洞赏金和渗透测试场景。 |
 | [app-store-optimization](skills/app-store-optimization/SKILL.md) | 进行 ASO 关键词研究、元数据优化与商店表现提升。 |
 | [apple-appstore-reviewer](skills/apple-appstore-reviewer/SKILL.md) | 从 App Store 优化与拒审风险角度审查代码库。 |
 | [apple-notes](skills/apple-notes/SKILL.md) | 通过 `memo` CLI 管理 macOS Apple Notes。 |
@@ -120,8 +118,6 @@ npm run validate:repo
 | [bash-defensive-patterns](skills/bash-defensive-patterns/SKILL.md) | 编写具备容错与安全性的生产级 Bash 脚本。 |
 | [binary-analysis-patterns](skills/binary-analysis-patterns/SKILL.md) | 进行反汇编、反编译和控制流等二进制静态分析。 |
 | [boost-prompt](skills/boost-prompt/SKILL.md) | 通过结构化提问打磨提示词并复制最终 Markdown。 |
-| [branch-naming-helper](skills/branch-naming-helper/SKILL.md) | 分支命名辅助技能，配置 DevOps 基础相关的分支命名操作，当用户提到分支命名辅助时自动激活。 |
-| [broken-authentication](skills/broken-authentication/SKILL.md) | 破损认证测试技能，用于识别和利用认证与会话管理漏洞，包括密码策略、会话处理、多因素认证和凭证管理等安全评估。 |
 | [business-model](skills/business-model/SKILL.md) | 生成包含九宫格要素的商业模式画布。 |
 | [campaign-analytics](skills/campaign-analytics/SKILL.md) | 分析营销活动归因、漏斗和 ROI。 |
 | [canvas-design](skills/canvas-design/SKILL.md) | 生成原创静态视觉设计、海报或艺术作品。 |
@@ -153,26 +149,17 @@ npm run validate:repo
 | [design-system-patterns](skills/design-system-patterns/SKILL.md) | 设计和实现可扩展的设计系统、token 与主题机制。 |
 | [dhdna-profiler](skills/dhdna-profiler/SKILL.md) | 从文本中提取认知风格与思维特征。 |
 | [doc-coauthoring](skills/doc-coauthoring/SKILL.md) | 引导用户协作式编写文档、提案和技术说明。 |
-| [docker-compose-creator](skills/docker-compose-creator/SKILL.md) | Docker Compose 创建器技能，用于 DevOps 基础相关的 Docker Compose 配置创建，当用户提到 docker compose creator 时自动激活。 |
 | [docker-essentials](skills/docker-essentials/SKILL.md) | 提供常用 Docker 容器、镜像与排障工作流。 |
-| [dockerfile-generator](skills/dockerfile-generator/SKILL.md) | Dockerfile 生成器技能，用于 DevOps 基础相关的 Dockerfile 生成操作，当用户提到 dockerfile generator 时自动激活。 |
-| [doctrine-batch-processing](skills/doctrine-batch-processing/SKILL.md) | Doctrine 批处理技能，用于 Symfony Doctrine 批处理任务，安全地演进模型和架构，保证完整性和性能。 |
-| [doctrine-fetch-modes](skills/doctrine-fetch-modes/SKILL.md) | Doctrine 获取模式技能，用于 Symfony Doctrine 获取模式任务，安全地演进模型和架构。 |
-| [doctrine-relations](skills/doctrine-relations/SKILL.md) | Doctrine 关联关系技能，用于 Symfony Doctrine 关联关系任务，安全地演进模型和架构。 |
-| [doctrine-transactions](skills/doctrine-transactions/SKILL.md) | Doctrine 事务管理技能，用于 Symfony Doctrine 事务任务，安全地演进模型和架构。 |
 | [docx](skills/docx/SKILL.md) | 读取、创建和编辑 Word `.docx` 文档。 |
 | [domain-name-brainstormer](skills/domain-name-brainstormer/SKILL.md) | 生成域名创意并检查多种后缀可用性。 |
 | [embedding-strategies](skills/embedding-strategies/SKILL.md) | 为语义检索/RAG 选择并优化向量嵌入方案。 |
 | [employment-contract-templates](skills/employment-contract-templates/SKILL.md) | 编写雇佣合同、offer 和 HR 政策模板。 |
-| [ethical-hacking-methodology](skills/ethical-hacking-methodology/SKILL.md) | 道德黑客方法论技能，掌握完整的渗透测试生命周期，包括侦察、扫描、漏洞利用和维护访问，提供全面的道德黑客技术和专业报告。 |
 | [figma-implement-design](skills/figma-implement-design/SKILL.md) | 按 Figma 设计上下文高保真实现页面或组件。 |
-| [file-path-traversal](skills/file-path-traversal/SKILL.md) | 文件路径遍历测试技能，用于识别和利用路径遍历漏洞，允许攻击者读取服务器上的任意文件，包括敏感配置文件、凭证和源代码。 |
 | [financial-analyst](skills/financial-analyst/SKILL.md) | 做财务比率、估值、预算偏差和滚动预测分析。 |
 | [first-principles-decomposer](skills/first-principles-decomposer/SKILL.md) | 用第一性原理拆解问题并重建方案。 |
 | [frontend-design-review](skills/frontend-design-review/SKILL.md) | 审查或设计高质量前端界面，兼顾美感、可用性与设计系统。 |
 | [gdpr-data-handling](skills/gdpr-data-handling/SKILL.md) | 实现 GDPR 合规的数据处理、同意与权利响应。 |
 | [github-deep-research](skills/github-deep-research/SKILL.md) | 对 GitHub 仓库做多轮深度研究和时间线分析。 |
-| [git-version-diff](skills/git-version-diff/SKILL.md) | 对比两个 Git 版本之间的差异，列出变更文件并总结逻辑变更，支持版本历史审查和代码变更分析。 |
 | [go-concurrency-patterns](skills/go-concurrency-patterns/SKILL.md) | 编写和调试 Go 的 goroutine、channel 与并发模式。 |
 | [gradle-build-performance](skills/gradle-build-performance/SKILL.md) | 诊断并优化 Android/Gradle 构建性能。 |
 | [helm-chart-scaffolding](skills/helm-chart-scaffolding/SKILL.md) | 搭建可复用、可验证的 Helm Chart。 |
@@ -183,8 +170,6 @@ npm run validate:repo
 | [javascript-typescript-jest](skills/javascript-typescript-jest/SKILL.md) | 编写 JavaScript/TypeScript 的 Jest 测试与 mock 策略。 |
 | [k8s-manifest-generator](skills/k8s-manifest-generator/SKILL.md) | 生成生产可用的 Kubernetes 资源清单。 |
 | [k8s-security-policies](skills/k8s-security-policies/SKILL.md) | 为 Kubernetes 实施网络隔离、RBAC 与安全策略。 |
-| [linux-privilege-escalation](skills/linux-privilege-escalation/SKILL.md) | Linux 权限提升技能，系统性地评估 Linux 系统权限提升向量，识别和利用内核漏洞、sudo 错误配置、SUID 二进制文件、cron 任务等安全弱点。 |
-| [linux-shell-scripting](skills/linux-shell-scripting/SKILL.md) | Linux Shell 脚本技能，提供生产就绪的 Shell 脚本模板，用于备份、监控、用户管理、日志分析和自动化等常见系统管理任务。 |
 | [llm-evaluation](skills/llm-evaluation/SKILL.md) | 为 LLM 应用建立自动化与人工结合的评测体系。 |
 | [markdown-mermaid-writing](skills/markdown-mermaid-writing/SKILL.md) | 用 Markdown 和 Mermaid 统一写作与图表表达。 |
 | [market-sizing-analysis](skills/market-sizing-analysis/SKILL.md) | 估算 TAM、SAM、SOM 等市场规模。 |
@@ -203,9 +188,7 @@ npm run validate:repo
 | [openapi-spec-generation](skills/openapi-spec-generation/SKILL.md) | 生成并维护 OpenAPI 3.1 规范。 |
 | [opportunity-solution-tree](skills/opportunity-solution-tree/SKILL.md) | 用 OST 梳理目标、机会、方案和实验。 |
 | [paid-ads](skills/paid-ads/SKILL.md) | 制定 Google/Meta/LinkedIn 等付费投放策略。 |
-| [participation-driven-growth](skills/participation-driven-growth/SKILL.md) | 用户参与驱动的口碑增长与品牌建设，覆盖爆品策略、粉丝经营、用户共创、自媒体运营、事件传播、服务体验与互联网转型。 |
 | [pdf](skills/pdf/SKILL.md) | 读取、拆分、合并、OCR 和生成 PDF 文档。 |
-| [pentest-checklist](skills/pentest-checklist/SKILL.md) | 渗透测试检查清单技能，提供规划、执行和跟进渗透测试的综合清单，确保彻底准备、正确界定范围和有效修复发现的漏洞。 |
 | [plantuml-ascii](skills/plantuml-ascii/SKILL.md) | 用 PlantUML 生成终端友好的 ASCII 图。 |
 | [popup-cro](skills/popup-cro/SKILL.md) | 优化弹窗、浮层、通知条等转化组件。 |
 | [porters-five-forces](skills/porters-five-forces/SKILL.md) | 开展波特五力行业竞争分析。 |
@@ -229,7 +212,6 @@ npm run validate:repo
 | [python-performance-optimization](skills/python-performance-optimization/SKILL.md) | 对 Python 代码做性能剖析和优化。 |
 | [python-testing-patterns](skills/python-testing-patterns/SKILL.md) | 用 pytest、fixture 和 mock 建立测试体系。 |
 | [python-type-safety](skills/python-type-safety/SKILL.md) | 为 Python 引入类型标注、泛型和严格类型检查。 |
-| [react-hooks-master](skills/react-hooks-master/SKILL.md) | 定义 React Hooks 专家的技能规范、响应结构和示例模板 |
 | [react-native-best-practices](skills/react-native-best-practices/SKILL.md) | 优化 React Native/Expo 的性能、动画和渲染。 |
 | [react-native-design](skills/react-native-design/SKILL.md) | 设计 React Native 的样式、导航和 Reanimated 动画。 |
 | [readme-blueprint-generator](skills/readme-blueprint-generator/SKILL.md) | 分析仓库后生成结构化 README。 |
@@ -242,27 +224,17 @@ npm run validate:repo
 | [shellcheck-configuration](skills/shellcheck-configuration/SKILL.md) | 配置并使用 ShellCheck 提升 shell 脚本质量。 |
 | [similarity-search-patterns](skills/similarity-search-patterns/SKILL.md) | 构建向量数据库语义检索与近邻搜索方案。 |
 | [site-architecture](skills/site-architecture/SKILL.md) | 规划网站结构、导航、URL 与内链体系。 |
-| [slash-command-bridge](skills/slash-command-bridge/SKILL.md) | 斜杠命令桥接技能，在不原生支持 Claude Code slash command 的环境中桥接并执行命令，负责定位命令文件、解析参数、安全执行预执行命令。 |
-| [software-team-metrics](skills/software-team-metrics/SKILL.md) | 软件团队度量与改进技能，覆盖指标设计、试点引入、团队诊断、角色画像、招聘参照、辅导反馈与绩效对话，适合工程负责人和技术经理。 |
 | [sql-code-review](skills/sql-code-review/SKILL.md) | 对通用 SQL 做安全性、可维护性和规范审查。 |
 | [sql-optimization](skills/sql-optimization/SKILL.md) | 跨数据库优化 SQL 查询、索引和分页性能。 |
-| [stakeholder-communication](skills/stakeholder-communication/SKILL.md) | 干系人沟通管理技能，结构化管理干系人沟通，让决策、风险、审批和行动项保持可追溯，适合跨团队协作和需求澄清场景。 |
 | [stride-analysis-patterns](skills/stride-analysis-patterns/SKILL.md) | 用 STRIDE 方法系统识别安全威胁。 |
 | [surprise-me](skills/surprise-me/SKILL.md) | 组合现有 skill 生成意外但完整的创意成果。 |
 | [swot-analysis](skills/swot-analysis/SKILL.md) | 产出 SWOT 分析及对应行动建议。 |
-| [symfony-cache](skills/symfony-cache/SKILL.md) | Symfony 缓存技能，实现弹性 Symfony 异步工作流，包括幂等性、重试和运营可见性，用于 Symfony 缓存任务。 |
-| [symfony-messenger](skills/symfony-messenger/SKILL.md) | Symfony Messenger 技能，实现弹性 Symfony 异步工作流，包括幂等性、重试和运营可见性，用于 Symfony Messenger 消息队列任务。 |
-| [symfony-scheduler](skills/symfony-scheduler/SKILL.md) | Symfony 调度器技能，实现弹性 Symfony 异步工作流，包括幂等性、重试和运营可见性，用于 Symfony 调度器定时任务。 |
 | [symfony-ux](skills/symfony-ux/SKILL.md) | 在 Symfony 中组合 Stimulus、Turbo、LiveComponent 等 UX 工具。 |
-| [symfony-voters](skills/symfony-voters/SKILL.md) | Symfony Voters 技能，加强 Symfony 授权和验证边界，通过明确的、测试支持的执行来强化访问控制和验证。 |
 | [systematic-debugging](skills/systematic-debugging/SKILL.md) | 先系统化排查，再提出修复方案。 |
 | [tailwind-design-system](skills/tailwind-design-system/SKILL.md) | 基于 Tailwind CSS v4 构建设计系统。 |
-| [tdd-with-phpunit](skills/tdd-with-phpunit/SKILL.md) | TDD with PHPUnit 技能，使用确定性测试和强大的回归保护来驱动 Symfony 交付，包括 TDD、功能测试和端到端测试。 |
 | [team-composition-analysis](skills/team-composition-analysis/SKILL.md) | 规划团队结构、招聘、薪酬与股权配置。 |
 | [test-driven-development](skills/test-driven-development/SKILL.md) | 先写失败测试，再实现功能或修复。 |
 | [threat-mitigation-mapping](skills/threat-mitigation-mapping/SKILL.md) | 把已识别威胁映射到具体控制措施。 |
-| [top-web-vulnerabilities](skills/top-web-vulnerabilities/SKILL.md) | Web 漏洞参考技能，提供 100 个最关键的 Web 应用漏洞的综合结构化参考，按类别组织，支持系统化的漏洞识别、影响评估和修复指导。 |
-| [twig-components](skills/twig-components/SKILL.md) | Twig 组件技能，应用生产级 Symfony 架构和执行工作流，具有受控的范围和清晰的检查点，用于 Twig 组件任务。 |
 | [typescript-advanced-types](skills/typescript-advanced-types/SKILL.md) | 运用 TypeScript 高级类型构建强类型抽象。 |
 | [ui-design-system](skills/ui-design-system/SKILL.md) | 为资深设计师/研发协作构建设计系统工具包。 |
 | [update-markdown-file-index](skills/update-markdown-file-index/SKILL.md) | 更新 Markdown 文件中的目录或文件索引区块。 |
@@ -285,10 +257,8 @@ npm run validate:repo
 | [what-if-oracle](skills/what-if-oracle/SKILL.md) | 对不确定情境做多分支 What-if 情景推演。 |
 | [wiki-architect](skills/wiki-architect/SKILL.md) | 为代码库生成分层 wiki 结构和入门文档。 |
 | [wiki-researcher](skills/wiki-researcher/SKILL.md) | 对代码库主题做多轮、深入、跨文件研究。 |
-| [wireshark-analysis](skills/wireshark-analysis/SKILL.md) | Wireshark 网络流量分析技能，使用 Wireshark 执行全面的网络流量分析，包括数据包捕获、过滤和检查，用于安全调查、性能优化和故障排查。 |
-| [xiaohongshu-commercial-growth](skills/xiaohongshu-commercial-growth/SKILL.md) | 小红书商业增长技能，覆盖入局判断、账号定位、内容生产、推荐与搜索流量、店铺/直播/买手/知识付费变现，以及投放与种草策略。 |
 | [xlsx](skills/xlsx/SKILL.md) | 读取、清洗、编辑和生成 Excel/CSV 等电子表格。 |
-
+| [react-hooks-master](skills/react-hooks-master/SKILL.md) | 定义 React Hooks 专家的技能规范、响应结构和示例模板 |
 ## 数据来源
 
 - https://github.com/vercel-labs/skills#available-agents

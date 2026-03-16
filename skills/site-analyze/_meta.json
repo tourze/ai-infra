@@ -1,0 +1,11 @@
+{
+  "owner": "evanfromdowntown",
+  "slug": "site-analyze",
+  "displayName": "site analyzing tools",
+  "latest": {
+    "version": "1.0.0",
+    "publishedAt": 1772509789771,
+    "commit": "https://github.com/openclaw/skills/commit/5d2691829e1ad229d624a4bc4450eed8c49f2834"
+  },
+  "history": []
+}

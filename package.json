@@ -3,12 +3,13 @@
   "version": "0.1.0",
   "description": "本地 skills 管理与多 Agent 软链工具",
   "scripts": {
-    "link:skills": "bash ./scripts/link-skills.sh",
-    "link:cc": "bash ./scripts/link-skills.sh cc",
-    "link:codex": "bash ./scripts/link-skills.sh codex",
-    "link:gemini": "bash ./scripts/link-skills.sh gemini",
-    "sync:memory": "bash ./scripts/sync-agent-memory.sh",
-    "test:claude-hooks": "bash ./scripts/test-claude-hooks.sh",
-    "validate:repo": "bash ./scripts/validate-repo.sh"
+    "sync:skills": "node ./sync-skills.js",
+    "link:skills": "node ./scripts/link-skills.js",
+    "link:cc": "node ./scripts/link-skills.js cc",
+    "link:codex": "node ./scripts/link-skills.js codex",
+    "link:gemini": "node ./scripts/link-skills.js gemini",
+    "sync:memory": "node ./scripts/sync-agent-memory.js",
+    "test:claude-hooks": "node ./scripts/test-claude-hooks.js",
+    "validate:repo": "node ./scripts/validate-repo.js"
   }
 }
