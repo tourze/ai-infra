@@ -108,8 +108,15 @@ function syncOne(label, sourceFile, targetFile) {
     backupExisting(targetFile);
   }
 
-  const linkType = createFileLink(sourceFile, targetFile);
-  console.log(`${Colors.OKGREEN}Linked [${label}] (${linkType}):${Colors.ENDC} ${targetFile}`);
+  try {
+    const linkType = createFileLink(sourceFile, targetFile);
+    console.log(`${Colors.OKGREEN}Linked [${label}] (${linkType}):${Colors.ENDC} ${targetFile}`);
+  } catch (error) {
+    if (error.message.includes('cannot create file link')) {
+      console.error(`${Colors.FAIL}错误:${Colors.ENDC} 此操作需要管理员权限`);
+    }
+    throw error;
+  }
 }
 
 function main() {
