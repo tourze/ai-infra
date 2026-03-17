@@ -38,6 +38,12 @@ function assertNotExists(targetPath) {
   }
 }
 
+function assertBackupCreated(parentDir, prefix) {
+  const entries = fs.readdirSync(parentDir).filter((name) => name.startsWith(`${prefix}.bak.`));
+  assert.equal(entries.length > 0, true, `Missing backup for ${prefix} in ${parentDir}`);
+  return path.join(parentDir, entries[0]);
+}
+
 function runScript(args, env) {
   return runCommand(process.execPath, [path.join(__dirname, 'link-skills.js'), ...args], {
     env,
@@ -73,6 +79,34 @@ function testGeminiOnly(sourceDir) {
   }
 }
 
+function testExistingCodexDirectory(sourceDir) {
+  const tempHome = fs.mkdtempSync(path.join(os.tmpdir(), 'test-link-codex-existing-'));
+  try {
+    const codexSkillsDir = path.join(tempHome, '.codex', 'skills');
+    fs.mkdirSync(path.join(codexSkillsDir, '.system'), { recursive: true });
+    fs.writeFileSync(path.join(codexSkillsDir, '.system', 'keep.txt'), 'keep');
+    fs.mkdirSync(path.join(codexSkillsDir, 'pdf'), { recursive: true });
+    fs.writeFileSync(path.join(codexSkillsDir, 'pdf', 'legacy.txt'), 'legacy');
+
+    const result = runScript([], buildHomeEnv(tempHome));
+    assert.equal(result.status, 0, result.stderr || result.stdout);
+
+    assertSymlinkTarget(path.join(tempHome, '.claude', 'skills'), sourceDir);
+    assertSymlinkTarget(path.join(tempHome, '.gemini', 'skills'), sourceDir);
+    assert.equal(fs.existsSync(path.join(codexSkillsDir, '.system', 'keep.txt')), true);
+    assertSymlinkTarget(path.join(codexSkillsDir, 'pdf'), path.join(sourceDir, 'pdf'));
+    assertSymlinkTarget(
+      path.join(codexSkillsDir, 'skill-creator'),
+      path.join(sourceDir, 'skill-creator'),
+    );
+
+    const backupDir = assertBackupCreated(codexSkillsDir, 'pdf');
+    assert.equal(fs.existsSync(path.join(backupDir, 'legacy.txt')), true);
+  } finally {
+    fs.rmSync(tempHome, { recursive: true, force: true });
+  }
+}
+
 function main() {
   const sourceDir = path.join(__dirname, '..', 'skills');
   if (!fs.existsSync(sourceDir)) {
@@ -83,6 +117,7 @@ function main() {
   try {
     testDefaultMode(sourceDir);
     testGeminiOnly(sourceDir);
+    testExistingCodexDirectory(sourceDir);
     console.log(`${Colors.OKGREEN}link:skills smoke test passed${Colors.ENDC}`);
     return 0;
   } catch (error) {

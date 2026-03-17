@@ -28,6 +28,15 @@ function buildTempEnv(tempHome) {
 }
 
 function runNpm(scriptName, env) {
+  if (process.platform === 'win32') {
+    return spawnSync('cmd.exe', ['/d', '/s', '/c', `npm run ${scriptName}`], {
+      cwd: repoRoot(),
+      env,
+      encoding: 'utf8',
+      timeout: 60000,
+    });
+  }
+
   return spawnSync(npmCommand(), ['run', scriptName], {
     cwd: repoRoot(),
     env,
@@ -53,16 +62,33 @@ function assertFile(targetPath, expectedSource) {
   );
 }
 
+function assertBackupCreated(parentDir, prefix) {
+  const entries = fs.readdirSync(parentDir).filter((name) => name.startsWith(`${prefix}.bak.`));
+  assert.equal(entries.length > 0, true, `missing backup for ${prefix} in ${parentDir}`);
+  return path.join(parentDir, entries[0]);
+}
+
 function testLinkSkills() {
   const tempHome = fs.mkdtempSync(path.join(os.tmpdir(), 'npm-link-skills-'));
   try {
+    const codexSkillsDir = path.join(tempHome, '.codex', 'skills');
+    fs.mkdirSync(path.join(codexSkillsDir, '.system'), { recursive: true });
+    fs.writeFileSync(path.join(codexSkillsDir, '.system', 'keep.txt'), 'keep');
+    fs.mkdirSync(path.join(codexSkillsDir, 'pdf'), { recursive: true });
+    fs.writeFileSync(path.join(codexSkillsDir, 'pdf', 'legacy.txt'), 'legacy');
+
     const result = runNpm('link:skills', buildTempEnv(tempHome));
     assert.equal(result.status, 0, result.stderr || result.stdout);
 
     const sourceDir = path.join(repoRoot(), 'skills');
     assertLink(path.join(tempHome, '.claude', 'skills'), sourceDir);
-    assertLink(path.join(tempHome, '.codex', 'skills'), sourceDir);
     assertLink(path.join(tempHome, '.gemini', 'skills'), sourceDir);
+    assert.equal(fs.existsSync(path.join(codexSkillsDir, '.system', 'keep.txt')), true);
+    assertLink(path.join(codexSkillsDir, 'pdf'), path.join(sourceDir, 'pdf'));
+    assertLink(path.join(codexSkillsDir, 'skill-creator'), path.join(sourceDir, 'skill-creator'));
+
+    const backupDir = assertBackupCreated(codexSkillsDir, 'pdf');
+    assert.equal(fs.existsSync(path.join(backupDir, 'legacy.txt')), true);
   } finally {
     fs.rmSync(tempHome, { recursive: true, force: true });
   }
