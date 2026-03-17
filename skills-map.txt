@@ -114,7 +114,6 @@ https://github.com/github/awesome-copilot/tree/main/skills/architecture-blueprin
 https://github.com/github/awesome-copilot/tree/main/skills/chrome-devtools => chrome-devtools
 https://github.com/github/awesome-copilot/tree/main/skills/context-map => context-map
 https://github.com/github/awesome-copilot/tree/main/skills/create-specification => create-specification
-https://github.com/github/awesome-copilot/tree/main/skills/create-oo-component-documentation => create-oo-component-documentation
 https://github.com/github/awesome-copilot/tree/main/skills/create-implementation-plan => create-implementation-plan
 https://github.com/github/awesome-copilot/tree/main/skills/java-junit => java-junit
 https://github.com/github/awesome-copilot/tree/main/skills/javascript-typescript-jest => javascript-typescript-jest
@@ -301,3 +300,6 @@ https://github.com/Jeffallan/claude-skills/tree/main/skills/php-pro => php-pro
 https://github.com/Jeffallan/claude-skills/tree/main/skills/laravel-specialist => laravel-specialist
 https://github.com/Jeffallan/claude-skills/tree/main/skills/nestjs-expert => nestjs-expert
 https://github.com/Jeffallan/claude-skills/tree/main/skills/nextjs-developer => nextjs-developer
+
+https://github.com/tanweai/pua/tree/main/skills/pua => pua
+#https://github.com/tanweai/pua/tree/main/skills/high-agency => high-agency
