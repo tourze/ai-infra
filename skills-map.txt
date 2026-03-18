@@ -318,3 +318,5 @@ https://github.com/RefoundAI/lenny-skills/tree/main/skills/planning-under-uncert
 https://github.com/RefoundAI/lenny-skills/tree/main/skills/running-decision-processes => running-decision-processes
 https://github.com/RefoundAI/lenny-skills/tree/main/skills/scoping-cutting => scoping-cutting
 https://github.com/RefoundAI/lenny-skills/tree/main/skills/systems-thinking => systems-thinking
+
+https://github.com/conorluddy/ios-simulator-skill/tree/main/ios-simulator-skill => ios-simulator-skill
