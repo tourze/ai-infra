@@ -30,14 +30,56 @@
 
 ## Skill 路由与用户引导（必须遵守）
 
+### 匹配与选择
+
 - 处理非闲聊类请求前，先判断当前任务是否命中已有 skill；命中则必须使用，不得绕过。
 - skill 选择优先按任务意图、交付物和约束匹配，不按表面关键词机械匹配。
-- 若无法直接判断，先查 `README.md` 的 Skill 清单，再按需检索 `skills/*/SKILL.md`；不要在未检索证据前假设“没有合适 skill”。
+- skill 已由工具链自动索引并注入上下文，直接在上下文中的 skill 列表里匹配即可，不需要手动遍历文件目录；若上下文中未列出可用 skill，再回退查阅 `README.md` 的 Skill 清单。
 - 若多个 skill 同时适用，只选择完成当前目标所需的最小集合，并明确使用顺序与分工，避免无关 skill 叠加。
-- 回复用户时，除说明本轮已使用的 skill 外，还必须补充“下一步推荐 skill”，用于完成后续任务或增强结果。
+
+### 主动触发（不等用户开口）
+
+- **上下文嗅探**：每轮对话开始时，根据工作区技术栈（语言、框架、工具链）和当前任务类型，主动收窄可用 skill 范围；例如检测到 `package.json` 含 `next` 依赖时，自动将 `nextjs-developer`、`vercel-react-best-practices` 纳入候选池。
+- **风险信号自动激活**：当检测到以下信号时，无需用户指令即可主动调用对应 skill：
+  - 即将提交代码 → `conventional-commits` + `verification-before-completion`
+  - 新建功能分支 → `context-map`（梳理关联文件）
+  - 改动涉及 SQL/ORM → `sql-optimization` + `sql-code-review`
+  - 改动涉及安全敏感路径（auth/token/session/密钥） → `stride-analysis-patterns`
+  - 调试反复失败（同一问题 2+ 轮未解决） → `debug-investigator`
+  - 用户要求”做完了””上线前检查” → `pre-landing-review`
+- **质量守门自动激活**：当任务涉及以下场景时，在交付前自动执行对应 skill 做最终检查，而不是等用户提醒：
+  - 写了新代码 → `verification-before-completion`（跑测试/静态检查再声明完成）
+  - 创建了架构设计 → `architecture-reviewer`（至少自审一遍）
+  - 输出了实施计划 → `plan-review`（交付前压力测试范围和假设）
+
+### 多 Skill 编排（常见组合链路）
+
+当任务天然跨越多个阶段时，按以下模式串联 skill，而非孤立使用单个 skill：
+
+| 场景 | 推荐链路（按顺序） | 说明 |
+|------|---------------------|------|
+| 从 0 到 1 做功能 | `create-prd` → `create-implementation-plan` → `feature-dev` → `verification-before-completion` | 需求 → 设计 → 实现 → 验收 |
+| 代码审查 | `context-map` → `pre-landing-review` → `lesson-learned` | 先看全貌 → 审查 → 沉淀经验 |
+| 性能优化 | `debug-investigator`（定位瓶颈） → 语言对应的性能 skill → `benchmark-runner` | 定位 → 优化 → 量化 |
+| 重构 | `architecture-blueprint-generator` → `code-refiner` → `verification-before-completion` | 现状 → 重构 → 验收 |
+| 深度调研 | `deep-research` → `consulting-analysis` 或 `data-storytelling` | 搜索 → 结构化输出 |
+
+- 编排链路是推荐路径，非强制全部执行；根据任务粒度裁剪，但至少包含链路的首尾两个 skill（起点定义 + 终点验收）。
+- 若用户只请求链路中的某一步，执行该步后告知上下游 skill 的存在和价值，由用户决定是否继续。
+
+### 下一步推荐
+
+- 回复用户时，除说明本轮已使用的 skill 外，还必须补充”下一步推荐 skill”，用于完成后续任务或增强结果。
 - “下一步推荐 skill”必须写明 3 件事：`skill 名称`、`实现/增强什么`、`期望达到的效果`，要给出具体的 prompt 让用户去使用。
-- 若当前不推荐下一步 skill，也要明确说明原因，例如“当前任务已闭合”“缺少必要输入”“启用成本高于收益”。
+- 若当前不推荐下一步 skill，也要明确说明原因，例如”当前任务已闭合””缺少必要输入””启用成本高于收益”。
 - 下一步推荐以 1 到 3 个 skill 为限，只推荐与当前目标直接相关、能显著提升结果的 skill，禁止罗列式刷清单。
+
+### 反模式（禁止）
+
+- **不查就说没有**：未查看上下文中已索引的 skill 列表就断言没有合适 skill。
+- **机械堆叠**：为了显得”专业”把 5 个以上 skill 同时塞入一个回复，用户无法消化。
+- **只推不用**：推荐了 skill 但自己不执行，变成”菜单式”回复；能直接执行的必须执行。
+- **忽视输出质量**：用了 skill 但不检查输出是否符合 skill 自身的质量标准（如 `conventional-commits` 输出的 commit message 是否真的符合规范）。
 
 ## 批量提交规范（针对大批量治理）
 
