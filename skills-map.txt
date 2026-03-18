@@ -303,3 +303,18 @@ https://github.com/Jeffallan/claude-skills/tree/main/skills/nextjs-developer => 
 
 https://github.com/tanweai/pua/tree/main/skills/pua => pua
 #https://github.com/tanweai/pua/tree/main/skills/high-agency => high-agency
+
+https://github.com/mattpocock/skills/tree/main/grill-me => grill-me
+
+https://github.com/vercel-labs/skills/tree/main/skills/find-skills => find-skills
+
+https://github.com/kitephp/webman-design-skills/tree/master/skills/webman-best-practices => webman-best-practices
+
+https://github.com/RefoundAI/lenny-skills/tree/main/skills/designing-growth-loops => designing-growth-loops
+https://github.com/RefoundAI/lenny-skills/tree/main/skills/designing-surveys => designing-surveys
+https://github.com/RefoundAI/lenny-skills/tree/main/skills/evaluating-new-technology => evaluating-new-technology
+https://github.com/RefoundAI/lenny-skills/tree/main/skills/managing-tech-debt => managing-tech-debt
+https://github.com/RefoundAI/lenny-skills/tree/main/skills/planning-under-uncertainty => planning-under-uncertainty
+https://github.com/RefoundAI/lenny-skills/tree/main/skills/running-decision-processes => running-decision-processes
+https://github.com/RefoundAI/lenny-skills/tree/main/skills/scoping-cutting => scoping-cutting
+https://github.com/RefoundAI/lenny-skills/tree/main/skills/systems-thinking => systems-thinking
