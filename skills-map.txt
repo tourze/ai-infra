@@ -251,6 +251,7 @@ https://github.com/Mathews-Tom/praxis-skills/tree/main/skills/youtube-search => 
 https://github.com/google-labs-code/stitch-skills/tree/main/skills/shadcn-ui => shadcn-ui
 
 https://github.com/sickn33/antigravity-awesome-skills/tree/main/skills/app-store-optimization => app-store-optimization
+https://github.com/sickn33/antigravity-awesome-skills/tree/main/skills/i18n-localization => i18n-localization
 
 # Spec-Kit Antigravity Skills
 https://github.com/compnew2006/Spec-Kit-Antigravity-Skills/tree/main/skills/scripts/bash => scripts/bash
@@ -320,3 +321,9 @@ https://github.com/RefoundAI/lenny-skills/tree/main/skills/scoping-cutting => sc
 https://github.com/RefoundAI/lenny-skills/tree/main/skills/systems-thinking => systems-thinking
 
 https://github.com/conorluddy/ios-simulator-skill/tree/main/ios-simulator-skill => ios-simulator-skill
+
+https://github.com/Mindrally/skills/tree/main/mysql-best-practices => mysql-best-practices
+https://github.com/Mindrally/skills/tree/main/redis-best-practices => redis-best-practices
+
+https://github.com/patricio0312rev/skills/tree/main/ci-cd/nginx-config-optimizer => nginx-config-optimizer
+https://github.com/patricio0312rev/skills/tree/main/ci-cd/terraform-module-builder => terraform-module-builder
