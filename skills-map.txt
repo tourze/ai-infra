@@ -95,7 +95,6 @@ https://github.com/alirezarezvani/claude-skills/tree/main/marketing-skill/analyt
 https://github.com/alirezarezvani/claude-skills/tree/main/marketing-skill/campaign-analytics => campaign-analytics
 https://github.com/alirezarezvani/claude-skills/tree/main/marketing-skill/competitor-alternatives => competitor-alternatives
 https://github.com/alirezarezvani/claude-skills/tree/main/marketing-skill/content-humanizer => content-humanizer
-https://github.com/alirezarezvani/claude-skills/tree/main/marketing-skill/content-production => content-production
 https://github.com/alirezarezvani/claude-skills/tree/main/marketing-skill/copy-editing => copy-editing
 https://github.com/alirezarezvani/claude-skills/tree/main/product-team/agile-product-owner => agile-product-owner
 https://github.com/alirezarezvani/claude-skills/tree/main/product-team/competitive-teardown => competitive-teardown

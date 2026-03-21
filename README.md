@@ -166,7 +166,6 @@ node ./scripts/validate-repo.js
 | [consciousness-council](skills/consciousness-council/SKILL.md) | 以多角色视角对复杂问题进行委员会式讨论。 |
 | [consulting-analysis](skills/consulting-analysis/SKILL.md) | 先搭分析框架再生成咨询级研究报告。 |
 | [content-humanizer](skills/content-humanizer/SKILL.md) | 把 AI 文案改写得更自然、更像真人表达。 |
-| [content-production](skills/content-production/SKILL.md) | 从选题到成稿，完整生产博客、文章和指南。 |
 | [content-strategy](skills/content-strategy/SKILL.md) | 规划内容策略、主题集群与内容路线图。 |
 | [context-map](skills/context-map/SKILL.md) | 改动前梳理与任务相关的文件地图。 |
 | [conventional-commits](skills/conventional-commits/SKILL.md) | 按 Conventional Commits 规范生成提交信息。 |
