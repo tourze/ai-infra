@@ -35,7 +35,6 @@ https://github.com/openclaw/skills/tree/main/skills/artyomx33/pre-mortem-analyst
 https://github.com/openclaw/skills/tree/main/skills/evanfromdowntown/site-analyze => site-analyze
 
 https://github.com/kepano/obsidian-skills/tree/main/skills/obsidian-cli => obsidian-cli
-https://github.com/kepano/obsidian-skills/tree/main/skills/obsidian-markdown => obsidian-markdown
 https://github.com/kepano/obsidian-skills/tree/main/skills/obsidian-bases => obsidian-bases
 
 https://github.com/vercel-labs/agent-skills/tree/main/skills/react-best-practices => vercel-react-best-practices
@@ -83,7 +82,6 @@ https://github.com/obra/superpowers/tree/main/skills/verification-before-complet
 
 https://github.com/microsoft/skills/tree/main/.github/skills/frontend-design-review => frontend-design-review
 https://github.com/microsoft/skills/tree/main/.github/plugins/deep-wiki/skills/wiki-researcher => wiki-researcher
-https://github.com/microsoft/skills/tree/main/.github/plugins/deep-wiki/skills/wiki-architect => wiki-architect
 
 https://github.com/new-silvermoon/awesome-android-agent-skills/tree/main/.github/skills/android-accessibility => android-accessibility
 https://github.com/new-silvermoon/awesome-android-agent-skills/tree/main/.github/skills/android-architecture => android-architecture
@@ -243,20 +241,14 @@ https://github.com/sickn33/antigravity-awesome-skills/tree/main/skills/i18n-loca
 
 # Spec-Kit Antigravity Skills
 https://github.com/compnew2006/Spec-Kit-Antigravity-Skills/tree/main/skills/scripts/bash => scripts/bash
-https://github.com/compnew2006/Spec-Kit-Antigravity-Skills/tree/main/skills/speckit.analyze => speckit.analyze
 https://github.com/compnew2006/Spec-Kit-Antigravity-Skills/tree/main/skills/speckit.checker => speckit.checker
 https://github.com/compnew2006/Spec-Kit-Antigravity-Skills/tree/main/skills/speckit.checklist => speckit.checklist
-https://github.com/compnew2006/Spec-Kit-Antigravity-Skills/tree/main/skills/speckit.clarify => speckit.clarify
-https://github.com/compnew2006/Spec-Kit-Antigravity-Skills/tree/main/skills/speckit.constitution => speckit.constitution
 https://github.com/compnew2006/Spec-Kit-Antigravity-Skills/tree/main/skills/speckit.diff => speckit.diff
 https://github.com/compnew2006/Spec-Kit-Antigravity-Skills/tree/main/skills/speckit.implement => speckit.implement
-https://github.com/compnew2006/Spec-Kit-Antigravity-Skills/tree/main/skills/speckit.migrate => speckit.migrate
 https://github.com/compnew2006/Spec-Kit-Antigravity-Skills/tree/main/skills/speckit.plan => speckit.plan
 https://github.com/compnew2006/Spec-Kit-Antigravity-Skills/tree/main/skills/speckit.quizme => speckit.quizme
 https://github.com/compnew2006/Spec-Kit-Antigravity-Skills/tree/main/skills/speckit.reviewer => speckit.reviewer
-https://github.com/compnew2006/Spec-Kit-Antigravity-Skills/tree/main/skills/speckit.specify => speckit.specify
 https://github.com/compnew2006/Spec-Kit-Antigravity-Skills/tree/main/skills/speckit.status => speckit.status
-https://github.com/compnew2006/Spec-Kit-Antigravity-Skills/tree/main/skills/speckit.tasks => speckit.tasks
 https://github.com/compnew2006/Spec-Kit-Antigravity-Skills/tree/main/skills/speckit.taskstoissues => speckit.taskstoissues
 https://github.com/compnew2006/Spec-Kit-Antigravity-Skills/tree/main/skills/speckit.tester => speckit.tester
 https://github.com/compnew2006/Spec-Kit-Antigravity-Skills/tree/main/skills/speckit.validate => speckit.validate
@@ -320,8 +312,6 @@ https://github.com/dengineproblem/agents-monorepo/tree/main/.claude/skills/detox
 
 https://github.com/shirenchuang/web-content-fetcher => web-content-fetcher
 
-https://github.com/remotion-dev/skills/tree/main/skills/remotion => remotion-best-practices
-
 https://github.com/microsoft/GitHub-Copilot-for-Azure/tree/main/.github/skills/markdown-token-optimizer => markdown-token-optimizer
 
 https://github.com/browser-use/browser-use/tree/main/skills/browser-use => browser-use
@@ -363,22 +353,12 @@ https://github.com/vivy-yi/xiaohongshu-skills/tree/main/skills/02-%E8%B4%A6%E5%8
 https://github.com/vivy-yi/xiaohongshu-skills/tree/main/skills/02-%E8%B4%A6%E5%8F%B7%E8%BF%90%E8%90%A5/private-domain => private-domain
 https://github.com/vivy-yi/xiaohongshu-skills/tree/main/skills/02-%E8%B4%A6%E5%8F%B7%E8%BF%90%E8%90%A5/fan-operations => fan-operations
 
-https://github.com/anthropics/knowledge-work-plugins/tree/main/design/skills/design-critique => design-critique
-https://github.com/anthropics/knowledge-work-plugins/tree/main/design/skills/design-handoff => design-handoff
-https://github.com/anthropics/knowledge-work-plugins/tree/main/design/skills/accessibility-review => accessibility-review
-https://github.com/anthropics/knowledge-work-plugins/tree/main/customer-support/skills/customer-research => customer-research
 https://github.com/anthropics/knowledge-work-plugins/tree/main/data/skills/data-visualization => data-visualization
 https://github.com/anthropics/knowledge-work-plugins/tree/main/data/skills/statistical-analysis => statistical-analysis
-https://github.com/anthropics/knowledge-work-plugins/tree/main/engineering/skills/incident-response => incident-response
 https://github.com/anthropics/knowledge-work-plugins/tree/main/engineering/skills/system-design => system-design
 https://github.com/anthropics/knowledge-work-plugins/tree/main/engineering/skills/tech-debt => tech-debt
 https://github.com/anthropics/knowledge-work-plugins/tree/main/engineering/skills/testing-strategy => testing-strategy
 https://github.com/anthropics/knowledge-work-plugins/tree/main/enterprise-search/skills/knowledge-synthesis => knowledge-synthesis
-https://github.com/anthropics/knowledge-work-plugins/tree/main/enterprise-search/skills/search-strategy => search-strategy
 https://github.com/anthropics/knowledge-work-plugins/tree/main/legal/skills/legal-risk-assessment => legal-risk-assessment
-https://github.com/anthropics/knowledge-work-plugins/tree/main/legal/skills/legal-response => legal-response
-https://github.com/anthropics/knowledge-work-plugins/tree/main/marketing/skills/email-sequence => email-sequence
 https://github.com/anthropics/knowledge-work-plugins/tree/main/operations/skills/process-optimization => process-optimization
-https://github.com/anthropics/knowledge-work-plugins/tree/main/product-management/skills/competitive-brief => competitive-brief
-https://github.com/anthropics/knowledge-work-plugins/tree/main/product-management/skills/synthesize-research => synthesize-research
 https://github.com/anthropics/knowledge-work-plugins/tree/main/sales/skills/competitive-intelligence => competitive-intelligence
