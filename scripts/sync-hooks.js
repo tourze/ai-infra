@@ -55,7 +55,9 @@ for (const file of hookFiles) {
     preToolBash.push(entry);
   } else if (
     file === "syntax-check.mjs" ||
-    file === "file-length-guard.mjs"
+    file === "file-length-guard.mjs" ||
+    file === "merge-conflict-guard.mjs" ||
+    file === "encoding-guard.mjs"
   ) {
     postToolEditWrite.push(entry);
   } else {
