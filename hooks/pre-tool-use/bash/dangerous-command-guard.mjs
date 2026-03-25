@@ -16,10 +16,9 @@ const DANGEROUS_PATTERNS = [
   [/\bgit\s+push\s+[^|;]*-f\b/, "git push -f 会覆盖远程历史，请改用 --force-with-lease"],
   [/\bgit\s+branch\s+-D\b/, "git branch -D 会强制删除分支（含未合并的提交）"],
   [/\bgit\s+stash\s+(drop|clear)\b/, "git stash drop/clear 会永久丢失暂存的改动"],
-  // 文件系统破坏性操作
-  [/\brm\s+-[A-Za-z]*r[A-Za-z]*f?\s+[\/~]/, "rm -rf 根路径或家目录极其危险"],
-  [/\brm\s+-[A-Za-z]*f[A-Za-z]*r?\s+[\/~]/, "rm -rf 根路径或家目录极其危险"],
-  [/\brm\s+-[A-Za-z]*r[A-Za-z]*\s+\.\/?(\s|$|;|&|\|)/, "rm -r . 会删除当前目录所有内容"],
+  // 文件系统破坏性操作（必须含 -r/-R 才拦截，rm -f 单文件不拦截）
+  [/\brm\s+-[A-Za-z]*[rR][A-Za-z]*\s+[\/~]/, "rm -r[f] 根路径或家目录极其危险"],
+  [/\brm\s+-[A-Za-z]*[rR][A-Za-z]*\s+\.\/?(\s|$|;|&|\|)/, "rm -r . 会删除当前目录所有内容"],
   // 数据库破坏性操作
   [/\bDROP\s+(DATABASE|TABLE|SCHEMA)\b/i, "DROP DATABASE/TABLE 会永久删除数据"],
   [/\bTRUNCATE\s+TABLE\b/i, "TRUNCATE TABLE 会清空表数据且不可回滚"],
