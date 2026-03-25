@@ -41,6 +41,8 @@ hooks/
     bash/               PreToolUse Bash 钩子（dangerous-command-guard 等）
   post-tool-use/
     edit-write/         PostToolUse Edit|Write 钩子 + 语法检查器（guard + 各语言 checker）
+  notification/         Notification 钩子（desktop-notification 等）
+  stop/                 Stop 钩子（desktop-notification 等）
 scripts/                Node.js 工具脚本 + 测试
 ```
 

@@ -22,6 +22,8 @@ const DISPATCHERS = [
   { event: "PreToolUse",  matcher: "Edit|Write", subdir: "pre-tool-use/edit-write" },
   { event: "PreToolUse",  matcher: "Bash",       subdir: "pre-tool-use/bash" },
   { event: "PostToolUse", matcher: "Edit|Write", subdir: "post-tool-use/edit-write" },
+  { event: "Notification", matcher: "",           subdir: "notification" },
+  { event: "Stop",         matcher: "",           subdir: "stop" },
 ];
 
 // 读取当前 settings
