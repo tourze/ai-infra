@@ -1,5 +1,5 @@
 /**
- * 文件编码检查 hook（PostToolUse — Edit / Write）
+ * 文件编码检查 hook（PostToolUse — Edit|Write）
  *
  * 检测 BOM 头和非 UTF-8 字节序列，提醒开发者注意编码问题。
  * 不阻塞（decision: "report"），仅作为提醒。
@@ -35,60 +35,57 @@ const BOM_SIGNATURES = [
   { name: "UTF-32 BE BOM", bytes: [0x00, 0x00, 0xFE, 0xFF] },
 ];
 
-const payload = JSON.parse(await new Promise((resolve) => {
-  let data = "";
-  process.stdin.on("data", (chunk) => (data += chunk));
-  process.stdin.on("end", () => resolve(data));
-}));
+export async function run(payload) {
+  const filePath = payload?.tool_input?.file_path;
+  if (!filePath || !existsSync(filePath)) return null;
 
-const filePath = payload?.tool_input?.file_path;
-if (!filePath || !existsSync(filePath)) process.exit(0);
+  // 按扩展名过滤；无扩展名的文件也检查（可能是 Makefile、Dockerfile 等）
+  const ext = extname(filePath).toLowerCase();
+  if (ext && !TEXT_EXTENSIONS.has(ext)) return null;
 
-// 按扩展名过滤；无扩展名的文件也检查（可能是 Makefile、Dockerfile 等）
-const ext = extname(filePath).toLowerCase();
-if (ext && !TEXT_EXTENSIONS.has(ext)) process.exit(0);
+  const buf = readFileSync(filePath);
+  if (buf.length === 0) return null;
 
-const buf = readFileSync(filePath);
-if (buf.length === 0) process.exit(0);
+  const issues = [];
 
-const issues = [];
-
-// ── 1. BOM 检测（UTF-32 要先于 UTF-16 判断，因为 UTF-32 LE 前缀覆盖 UTF-16 LE） ──
-for (const sig of BOM_SIGNATURES) {
-  if (buf.length >= sig.bytes.length && sig.bytes.every((b, i) => buf[i] === b)) {
-    issues.push(`检测到 ${sig.name}（${sig.bytes.map((b) => "0x" + b.toString(16).toUpperCase()).join(" ")}）— 现代项目通常使用无 BOM 的 UTF-8`);
-    break;
+  // ── 1. BOM 检测（UTF-32 要先于 UTF-16 判断，因为 UTF-32 LE 前缀覆盖 UTF-16 LE） ──
+  for (const sig of BOM_SIGNATURES) {
+    if (buf.length >= sig.bytes.length && sig.bytes.every((b, i) => buf[i] === b)) {
+      issues.push(`检测到 ${sig.name}（${sig.bytes.map((b) => "0x" + b.toString(16).toUpperCase()).join(" ")}）— 现代项目通常使用无 BOM 的 UTF-8`);
+      break;
+    }
   }
-}
 
-// ── 2. 非 UTF-8 字节序列检测 ──
-// 跳过已识别为 UTF-16/UTF-32 的文件（它们本身就不是 UTF-8）
-const isNonUtf8Bom = issues.length > 0 && !issues[0].startsWith("检测到 UTF-8");
-if (!isNonUtf8Bom) {
-  const invalidPositions = findInvalidUtf8(buf);
-  if (invalidPositions.length > 0) {
-    const lineNumbers = invalidPositions.slice(0, 5).map((pos) => {
-      let line = 1;
-      for (let i = 0; i < pos && i < buf.length; i++) {
-        if (buf[i] === 0x0A) line++;
-      }
-      return `行 ${line} (偏移 0x${pos.toString(16).toUpperCase()}: 0x${buf[pos].toString(16).toUpperCase().padStart(2, "0")})`;
-    });
-    const suffix = invalidPositions.length > 5 ? ` 等共 ${invalidPositions.length} 处` : "";
-    issues.push(`发现非 UTF-8 字节序列：${lineNumbers.join("、")}${suffix}`);
+  // ── 2. 非 UTF-8 字节序列检测 ──
+  // 跳过已识别为 UTF-16/UTF-32 的文件（它们本身就不是 UTF-8）
+  const isNonUtf8Bom = issues.length > 0 && !issues[0].startsWith("检测到 UTF-8");
+  if (!isNonUtf8Bom) {
+    const invalidPositions = findInvalidUtf8(buf);
+    if (invalidPositions.length > 0) {
+      const lineNumbers = invalidPositions.slice(0, 5).map((pos) => {
+        let line = 1;
+        for (let i = 0; i < pos && i < buf.length; i++) {
+          if (buf[i] === 0x0A) line++;
+        }
+        return `行 ${line} (偏移 0x${pos.toString(16).toUpperCase()}: 0x${buf[pos].toString(16).toUpperCase().padStart(2, "0")})`;
+      });
+      const suffix = invalidPositions.length > 5 ? ` 等共 ${invalidPositions.length} 处` : "";
+      issues.push(`发现非 UTF-8 字节序列：${lineNumbers.join("、")}${suffix}`);
+    }
   }
-}
 
-if (issues.length > 0) {
-  console.log(JSON.stringify({
-    decision: "report",
-    reason: [
-      `⚠️ ${filePath} 编码问题：`,
-      ...issues.map((i) => `  • ${i}`),
-      "",
-      "建议使用无 BOM 的 UTF-8 编码，避免跨平台兼容性问题。",
-    ].join("\n"),
-  }));
+  if (issues.length > 0) {
+    return {
+      decision: "report",
+      reason: [
+        `⚠️ ${filePath} 编码问题：`,
+        ...issues.map((i) => `  • ${i}`),
+        "",
+        "建议使用无 BOM 的 UTF-8 编码，避免跨平台兼容性问题。",
+      ].join("\n"),
+    };
+  }
+  return null;
 }
 
 /**
@@ -105,19 +102,15 @@ function findInvalidUtf8(buffer) {
   while (i < buffer.length && positions.length < 20) {
     const b = buffer[i];
     if (b <= 0x7F) {
-      // ASCII — 合法
       i++;
     } else if ((b & 0xE0) === 0xC0) {
-      // 2 字节序列: 110xxxxx 10xxxxxx
       if (i + 1 >= buffer.length || (buffer[i + 1] & 0xC0) !== 0x80) {
         positions.push(i); i++; continue;
       }
-      // 过长编码检测：2 字节序列的码点应 >= 0x80
       const cp = ((b & 0x1F) << 6) | (buffer[i + 1] & 0x3F);
       if (cp < 0x80) { positions.push(i); i += 2; continue; }
       i += 2;
     } else if ((b & 0xF0) === 0xE0) {
-      // 3 字节序列: 1110xxxx 10xxxxxx 10xxxxxx
       if (i + 2 >= buffer.length || (buffer[i + 1] & 0xC0) !== 0x80 || (buffer[i + 2] & 0xC0) !== 0x80) {
         positions.push(i); i++; continue;
       }
@@ -125,7 +118,6 @@ function findInvalidUtf8(buffer) {
       if (cp < 0x800) { positions.push(i); i += 3; continue; }
       i += 3;
     } else if ((b & 0xF8) === 0xF0) {
-      // 4 字节序列: 11110xxx 10xxxxxx 10xxxxxx 10xxxxxx
       if (i + 3 >= buffer.length || (buffer[i + 1] & 0xC0) !== 0x80 || (buffer[i + 2] & 0xC0) !== 0x80 || (buffer[i + 3] & 0xC0) !== 0x80) {
         positions.push(i); i++; continue;
       }
@@ -133,7 +125,6 @@ function findInvalidUtf8(buffer) {
       if (cp < 0x10000 || cp > 0x10FFFF) { positions.push(i); i += 4; continue; }
       i += 4;
     } else {
-      // 非法起始字节
       positions.push(i);
       i++;
     }

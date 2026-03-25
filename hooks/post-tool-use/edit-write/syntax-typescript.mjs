@@ -8,15 +8,15 @@
  * esbuild 查找逻辑：从文件所在目录向上查找 node_modules/.bin/esbuild，
  * 适配 monorepo 和独立项目。
  */
-import { readFileSync } from "fs";
+import { readFileSync, existsSync } from "fs";
 import { extname } from "path";
-import { matchExt } from "./utils.mjs";
+import { matchExt } from "./_utils.mjs";
 
-export function matches(filePath) {
+function matches(filePath) {
   return matchExt(filePath, [".ts", ".tsx", ".mts", ".cts"]);
 }
 
-export async function check(filePath) {
+async function check(filePath) {
   let transformSync;
   try {
     // 从 CWD 解析 esbuild（Claude Code 总是在项目根目录运行）
@@ -50,4 +50,17 @@ export async function check(filePath) {
       : err.message;
     return { lang: "TypeScript Syntax", message: msg };
   }
+}
+
+
+export async function run(payload) {
+  const filePath = payload?.tool_input?.file_path;
+  if (!filePath || !existsSync(filePath)) return null;
+  if (!matches(filePath)) return null;
+  const result = await check(filePath);
+  if (!result) return null;
+  return {
+    decision: "block",
+    reason: `[${result.lang}] ${result.message.trim()}\n\n请修复后再继续。`,
+  };
 }

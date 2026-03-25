@@ -4,13 +4,6 @@
  * 拦截 git reset --hard、git checkout -- .、rm -rf 等不可逆或高危命令。
  * 规则在 DANGEROUS_PATTERNS 中集中管理，新增规则只需加一行。
  */
-const payload = JSON.parse(await new Promise((resolve) => {
-  let data = "";
-  process.stdin.on("data", (chunk) => (data += chunk));
-  process.stdin.on("end", () => resolve(data));
-}));
-
-const command = payload?.tool_input?.command || "";
 
 // ── 危险命令模式：[正则, 描述] ──
 const DANGEROUS_PATTERNS = [
@@ -32,12 +25,16 @@ const DANGEROUS_PATTERNS = [
   [/\bTRUNCATE\s+TABLE\b/i, "TRUNCATE TABLE 会清空表数据且不可回滚"],
 ];
 
-for (const [pattern, reason] of DANGEROUS_PATTERNS) {
-  if (pattern.test(command)) {
-    console.log(JSON.stringify({
-      decision: "block",
-      reason: `[Dangerous Command] 已拦截高危命令\n\n原因：${reason}\n命令：${command}\n\n如确需执行，请用户明确授权后手动操作。`,
-    }));
-    process.exit(0);
+export async function run(payload) {
+  const command = payload?.tool_input?.command || "";
+
+  for (const [pattern, reason] of DANGEROUS_PATTERNS) {
+    if (pattern.test(command)) {
+      return {
+        decision: "block",
+        reason: `[Dangerous Command] 已拦截高危命令\n\n原因：${reason}\n命令：${command}\n\n如确需执行，请用户明确授权后手动操作。`,
+      };
+    }
   }
+  return null;
 }

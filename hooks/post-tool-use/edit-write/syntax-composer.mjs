@@ -1,12 +1,13 @@
+import { existsSync } from "fs";
 import { execFileSync } from "child_process";
-import { hasCommand, cmd, matchName } from "./utils.mjs";
+import { hasCommand, cmd, matchName } from "./_utils.mjs";
 import { dirname } from "path";
 
-export function matches(filePath) {
+function matches(filePath) {
   return matchName(filePath, ["composer.json"]);
 }
 
-export async function check(filePath) {
+async function check(filePath) {
   if (!hasCommand("composer")) return null;
   const cwd = dirname(filePath);
   try {
@@ -22,4 +23,17 @@ export async function check(filePath) {
     if (output.includes("is valid") && !output.includes("error")) return null;
     return output.trim() ? { lang: "Composer Validate", message: output } : null;
   }
+}
+
+
+export async function run(payload) {
+  const filePath = payload?.tool_input?.file_path;
+  if (!filePath || !existsSync(filePath)) return null;
+  if (!matches(filePath)) return null;
+  const result = await check(filePath);
+  if (!result) return null;
+  return {
+    decision: "block",
+    reason: `[${result.lang}] ${result.message.trim()}\n\n请修复后再继续。`,
+  };
 }

@@ -4,19 +4,19 @@
  * 仅对导入了 @tarojs/* 的文件生效（即真正的 Taro 组件/页面），
  * 不对普通工具文件或非 Taro 模块误报。
  */
-import { readFileSync } from "fs";
-import { matchExt } from "./utils.mjs";
+import { readFileSync, existsSync } from "fs";
+import { matchExt } from "./_utils.mjs";
 
 const TARO_IMPORT_PATTERN = /from\s+['"]@tarojs\//;
 
-export function matches(filePath) {
+function matches(filePath) {
   if (!matchExt(filePath, [".ts", ".tsx", ".js", ".jsx"])) return false;
 
   const content = readFileSync(filePath, "utf-8");
   return TARO_IMPORT_PATTERN.test(content);
 }
 
-export async function check(filePath) {
+async function check(filePath) {
   const content = readFileSync(filePath, "utf-8");
 
   // 去除注释和字符串，避免误报
@@ -53,4 +53,16 @@ export async function check(filePath) {
 
   if (errors.length === 0) return null;
   return { lang: "Taro/MiniProgram", message: errors.join("\n") };
+}
+
+export async function run(payload) {
+  const filePath = payload?.tool_input?.file_path;
+  if (!filePath || !existsSync(filePath)) return null;
+  if (!matches(filePath)) return null;
+  const result = await check(filePath);
+  if (!result) return null;
+  return {
+    decision: "block",
+    reason: `[${result.lang}] ${result.message.trim()}\n\n请修复后再继续。`,
+  };
 }

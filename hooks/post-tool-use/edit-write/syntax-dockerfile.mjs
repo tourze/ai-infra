@@ -1,14 +1,14 @@
-import { readFileSync } from "fs";
+import { readFileSync, existsSync } from "fs";
 import { execFileSync } from "child_process";
-import { hasCommand, matchName } from "./utils.mjs";
+import { hasCommand, matchName } from "./_utils.mjs";
 import { basename } from "path";
 
-export function matches(filePath) {
+function matches(filePath) {
   const name = basename(filePath);
   return name === "Dockerfile" || name.endsWith(".dockerfile");
 }
 
-export async function check(filePath) {
+async function check(filePath) {
   // 优先用 hadolint
   if (hasCommand("hadolint")) {
     try {
@@ -55,4 +55,17 @@ export async function check(filePath) {
   return errors.length
     ? { lang: "Dockerfile", message: errors.join("\n") }
     : null;
+}
+
+
+export async function run(payload) {
+  const filePath = payload?.tool_input?.file_path;
+  if (!filePath || !existsSync(filePath)) return null;
+  if (!matches(filePath)) return null;
+  const result = await check(filePath);
+  if (!result) return null;
+  return {
+    decision: "block",
+    reason: `[${result.lang}] ${result.message.trim()}\n\n请修复后再继续。`,
+  };
 }

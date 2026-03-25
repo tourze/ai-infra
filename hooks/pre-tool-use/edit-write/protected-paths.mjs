@@ -51,24 +51,19 @@ const PROTECTED_PATTERNS = [
   [/\/build\//, "build/ 是编译产物目录，应通过 make build 生成"],
 ];
 
-// ── 读取 hook payload ──
-const payload = JSON.parse(await new Promise((resolve) => {
-  let data = "";
-  process.stdin.on("data", (chunk) => (data += chunk));
-  process.stdin.on("end", () => resolve(data));
-}));
+export async function run(payload) {
+  const filePath = payload?.tool_input?.file_path;
+  if (!filePath) return null;
 
-const filePath = payload?.tool_input?.file_path;
-if (!filePath) process.exit(0);
+  const normalized = normalize(filePath).replaceAll("\\", "/");
 
-const normalized = normalize(filePath).replaceAll("\\", "/");
-
-for (const [pattern, reason] of PROTECTED_PATTERNS) {
-  if (pattern.test(normalized)) {
-    console.log(JSON.stringify({
-      decision: "block",
-      reason: `[Protected Path] 禁止修改 ${filePath}\n原因：${reason}\n\n如需修改第三方依赖，请通过包管理器（composer/npm）或 patch 文件处理。`,
-    }));
-    process.exit(0);
+  for (const [pattern, reason] of PROTECTED_PATTERNS) {
+    if (pattern.test(normalized)) {
+      return {
+        decision: "block",
+        reason: `[Protected Path] 禁止修改 ${filePath}\n原因：${reason}\n\n如需修改第三方依赖，请通过包管理器（composer/npm）或 patch 文件处理。`,
+      };
+    }
   }
+  return null;
 }

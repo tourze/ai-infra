@@ -1,12 +1,12 @@
-import { readFileSync } from "fs";
-import { pathContains, matchExt } from "./utils.mjs";
+import { readFileSync, existsSync } from "fs";
+import { pathContains, matchExt } from "./_utils.mjs";
 
-export function matches(filePath) {
+function matches(filePath) {
   // 只对 Entity 目录下的 .php 文件生效
   return matchExt(filePath, [".php"]) && pathContains(filePath, "Entity");
 }
 
-export async function check(filePath) {
+async function check(filePath) {
   const content = readFileSync(filePath, "utf-8");
 
   // 确认是 Doctrine Entity（必须含 ORM\Entity 或 ORM\MappedSuperclass）
@@ -60,5 +60,18 @@ export async function check(filePath) {
   return {
     lang: "Doctrine Entity",
     message: `发现 ${errors.length} 个问题:\n${errors.join("\n")}`,
+  };
+}
+
+
+export async function run(payload) {
+  const filePath = payload?.tool_input?.file_path;
+  if (!filePath || !existsSync(filePath)) return null;
+  if (!matches(filePath)) return null;
+  const result = await check(filePath);
+  if (!result) return null;
+  return {
+    decision: "block",
+    reason: `[${result.lang}] ${result.message.trim()}\n\n请修复后再继续。`,
   };
 }
