@@ -15,6 +15,101 @@
 - 改动前先定位证据文件（代码、配置、脚本），改动后必须自检（最少执行目标包相关测试/静态检查）。
 - **禁止破坏性命令**：`git reset --hard`、`git checkout -- .`、`git restore --source=HEAD`、大范围 `rm -rf` 等，除非用户明确要求。
 
+## 代码注释规范（必须遵守）
+
+参考 Linux 内核注释哲学：**代码说"是什么"，注释说"为什么"**。AI 生成的代码必须像有经验的内核开发者一样，把不可从代码推断的知识留给后续维护者。
+
+### 必须注释的三类信息
+
+#### 1. 设计决策：选择了什么，放弃了什么，为什么
+
+```python
+# 这里用 polling 而不是 event-driven，是因为目标环境的 epoll
+# 在某些内核版本上有 bug（见 issue #4231）。等升级到 kernel 5.10+
+# 之后可以改回 event-driven，性能会提升约 30%。
+def poll_connections():
+    ...
+```
+
+没有这类注释，后人会"优化"回被否决的方案，然后踩同一个坑。
+
+#### 2. 绕过的坑：HACK / WORKAROUND 必须标注原因和解除条件
+
+```java
+// HACK: SimpleDateFormat 不是线程安全的，不能共享实例。
+// 这里用 ThreadLocal 是为了避免每次都 new 一个新对象。
+// 如果升级到 Java 8+，改用 DateTimeFormatter（线程安全）。
+private static final ThreadLocal<SimpleDateFormat> DATE_FORMAT =
+    ThreadLocal.withInitial(() -> new SimpleDateFormat("yyyy-MM-dd"));
+```
+
+注释模板：`HACK/WORKAROUND: 问题是什么 → 当前方案 → 何时/如何解除`。
+
+#### 3. 外部约束与契约：前置条件、假设、调用方责任
+
+```go
+// 注意：这个函数假设输入已经是 UTF-8 编码。
+// 调用方有责任保证这一点，函数内部不做校验（有性能原因）。
+// 如果传入非 UTF-8 数据，行为未定义。
+func processText(data []byte) string {
+```
+
+代码无法表达的隐式契约必须通过注释显式化——参数范围、线程安全性、调用顺序、副作用。
+
+### 并发与内存模型必须注释
+
+借鉴 Linux 内核对并发代码的严格注释要求：
+
+```c
+/*
+ * We need to make sure we don't allow any parallel writer to
+ * come in and stomp things. We don't need to hold the lock
+ * when reading, because the CPU ensures that reads and writes
+ * are properly ordered for us.
+ */
+```
+
+涉及锁、原子操作、channel、mutex、信号量的代码，必须注释：
+- 保护的是什么共享状态
+- 为什么选择这种同步原语（而不是其他）
+- 读写的顺序保证依赖什么（CPU 内存序 / 语言内存模型 / 框架保证）
+
+### 禁止的注释反模式
+
+| 反模式 | 示例 | 正确做法 |
+|--------|------|----------|
+| 翻译代码 | `i++ // i 加 1` | 删掉，代码已自解释 |
+| 过时注释 | 注释说快速排序，代码已改为内置 sorted | 改代码时同步改注释，或删掉 |
+| 掩盖烂代码 | 用 3 行注释解释一行天书 | 重构代码使其自解释，而非用注释打补丁 |
+| 署名/日志式 | `// 2024-03-01 张三添加` | 这是 git blame 的职责 |
+| 注释掉的代码 | `// old_function()` | 删掉，版本控制会记住 |
+
+### 自解释代码优先，WHY 注释跟上
+
+```python
+# ❌ 需要注释解释"是什么"——说明变量名/函数名取得差
+# 计算折扣后的价格
+p = c * (1 - d/100)
+
+# ✅ 代码自解释"是什么"
+def calculate_discounted_price(original_price, discount_percent):
+    # discount_percent 是 0-100 的整数，不是 0-1 的小数
+    # 例如 20% 折扣传入 20，不是 0.2
+    return original_price * (1 - discount_percent / 100)
+```
+
+原则：先让代码通过命名和结构说清"是什么"，再用注释补充代码无法表达的"为什么"和"注意什么"。
+
+### 执行检查清单
+
+写完一段非平凡逻辑后，自查以下问题：
+
+1. 如果另一个开发者 6 个月后看到这段代码，会不会想"改成更好的方案"然后翻车？→ 需要**设计决策**注释
+2. 这段代码有没有在绕过某个已知问题？→ 需要 **HACK/WORKAROUND** 注释
+3. 这段代码对输入、环境、调用顺序有没有隐式假设？→ 需要**契约**注释
+4. 这段代码涉及并发/共享状态吗？→ 需要**并发模型**注释
+5. 如果删掉所有注释只看代码，逻辑是否仍然清晰？→ 若否，先重构代码再补注释
+
 ## 可视化表达与结构化输出（必须遵守）
 
 - 当回复涉及架构、链路、调用过程、状态流转、方案对比、迁移计划、阶段推进、风险分层时，优先把线性长文改写为 Markdown/ASCII 可视化结构，先帮助用户“看懂全貌”，再展开细节。
