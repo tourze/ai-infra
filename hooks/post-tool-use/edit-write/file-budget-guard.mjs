@@ -15,6 +15,7 @@ import { execFileSync } from "child_process";
 
 // ── 每种扩展名的行数预算（可根据项目调整） ──
 const BUDGETS = {
+  ".gradle": 600,
   // 前端
   ".js": 500, ".jsx": 500, ".mjs": 500, ".cjs": 500,
   ".ts": 500, ".tsx": 500,
