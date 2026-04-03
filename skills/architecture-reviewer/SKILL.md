@@ -1,21 +1,24 @@
 ---
 name: architecture-reviewer
-description: >
-  Architecture reviews across 7 dimensions: structural integrity, scalability, enterprise
-  readiness (SOC2/HIPAA/GDPR/PCI-DSS), performance, security, operational excellence, and
-  data architecture. Produces scored reports with prioritized recommendations. Three modes:
-  (1) Codebase review — evidence-based analysis of source code, configs, IaC; (2) Document
-  review — risk-based analysis of design docs, RFCs, specs; (3) Hybrid — drift detection
-  between intent and implementation. Triggers on: "review architecture", "critique design",
-  "audit system", "evaluate codebase", "find design flaws", "assess scalability", "check
-  security", "enterprise readiness", "architecture assessment", "technical due diligence",
-  or when user provides a system design document or codebase and asks for feedback or
-  improvements. For architecture diagrams, visuals, or topology drawings, use
-  architecture-diagram instead.
+description: 'Architecture reviews across 7 dimensions: structural integrity, scalability,
+  enterprise readiness (SOC2/HIPAA/GDPR/PCI-DSS), performance, security, operational
+  excellence, and data architecture. Produces scored reports with prioritized recommendations.
+  Three modes: (1) Codebase review — evidence-based analysis of source code, configs,
+  IaC; (2) Document review — risk-based analysis of design docs, RFCs, specs; (3)
+  Hybrid — drift detection between intent and implementation. Triggers on: "review
+  architecture", "critique design", "audit system", "evaluate codebase", "find design
+  flaws", "assess scalability", "check security", "enterprise readiness", "architecture
+  assessment", "technical due diligence", or when user provides a system design document
+  or codebase and asks for feedback or improvements. For architecture diagrams, visuals,
+  or topology drawings, use architecture-diagram instead.
+
+  '
 metadata:
   version: 1.1.0
+  category: review
+  tags: [architecture, scalability, enterprise, security-audit]
+  difficulty: advanced
 ---
-
 # Architecture Reviewer
 
 Systematic, framework-driven architecture review skill. Acts as a senior staff/principal
