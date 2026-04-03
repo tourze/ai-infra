@@ -8,13 +8,13 @@ Types of unknowns that affect estimates, with identification techniques and miti
 
 Things we don't know how to do or whether they'll work.
 
-| Unknown | Impact | Mitigation |
-|---------|--------|------------|
-| New technology | Learning curve, unexpected limitations | Spike: prototype for 1-2 days first |
-| Performance at scale | Code works but may be slow | Define threshold, build benchmark early |
-| Integration complexity | Third-party API may not behave as documented | Test integration earliest possible |
-| Data quality | Input data may be messier than expected | Sample and analyze data before estimating |
-| Algorithm suitability | Chosen approach may not work | Prototype with real data before committing |
+| Unknown                | Impact                                       | Mitigation                                 |
+| ---------------------- | -------------------------------------------- | ------------------------------------------ |
+| New technology         | Learning curve, unexpected limitations       | Spike: prototype for 1-2 days first        |
+| Performance at scale   | Code works but may be slow                   | Define threshold, build benchmark early    |
+| Integration complexity | Third-party API may not behave as documented | Test integration earliest possible         |
+| Data quality           | Input data may be messier than expected      | Sample and analyze data before estimating  |
+| Algorithm suitability  | Chosen approach may not work                 | Prototype with real data before committing |
 
 ### Detection Questions
 
@@ -29,13 +29,13 @@ Things we don't know how to do or whether they'll work.
 
 Things that may change what we're building.
 
-| Unknown | Impact | Mitigation |
-|---------|--------|------------|
-| Requirements may change | Rework, wasted effort | Implement core first, defer details |
-| Edge cases not yet identified | Additional work discovered mid-implementation | Edge case brainstorm session upfront |
-| Design not finalized | UI/UX changes after implementation starts | Get design approval before starting |
-| Acceptance criteria unclear | "Done" is ambiguous | Define testable criteria before starting |
-| Feature creep | Scope grows during implementation | Freeze scope, defer additions to next iteration |
+| Unknown                       | Impact                                        | Mitigation                                      |
+| ----------------------------- | --------------------------------------------- | ----------------------------------------------- |
+| Requirements may change       | Rework, wasted effort                         | Implement core first, defer details             |
+| Edge cases not yet identified | Additional work discovered mid-implementation | Edge case brainstorm session upfront            |
+| Design not finalized          | UI/UX changes after implementation starts     | Get design approval before starting             |
+| Acceptance criteria unclear   | "Done" is ambiguous                           | Define testable criteria before starting        |
+| Feature creep                 | Scope grows during implementation             | Freeze scope, defer additions to next iteration |
 
 ### Detection Questions
 
@@ -50,13 +50,13 @@ Things that may change what we're building.
 
 Things outside our control.
 
-| Unknown | Impact | Mitigation |
-|---------|--------|------------|
-| External API availability | Blocked if API is down or access delayed | Request access early, mock while waiting |
-| Dependency release | Waiting for a library fix/feature | Use workaround, contribute fix upstream |
-| Third-party approval | Waiting for partner/vendor action | Start early, have alternative plan |
-| Infrastructure provisioning | Waiting for servers, databases, permissions | Request infrastructure in Phase 1 |
-| Legal/compliance review | Waiting for approval | Submit for review as early as possible |
+| Unknown                     | Impact                                      | Mitigation                               |
+| --------------------------- | ------------------------------------------- | ---------------------------------------- |
+| External API availability   | Blocked if API is down or access delayed    | Request access early, mock while waiting |
+| Dependency release          | Waiting for a library fix/feature           | Use workaround, contribute fix upstream  |
+| Third-party approval        | Waiting for partner/vendor action           | Start early, have alternative plan       |
+| Infrastructure provisioning | Waiting for servers, databases, permissions | Request infrastructure in Phase 1        |
+| Legal/compliance review     | Waiting for approval                        | Submit for review as early as possible   |
 
 ### Detection Questions
 
@@ -70,13 +70,13 @@ Things outside our control.
 
 Things that emerge when components connect.
 
-| Unknown | Impact | Mitigation |
-|---------|--------|------------|
-| Interface mismatch | Components don't connect as expected | Define interfaces in Foundation phase |
-| Data format differences | Serialization/deserialization issues | Test integration points early |
-| Performance interaction | Components fast alone, slow together | Integration test with realistic data |
-| Error propagation | Error in A causes cascade through B, C | Design error handling across boundaries |
-| State management | Shared state between components | Define state ownership early |
+| Unknown                 | Impact                                 | Mitigation                              |
+| ----------------------- | -------------------------------------- | --------------------------------------- |
+| Interface mismatch      | Components don't connect as expected   | Define interfaces in Foundation phase   |
+| Data format differences | Serialization/deserialization issues   | Test integration points early           |
+| Performance interaction | Components fast alone, slow together   | Integration test with realistic data    |
+| Error propagation       | Error in A causes cascade through B, C | Design error handling across boundaries |
+| State management        | Shared state between components        | Define state ownership early            |
 
 ### Detection Questions
 
@@ -90,25 +90,25 @@ Things that emerge when components connect.
 
 Things about people and process.
 
-| Unknown | Impact | Mitigation |
-|---------|--------|------------|
-| Team availability | Key person on vacation, sick, pulled to another project | Identify backup, document everything |
-| Review bottleneck | Code review takes days, not hours | Set review SLA, pair program instead |
-| Decision delay | Architecture decision needed, no one available to decide | Identify decisions upfront, escalate early |
-| Knowledge gap | Only one person understands the system | Pair sessions, documentation |
-| Priority shift | Project deprioritized mid-sprint | Accept risk, plan for minimum viable delivery |
+| Unknown           | Impact                                                   | Mitigation                                    |
+| ----------------- | -------------------------------------------------------- | --------------------------------------------- |
+| Team availability | Key person on vacation, sick, pulled to another project  | Identify backup, document everything          |
+| Review bottleneck | Code review takes days, not hours                        | Set review SLA, pair program instead          |
+| Decision delay    | Architecture decision needed, no one available to decide | Identify decisions upfront, escalate early    |
+| Knowledge gap     | Only one person understands the system                   | Pair sessions, documentation                  |
+| Priority shift    | Project deprioritized mid-sprint                         | Accept risk, plan for minimum viable delivery |
 
 ---
 
 ## Unknown Impact Matrix
 
-| Category | Typical Impact on Worst Case | Frequency |
-|----------|-----------------------------|-----------|
-| Technical | 2-5x the likely estimate | Common |
-| Scope | 1.5-3x | Common |
-| External | 0 or complete block | Uncommon but severe |
-| Integration | 1.5-2x | Common |
-| Organizational | 1.2-2x | Moderate |
+| Category       | Typical Impact on Worst Case | Frequency           |
+| -------------- | ---------------------------- | ------------------- |
+| Technical      | 2-5x the likely estimate     | Common              |
+| Scope          | 1.5-3x                       | Common              |
+| External       | 0 or complete block          | Uncommon but severe |
+| Integration    | 1.5-2x                       | Common              |
+| Organizational | 1.2-2x                       | Moderate            |
 
 ---
 
