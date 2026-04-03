@@ -10,6 +10,7 @@ Claude reads this to calibrate extraction strategy per video type.
 **Focus areas:** Core thesis, supporting arguments, cited works, key definitions, logical flow
 
 **What to extract:**
+
 - Central thesis or claim (state in one sentence)
 - Supporting arguments with evidence cited
 - Definitions of domain-specific terms (quote or paraphrase)
@@ -20,6 +21,7 @@ Claude reads this to calibrate extraction strategy per video type.
 **What to skip:** Housekeeping remarks, repeated summaries, audience Q&A tangents
 
 **Output structure:**
+
 ```
 ## TL;DR
 [One-sentence thesis]
@@ -48,6 +50,7 @@ Claude reads this to calibrate extraction strategy per video type.
 **Focus areas:** Steps, tools/technologies, prerequisites, gotchas, versions
 
 **What to extract:**
+
 - Prerequisites (tools, accounts, prior knowledge)
 - Exact steps in order, with commands/code when spoken
 - Tools and their versions mentioned
@@ -58,6 +61,7 @@ Claude reads this to calibrate extraction strategy per video type.
 **What to skip:** Setup troubleshooting for specific OSes (unless the tutorial is OS-specific), sponsor segments
 
 **Output structure:**
+
 ```
 ## TL;DR
 [What you'll build/achieve]
@@ -88,6 +92,7 @@ Claude reads this to calibrate extraction strategy per video type.
 **Focus areas:** Key perspectives, disagreements, unique insights, background context
 
 **What to extract:**
+
 - Each speaker's core positions (attributed)
 - Points of agreement and disagreement
 - Anecdotes or examples that illustrate key points
@@ -98,6 +103,7 @@ Claude reads this to calibrate extraction strategy per video type.
 **What to skip:** Small talk, repeated questions, filler conversation
 
 **Output structure:**
+
 ```
 ## TL;DR
 [Core topic and main takeaway]
@@ -127,6 +133,7 @@ Claude reads this to calibrate extraction strategy per video type.
 **Focus areas:** Topics covered, opinions, recommendations, tangents worth noting
 
 **What to extract:**
+
 - Topic thread progression (what was discussed, in what order)
 - Opinions expressed (attributed to speaker)
 - Recommendations: books, tools, services, people, content
@@ -137,6 +144,7 @@ Claude reads this to calibrate extraction strategy per video type.
 **What to skip:** Ad reads, repeated self-promotion, extensive inside jokes without substance
 
 **Output structure:**
+
 ```
 ## TL;DR
 [Main topics and one key insight]
@@ -166,6 +174,7 @@ Claude reads this to calibrate extraction strategy per video type.
 **Focus areas:** Architecture decisions, trade-offs, benchmarks, lessons learned, production experience
 
 **What to extract:**
+
 - Problem statement and constraints
 - Architecture or system design described
 - Trade-offs explicitly discussed (chose X over Y because Z)
@@ -177,6 +186,7 @@ Claude reads this to calibrate extraction strategy per video type.
 **What to skip:** Company recruiting pitches, overly basic background for the audience level
 
 **Output structure:**
+
 ```
 ## TL;DR
 [Problem solved and approach taken]
@@ -209,6 +219,7 @@ Claude reads this to calibrate extraction strategy per video type.
 **Focus areas:** Consensus vs. disagreement, unique perspectives per speaker, emerging themes
 
 **What to extract:**
+
 - Each panelist's background (as introduced)
 - Consensus points (what everyone agrees on)
 - Disagreement points (attributed positions)
@@ -219,6 +230,7 @@ Claude reads this to calibrate extraction strategy per video type.
 **What to skip:** Introductions beyond establishing expertise, repeated moderator summaries
 
 **Output structure:**
+
 ```
 ## TL;DR
 [Panel topic and the one thing that emerged]
@@ -249,13 +261,13 @@ Claude reads this to calibrate extraction strategy per video type.
 
 When `--type auto`, Claude should infer the video type from:
 
-| Signal | Likely Type |
-|--------|-------------|
-| Single speaker, academic tone, citations | Lecture |
-| "Let me show you how to..." / screen share references | Tutorial |
-| Two speakers, question-answer pattern | Interview |
-| Casual conversation, multiple topics, recurring hosts | Podcast |
-| Conference stage, system/architecture focus | Tech Talk |
-| 3+ speakers, moderator, topic rotation | Panel |
+| Signal                                                | Likely Type |
+| ----------------------------------------------------- | ----------- |
+| Single speaker, academic tone, citations              | Lecture     |
+| "Let me show you how to..." / screen share references | Tutorial    |
+| Two speakers, question-answer pattern                 | Interview   |
+| Casual conversation, multiple topics, recurring hosts | Podcast     |
+| Conference stage, system/architecture focus           | Tech Talk   |
+| 3+ speakers, moderator, topic rotation                | Panel       |
 
 If uncertain, default to a generic analysis that pulls from all patterns.
