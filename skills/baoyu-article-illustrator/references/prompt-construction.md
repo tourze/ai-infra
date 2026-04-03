@@ -135,6 +135,16 @@ COLORS: Cream background (#F5F0E6), Coral Red (#E07A5F), Mint Green (#81B29A), M
 ELEMENTS: Geometric simplified icons, no gradients, playful decorative elements (dots, stars)
 ```
 
+**Infographic + vector-illustration (warm palette)**:
+```
+Flat vector illustration infographic. Clean black outlines on all elements.
+Warm-only color palette, no cool colors.
+COLORS: Soft Peach background (#FFECD2), Warm Orange (#ED8936),
+        Terracotta (#C05621), Golden Yellow (#F6AD55), Deep Brown (#744210)
+ELEMENTS: Geometric simplified icons, no gradients, rounded corners,
+          modular card layout, consistent icon style
+```
+
 ### Scene
 
 ```
@@ -197,6 +207,15 @@ COLORS: Left side Coral (#E07A5F), Right side Mint (#81B29A), cream background
 ELEMENTS: Bold icons, black outlines, centered divider line
 ```
 
+**Comparison + vector-illustration (warm palette)**:
+```
+Flat vector comparison with split layout. Clear visual separation.
+Warm-only color palette, no cool colors.
+COLORS: Left side Warm Orange (#ED8936), Right side Terracotta (#C05621),
+        Soft Peach background (#FFECD2), Deep Brown (#744210) accents
+ELEMENTS: Bold icons, black outlines, centered divider line
+```
+
 ### Framework
 
 ```
@@ -217,6 +236,15 @@ ASPECT: 16:9
 ```
 Flat vector framework diagram with geometric nodes and bold connectors.
 COLORS: Cream background (#F5F0E6), nodes in Coral/Mint/Mustard/Blue, black outlines
+ELEMENTS: Rounded rectangles or circles for nodes, thick connecting lines
+```
+
+**Framework + vector-illustration (warm palette)**:
+```
+Flat vector framework diagram with geometric nodes and bold connectors.
+Warm-only color palette, no cool colors.
+COLORS: Soft Peach background (#FFECD2), nodes in Warm Orange (#ED8936),
+        Terracotta (#C05621), Golden Yellow (#F6AD55), black outlines
 ELEMENTS: Rounded rectangles or circles for nodes, thick connecting lines
 ```
 
