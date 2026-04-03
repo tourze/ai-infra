@@ -11,15 +11,15 @@ diagnostic information with minimal code changes.
 
 Add diagnostic output at these categories of locations, ordered by priority:
 
-| Location | What to Log | Why |
-|----------|------------|-----|
-| Function entry | Arguments received | Verify inputs are what you expect |
-| Function exit | Return value | Verify output is correct |
-| Decision points | Branch taken, condition values | Understand which path executed |
-| State mutations | Before and after values | Detect unexpected changes |
-| External call boundaries | Request sent, response received | Isolate integration failures |
-| Loop iterations | Counter, current element | Detect off-by-one, infinite loops |
-| Exception handlers | Exception type, message, context | Understand what was caught and why |
+| Location                 | What to Log                      | Why                                |
+| ------------------------ | -------------------------------- | ---------------------------------- |
+| Function entry           | Arguments received               | Verify inputs are what you expect  |
+| Function exit            | Return value                     | Verify output is correct           |
+| Decision points          | Branch taken, condition values   | Understand which path executed     |
+| State mutations          | Before and after values          | Detect unexpected changes          |
+| External call boundaries | Request sent, response received  | Isolate integration failures       |
+| Loop iterations          | Counter, current element         | Detect off-by-one, infinite loops  |
+| Exception handlers       | Exception type, message, context | Understand what was caught and why |
 
 ### Minimum Effective Instrumentation
 
@@ -104,13 +104,13 @@ debugpy.wait_for_client()  # Pauses until debugger attaches
 
 ### Breakpoint Placement
 
-| Placement | Use When |
-|-----------|----------|
+| Placement               | Use When                            |
+| ----------------------- | ----------------------------------- |
 | Before the failing line | Inspect state just before the crash |
-| At function entry | Verify arguments are correct |
-| Inside a condition body | Verify the condition was reached |
-| In exception handler | Inspect the exception object |
-| At the return statement | Verify the computed result |
+| At function entry       | Verify arguments are correct        |
+| Inside a condition body | Verify the condition was reached    |
+| In exception handler    | Inspect the exception object        |
+| At the return statement | Verify the computed result          |
 
 ### Post-Mortem Debugging
 
@@ -214,23 +214,23 @@ watcher.record(user.status, "after_process")
 
 ## Choosing Between Logging and Breakpoints
 
-| Use Logging When | Use Breakpoints When |
-|------------------|---------------------|
-| Bug is in production or CI | Bug is reproducible locally |
-| Need to see execution flow across time | Need to inspect complex objects interactively |
-| Bug is intermittent (need many data points) | Bug is deterministic |
-| Multiple developers need to see output | Solo debugging session |
-| Need to preserve evidence for documentation | Quick exploration |
+| Use Logging When                            | Use Breakpoints When                          |
+| ------------------------------------------- | --------------------------------------------- |
+| Bug is in production or CI                  | Bug is reproducible locally                   |
+| Need to see execution flow across time      | Need to inspect complex objects interactively |
+| Bug is intermittent (need many data points) | Bug is deterministic                          |
+| Multiple developers need to see output      | Solo debugging session                        |
+| Need to preserve evidence for documentation | Quick exploration                             |
 
 ---
 
 ## Instrumentation Anti-Patterns
 
-| Anti-Pattern | Problem | Fix |
-|--------------|---------|-----|
-| Logging inside tight loops | Floods logs, hides useful entries | Log summary after loop, or sample every Nth iteration |
-| Logging sensitive data | Security risk (passwords, tokens) | Mask sensitive fields: `token=***{last4}` |
-| Leaving debug logging permanently | Performance overhead, log noise | Use `DEBUG-TEMP` marker, clean up after resolution |
-| Logging without context | "Error occurred" tells nothing | Always include identifiers: user_id, request_id, entity_id |
-| `print()` instead of `logging` | Cannot control output, no levels | Use `logging` module with appropriate levels |
-| Catching and logging without re-raising | Swallows the error | `logger.exception("...")` then `raise` |
+| Anti-Pattern                            | Problem                           | Fix                                                        |
+| --------------------------------------- | --------------------------------- | ---------------------------------------------------------- |
+| Logging inside tight loops              | Floods logs, hides useful entries | Log summary after loop, or sample every Nth iteration      |
+| Logging sensitive data                  | Security risk (passwords, tokens) | Mask sensitive fields: `token=***{last4}`                  |
+| Leaving debug logging permanently       | Performance overhead, log noise   | Use `DEBUG-TEMP` marker, clean up after resolution         |
+| Logging without context                 | "Error occurred" tells nothing    | Always include identifiers: user_id, request_id, entity_id |
+| `print()` instead of `logging`          | Cannot control output, no levels  | Use `logging` module with appropriate levels               |
+| Catching and logging without re-raising | Swallows the error                | `logger.exception("...")` then `raise`                     |

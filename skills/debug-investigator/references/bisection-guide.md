@@ -10,11 +10,13 @@ the source of a bug to a specific change.
 ### When to Use Bisect
 
 Use git bisect when:
+
 - The bug appeared at some point in history (not always present)
 - You can identify a known-good commit and a known-bad commit
 - You have a way to test each commit (automated or manual)
 
 Do NOT use when:
+
 - The bug is in uncommitted code
 - The bug is environment-dependent (same code, different behavior)
 - The test takes longer than a few minutes per commit
