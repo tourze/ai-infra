@@ -1,6 +1,7 @@
 # Go Refinement Patterns
 
 ## Table of Contents
+
 1. [Error Handling](#error-handling)
 2. [Structural Patterns](#structural-patterns)
 3. [Interface Design](#interface-design)
@@ -12,6 +13,7 @@
 ## Error Handling
 
 ### Wrap Errors with Context
+
 ```go
 // Before
 if err != nil {
@@ -25,6 +27,7 @@ if err != nil {
 ```
 
 ### Sentinel Errors for Expected Conditions
+
 ```go
 var ErrNotFound = errors.New("record not found")
 
@@ -33,6 +36,7 @@ if errors.Is(err, ErrNotFound) { ... }
 ```
 
 ### Error Type Assertion
+
 ```go
 var pathErr *os.PathError
 if errors.As(err, &pathErr) {
@@ -41,6 +45,7 @@ if errors.As(err, &pathErr) {
 ```
 
 ### Don't Log and Return
+
 Either log the error (if you're the handler) or return it (if you're a library).
 Never both — it creates duplicate noise.
 
@@ -49,7 +54,9 @@ Never both — it creates duplicate noise.
 ## Structural Patterns
 
 ### Table-Driven Tests
+
 Replace repetitive test functions with a test table:
+
 ```go
 tests := []struct {
     name     string
@@ -74,7 +81,9 @@ for _, tt := range tests {
 ```
 
 ### Functional Options
+
 Replace large config structs with functional options for optional configuration:
+
 ```go
 type Option func(*Server)
 
@@ -92,7 +101,9 @@ func NewServer(opts ...Option) *Server {
 ```
 
 ### Guard Clauses
+
 Same principle as other languages — exit early, keep the happy path at the lowest indent:
+
 ```go
 func (s *Service) Process(ctx context.Context, req *Request) error {
     if req == nil {
@@ -111,10 +122,13 @@ func (s *Service) Process(ctx context.Context, req *Request) error {
 ## Interface Design
 
 ### Accept Interfaces, Return Structs
+
 Functions should accept the narrowest interface they need and return concrete types.
 
 ### Small Interfaces
+
 Prefer 1-2 method interfaces. Compose larger behaviors from small interfaces.
+
 ```go
 type Reader interface { Read(p []byte) (n int, err error) }
 type Writer interface { Write(p []byte) (n int, err error) }
@@ -122,7 +136,8 @@ type ReadWriter interface { Reader; Writer }
 ```
 
 ### Define Interfaces at the Consumer
-The package that *uses* the interface should define it, not the package that implements it.
+
+The package that _uses_ the interface should define it, not the package that implements it.
 This keeps dependencies flowing in one direction.
 
 ---
@@ -130,6 +145,7 @@ This keeps dependencies flowing in one direction.
 ## Concurrency
 
 ### Use `errgroup` for Parallel Work with Error Collection
+
 ```go
 g, ctx := errgroup.WithContext(ctx)
 for _, url := range urls {
@@ -143,9 +159,11 @@ if err := g.Wait(); err != nil {
 ```
 
 ### Don't Start Goroutines in Library Code Without Lifecycle Control
+
 If you must, accept a context and/or return a cleanup function.
 
 ### Channel Direction Annotations
+
 ```go
 func producer(ch chan<- int) { ... }  // send only
 func consumer(ch <-chan int) { ... }  // receive only
@@ -155,13 +173,13 @@ func consumer(ch <-chan int) { ... }  // receive only
 
 ## Anti-Patterns
 
-| Anti-Pattern | Fix |
-|-------------|-----|
-| `init()` with side effects | Move to explicit initialization function |
-| Package-level `var` for mutable state | Pass dependencies explicitly |
-| `interface{}` / `any` when concrete type is known | Use the concrete type or a constrained generic |
-| Panicking in library code | Return errors |
-| Ignoring errors with `_` | Handle or wrap. If truly ignorable, add a comment explaining why |
-| `sync.Mutex` protecting a single field | Consider `atomic` types |
-| Channels for simple mutual exclusion | Use `sync.Mutex` |
-| Deeply nested `if err != nil` chains | Extract into helper functions with named returns |
+| Anti-Pattern                                      | Fix                                                              |
+| ------------------------------------------------- | ---------------------------------------------------------------- |
+| `init()` with side effects                        | Move to explicit initialization function                         |
+| Package-level `var` for mutable state             | Pass dependencies explicitly                                     |
+| `interface{}` / `any` when concrete type is known | Use the concrete type or a constrained generic                   |
+| Panicking in library code                         | Return errors                                                    |
+| Ignoring errors with `_`                          | Handle or wrap. If truly ignorable, add a comment explaining why |
+| `sync.Mutex` protecting a single field            | Consider `atomic` types                                          |
+| Channels for simple mutual exclusion              | Use `sync.Mutex`                                                 |
+| Deeply nested `if err != nil` chains              | Extract into helper functions with named returns                 |

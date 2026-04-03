@@ -1,6 +1,7 @@
 # Python Refinement Patterns
 
 ## Table of Contents
+
 1. [Structural Patterns](#structural-patterns)
 2. [Anti-Patterns to Eliminate](#anti-patterns-to-eliminate)
 3. [Stdlib Replacements](#stdlib-replacements)
@@ -101,10 +102,12 @@ class Config:
 ## Anti-Patterns to Eliminate
 
 ### Bare `except`
+
 Always catch specific exceptions. `except Exception` is acceptable as a last resort
 with logging; bare `except:` catches SystemExit and KeyboardInterrupt.
 
 ### Mutable Default Arguments
+
 ```python
 # Bug: shared mutable default
 def append_to(item, target=[]):  # WRONG
@@ -120,12 +123,15 @@ def append_to(item, target=None):
 ```
 
 ### Type Checking with `type()` instead of `isinstance()`
+
 `isinstance()` respects inheritance and supports union checks.
 
 ### String Concatenation in Loops
+
 Use `"".join()` or f-strings. Repeated `+=` on strings creates O(n²) behavior.
 
 ### Redundant Boolean Comparisons
+
 ```python
 # Before
 if is_valid == True:
@@ -137,24 +143,25 @@ if is_valid:
 if items:
 if result is not None:  # Keep this one — explicit None check is intentional
 ```
+
 Note: `if x is not None` is NOT the same as `if x`. Keep explicit None checks.
 
 ---
 
 ## Stdlib Replacements
 
-| Pattern | Replace With |
-|---------|-------------|
-| Manual dict grouping loop | `collections.defaultdict` or `itertools.groupby` |
-| `dict.get(k)` then check None | `dict.setdefault(k, default)` or `collections.defaultdict` |
-| Manual counter loop | `collections.Counter` |
-| Nested dict access with KeyError handling | `dict.get(k, {}).get(k2, default)` or a helper |
-| Manual LRU cache | `functools.lru_cache` or `functools.cache` (3.9+) |
-| Manual partial application | `functools.partial` |
-| Manual chain of iterables | `itertools.chain` |
-| `os.path.join` + `os.path.exists` | `pathlib.Path` |
-| `subprocess.Popen` for simple commands | `subprocess.run` |
-| Manual retry loops | Consider `tenacity` if already a dependency, otherwise a small helper |
+| Pattern                                   | Replace With                                                          |
+| ----------------------------------------- | --------------------------------------------------------------------- |
+| Manual dict grouping loop                 | `collections.defaultdict` or `itertools.groupby`                      |
+| `dict.get(k)` then check None             | `dict.setdefault(k, default)` or `collections.defaultdict`            |
+| Manual counter loop                       | `collections.Counter`                                                 |
+| Nested dict access with KeyError handling | `dict.get(k, {}).get(k2, default)` or a helper                        |
+| Manual LRU cache                          | `functools.lru_cache` or `functools.cache` (3.9+)                     |
+| Manual partial application                | `functools.partial`                                                   |
+| Manual chain of iterables                 | `itertools.chain`                                                     |
+| `os.path.join` + `os.path.exists`         | `pathlib.Path`                                                        |
+| `subprocess.Popen` for simple commands    | `subprocess.run`                                                      |
+| Manual retry loops                        | Consider `tenacity` if already a dependency, otherwise a small helper |
 
 ---
 
@@ -172,6 +179,7 @@ Note: `if x is not None` is NOT the same as `if x`. Keep explicit None checks.
 ## Modern Python
 
 ### Structural Pattern Matching (3.10+)
+
 Replace complex if/elif chains on type/structure with `match`:
 
 ```python
@@ -196,7 +204,9 @@ match event:
 Only use when there are 3+ branches and the pattern destructuring adds clarity.
 
 ### Exception Groups (3.11+)
+
 For concurrent error collection, use `ExceptionGroup` and `except*`.
 
 ### `tomllib` (3.11+)
+
 Don't use third-party TOML parsers if you only need reading.
