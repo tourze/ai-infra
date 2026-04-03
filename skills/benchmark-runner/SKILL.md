@@ -1,16 +1,21 @@
 ---
 name: benchmark-runner
-description: >
-  Designs structured benchmarks for comparing algorithms, models, or implementations.
+description:
+  'Designs structured benchmarks for comparing algorithms, models, or implementations.
   Selects appropriate metrics (latency, throughput, memory, accuracy), designs representative
-  test cases, captures hardware/software context, produces comparison tables with tradeoff
-  analysis, and includes reproduction instructions.
-  Triggers on: "benchmark", "compare performance", "which is faster", "latency comparison",
-  "memory comparison", "run benchmark", "design benchmark", "compare implementations",
-  "evaluate algorithms", "performance comparison", "throughput test", "speed test".
-  Use this skill when comparing two or more implementations, algorithms, or models.
+  test cases, captures hardware/software context, produces comparison tables with
+  tradeoff analysis, and includes reproduction instructions. Triggers on: "benchmark",
+  "compare performance", "which is faster", "latency comparison", "memory comparison",
+  "run benchmark", "design benchmark", "compare implementations", "evaluate algorithms",
+  "performance comparison", "throughput test", "speed test". Use this skill when comparing
+  two or more implementations, algorithms, or models.
+
+  '
 metadata:
   version: 1.1.0
+  category: data
+  tags: [benchmarking, performance, comparison, metrics]
+  difficulty: intermediate
 ---
 
 # Benchmark Runner
