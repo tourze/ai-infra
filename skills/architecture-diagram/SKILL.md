@@ -1,15 +1,21 @@
 ---
 name: architecture-diagram
-description: >
-  Generate detailed layered architecture diagrams as self-contained HTML artifacts with inline
-  SVG icons, CSS Grid nested container layout, SVG path connection overlays, and color-coded
-  connection legends. Triggers on: "architecture diagram", "infra diagram", "system diagram",
-  "deployment diagram", "network diagram", "topology", "draw architecture", "visualize
-  architecture", "system topology", or any request for visual representation of system
-  components, containment hierarchy, and interconnections. For architecture reviews, audits,
-  critiques, or design assessments, use architecture-reviewer instead.
+description:
+  'Generate detailed layered architecture diagrams as self-contained HTML
+  artifacts with inline SVG icons, CSS Grid nested container layout, SVG path connection
+  overlays, and color-coded connection legends. Triggers on: "architecture diagram",
+  "infra diagram", "system diagram", "deployment diagram", "network diagram", "topology",
+  "draw architecture", "visualize architecture", "system topology", or any request
+  for visual representation of system components, containment hierarchy, and interconnections.
+  For architecture reviews, audits, critiques, or design assessments, use architecture-reviewer
+  instead.
+
+  '
 metadata:
   version: 1.1.0
+  category: review
+  tags: [architecture, diagram, visualization, svg]
+  difficulty: intermediate
 ---
 
 # Architecture Diagram Generator
@@ -83,13 +89,13 @@ When the user doesn't specify flow semantics, default all connections to `defaul
 
 ## Error Handling
 
-| Problem | Cause | Fix |
-| ------- | ----- | --- |
-| `assets/template.html` missing | File deleted or skill directory incomplete | Regenerate from skill defaults: reconstruct the CSS/JS skeleton using the structure documented in this SKILL.md and the reference files |
-| Icon reference not found in `references/icons.md` | Component type not in the registry | Fall back to the generic box icon defined in `references/icons.md § Generic Fallback`; log the missing icon name in a comment |
-| Connection lines overlap or route through nodes | Dense graph with auto-routing conflicts | Adjust zone layout: increase `grid-template-columns` spacing, add intermediate waypoint nodes, or use `side-forcing` attributes from `references/connections.md` |
-| Playwright render failure during HTML-to-image export | Chromium not installed or script error | Run `playwright install chromium`; check browser console via `--headed` flag; verify no JS syntax errors in the connection renderer script |
-| Zone nesting exceeds depth-3 styling | Architecture has more than 4 containment levels | Flatten by combining the deepest two levels into a single zone, or split into two separate diagrams linked by description |
+| Problem                                               | Cause                                           | Fix                                                                                                                                                              |
+| ----------------------------------------------------- | ----------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `assets/template.html` missing                        | File deleted or skill directory incomplete      | Regenerate from skill defaults: reconstruct the CSS/JS skeleton using the structure documented in this SKILL.md and the reference files                          |
+| Icon reference not found in `references/icons.md`     | Component type not in the registry              | Fall back to the generic box icon defined in `references/icons.md § Generic Fallback`; log the missing icon name in a comment                                    |
+| Connection lines overlap or route through nodes       | Dense graph with auto-routing conflicts         | Adjust zone layout: increase `grid-template-columns` spacing, add intermediate waypoint nodes, or use `side-forcing` attributes from `references/connections.md` |
+| Playwright render failure during HTML-to-image export | Chromium not installed or script error          | Run `playwright install chromium`; check browser console via `--headed` flag; verify no JS syntax errors in the connection renderer script                       |
+| Zone nesting exceeds depth-3 styling                  | Architecture has more than 4 containment levels | Flatten by combining the deepest two levels into a single zone, or split into two separate diagrams linked by description                                        |
 
 ## References
 
