@@ -90,12 +90,12 @@ https://github.com/obra/superpowers/tree/main/skills/verification-before-complet
 https://github.com/microsoft/skills/tree/main/.github/skills/frontend-design-review => frontend-design-review
 https://github.com/microsoft/skills/tree/main/.github/plugins/deep-wiki/skills/wiki-researcher => wiki-researcher
 
-https://github.com/new-silvermoon/awesome-android-agent-skills/tree/main/.github/skills/android-accessibility => android-accessibility
-https://github.com/new-silvermoon/awesome-android-agent-skills/tree/main/.github/skills/android-architecture => android-architecture
-https://github.com/new-silvermoon/awesome-android-agent-skills/tree/main/.github/skills/android-coroutines => android-coroutines
-https://github.com/new-silvermoon/awesome-android-agent-skills/tree/main/.github/skills/android-emulator-skill => android-emulator-skill
-https://github.com/new-silvermoon/awesome-android-agent-skills/tree/main/.github/skills/android-testing => android-testing
-https://github.com/new-silvermoon/awesome-android-agent-skills/tree/main/.github/skills/gradle-build-performance => gradle-build-performance
+https://github.com/new-silvermoon/awesome-android-agent-skills/tree/main/.github/skills/ui/android-accessibility => android-accessibility
+https://github.com/new-silvermoon/awesome-android-agent-skills/tree/main/.github/skills/architecture/android-architecture => android-architecture
+https://github.com/new-silvermoon/awesome-android-agent-skills/tree/main/.github/skills/concurrency_and_networking/android-coroutines => android-coroutines
+https://github.com/new-silvermoon/awesome-android-agent-skills/tree/main/.github/skills/testing_and_automation/android-emulator-skill => android-emulator-skill
+https://github.com/new-silvermoon/awesome-android-agent-skills/tree/main/.github/skills/testing_and_automation/android-testing => android-testing
+https://github.com/new-silvermoon/awesome-android-agent-skills/tree/main/.github/skills/performance/gradle-build-performance => gradle-build-performance
 
 https://github.com/alirezarezvani/claude-skills/tree/main/finance/financial-analyst => financial-analyst
 https://github.com/alirezarezvani/claude-skills/tree/main/marketing-skill/analytics-tracking => analytics-tracking
@@ -419,3 +419,5 @@ https://github.com/regenrek/agent-skills/tree/main/skills/redesign-my-landingpag
 https://github.com/regenrek/agent-skills/tree/main/skills/root-cause-finder => root-cause-finder
 
 https://github.com/shaowenfu/ClawTools/tree/main/skills/social-platform-safety => social-platform-safety
+
+https://github.com/davidkiss/smart-ai-skills/tree/main/skills/reflection => reflection
