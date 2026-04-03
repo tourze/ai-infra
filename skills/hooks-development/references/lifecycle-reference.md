@@ -146,7 +146,7 @@
 - **Tool Executes** — The actual tool runs (Bash, Edit, Read, Write, MCP tools)
 - **SubagentStop** — CAN BLOCK. Task tool only. Validates subagent completion
 - **PostToolUse** — CAN BLOCK (soft). Tool **succeeded**; `decision:block` required for Claude visibility
-- **PostToolUseFailure** — CAN BLOCK (soft). Tool **failed**; fires on Bash non-zero exit, Write ENOENT. Does NOT fire for Read/Edit/Glob/Grep `<tool_use_error>` ([#24908](https://github.com/anthropics/claude-code/issues/24908))
+- **PostToolUseFailure** — CAN BLOCK (soft) ¹. Tool **failed**; fires on Bash non-zero exit, Write ENOENT. Does NOT fire for Read/Edit/Glob/Grep `<tool_use_error>` ([#24908](https://github.com/anthropics/claude-code/issues/24908))
 
 ### 3. Blocking vs Non-Blocking Hooks
 
@@ -158,7 +158,7 @@
 | PreToolUse         | Hard       | exit 2 OR `permissionDecision:deny` | Prevents execution, reason fed to Claude              |
 | PermissionRequest  | Hard       | `behavior:deny`                     | Rejects permission, optional interrupt flag           |
 | PostToolUse        | Soft       | `decision:block` + reason           | Tool succeeded; `decision:block` = visibility only    |
-| PostToolUseFailure | Soft       | `decision:block` + reason           | Tool failed; `decision:block` = visibility only       |
+| PostToolUseFailure | Soft       | `decision:block` + reason           | Tool failed; `decision:block` = visibility only ¹     |
 | SubagentStop       | Hard       | `decision:block` + reason           | Forces subagent to continue working                   |
 | Stop               | Hard       | `decision:block` + reason           | Forces Claude to continue (check `stop_hook_active`!) |
 | TeammateIdle       | Hard       | exit 2                              | Keeps teammate working; stderr = feedback             |
@@ -177,6 +177,14 @@
 | InstructionsLoaded | Audit logging when instruction files load       |
 | WorktreeCreate     | Worktree path output (stdout = path)            |
 | WorktreeRemove     | Cleanup when worktree removed at session exit   |
+| PostCompact        | Logging/archival after context summarization    |
+
+**CAN BLOCK (MCP Elicitation):**
+
+| Hook              | Block Type | Mechanism                             | Effect                                    |
+| ----------------- | ---------- | ------------------------------------- | ----------------------------------------- |
+| Elicitation       | Hard       | `action`: `accept`/`decline`/`cancel` | Controls MCP server user input requests   |
+| ElicitationResult | Hard       | Override `action`/`content`; exit 2   | Modifies user responses before MCP server |
 
 ```{=latex}
 \newpage
@@ -232,9 +240,11 @@ Every hook can output these fields:
 | **PreToolUse**         | Exit 2 OR `permissionDecision:deny` | `permissionDecision:ask`  | Prevents tool execution, reason fed to Claude. **Prefer `deny` over `ask`** — see Decision Policy below |
 | **PermissionRequest**  | `behavior:deny`                     | —                         | Rejects permission, optional interrupt flag                                                             |
 | **PostToolUse**        | —                                   | `decision:block` + reason | Tool succeeded; `decision:block` = visibility only                                                      |
-| **PostToolUseFailure** | —                                   | `decision:block` + reason | Tool failed; `decision:block` = visibility only                                                         |
+| **PostToolUseFailure** | —                                   | `decision:block` + reason | Tool failed; `decision:block` = visibility only ¹                                                       |
 | **SubagentStop**       | `decision:block` + reason           | —                         | Forces subagent to continue working                                                                     |
 | **Stop**               | `decision:block` + reason           | —                         | Forces Claude to continue (check stop_hook_active!)                                                     |
+
+> ¹ **Unverified in production** (2026-03-27): `decision:block` for PostToolUseFailure has zero production usage in cc-skills. Official docs may not support it. Use `additionalContext` as a safer alternative until live-probe validated.
 
 ### Universal Control (All Hooks)
 
@@ -304,8 +314,11 @@ Every hook can output these fields:
 | **ConfigChange**       | Settings or skill files change during session                | **Yes** | `user_settings`, `project_settings`, `local_settings`, `policy_settings`, `skills` |
 | **WorktreeCreate**     | Worktree created via `--worktree`                            | No      | None (stdout = worktree path)                                                      |
 | **WorktreeRemove**     | Worktree removed at session exit                             | No      | None (failures logged in debug mode only)                                          |
+| **PostCompact**        | After context summarization completes                        | No      | `manual`, `auto`                                                                   |
+| **Elicitation**        | MCP server requests user input                               | **Yes** | MCP server name                                                                    |
+| **ElicitationResult**  | User responds to MCP elicitation                             | **Yes** | MCP server name                                                                    |
 
-> **Note**: All 19 events above are confirmed in the [JSON schema](https://json.schemastore.org/claude-code-settings.json) and official documentation (verified 2026-03-07). `Setup` is marked "UNDOCUMENTED" in the schema description.
+> **Note**: All 22 events above are confirmed in the [JSON schema](https://json.schemastore.org/claude-code-settings.json) with `additionalProperties: false` (schema-validated via `jsonschema.validate()` 2026-03-27). `Setup` is marked "UNDOCUMENTED" in the schema description.
 
 ### Input & Output Details
 
@@ -321,7 +334,7 @@ All events receive these **universal fields** via stdin JSON (source: `t2()` bas
 | **PreToolUse**         | `tool_name`, `tool_input`, `tool_use_id`                                                                                    | `permissionDecision`: `allow`/`deny`/`ask`; `updatedInput`; `additionalContext`                    |
 | **PermissionRequest**  | `tool_name`, `tool_input`, `permission_suggestions` (optional)                                                              | `decision.behavior`: `allow`/`deny`; `updatedInput`; `updatedPermissions`; `message`               |
 | **PostToolUse**        | `tool_name`, `tool_input`, `tool_response`, `tool_use_id`                                                                   | `decision:block` + `reason`; `additionalContext`; `updatedMCPToolOutput` (MCP only)                |
-| **PostToolUseFailure** | `tool_name`, `tool_input`, `tool_use_id`, `error`, `is_interrupt` (optional)                                                | `additionalContext`; `decision:block` + `reason` for visibility                                    |
+| **PostToolUseFailure** | `tool_name`, `tool_input`, `tool_use_id`, `error`, `is_interrupt` (optional)                                                | `additionalContext`; `decision:block` + `reason` for visibility ¹                                  |
 | **Notification**       | `message`, `title` (optional), `notification_type`                                                                          | `additionalContext`                                                                                |
 | **SubagentStart**      | `agent_id`, `agent_type`                                                                                                    | `additionalContext`                                                                                |
 | **SubagentStop**       | `stop_hook_active`, `agent_id`, `agent_type`, `agent_transcript_path`                                                       | `{"decision": "block", "reason": "..."}` forces continuation                                       |
@@ -334,16 +347,19 @@ All events receive these **universal fields** via stdin JSON (source: `t2()` bas
 | **ConfigChange**       | Config file path, change type                                                                                               | `{"decision": "block"}` blocks change (except `policy_settings`); Exit 2 = block                   |
 | **WorktreeCreate**     | (none documented)                                                                                                           | stdout = absolute worktree path; non-zero exit = failure                                           |
 | **WorktreeRemove**     | (none documented)                                                                                                           | Failures logged in debug mode only                                                                 |
+| **PostCompact**        | `trigger`: `manual`/`auto`                                                                                                  | stdout in verbose mode (companion to PreCompact)                                                   |
+| **Elicitation**        | `server_name`, `request` (form fields)                                                                                      | `hookSpecificOutput.action`: `accept`/`decline`/`cancel`; `hookSpecificOutput.content` (values)    |
+| **ElicitationResult**  | `server_name`, `action`, `content` (user responses)                                                                         | Can override `action` and `content`; exit 2 = decline                                              |
 
-### Hook Types: Validated vs Documented (Updated 2026-02-12)
+### Hook Types: Validated vs Documented (Updated 2026-03-27)
 
 **Important**: Hook type names are case-sensitive and must match exactly.
 
-#### Confirmed Hook Events (19 total, in JSON Schema)
+#### Confirmed Hook Events (22 total, in JSON Schema)
 
-These hooks are validated in the [Claude Code settings JSON schema](https://json.schemastore.org/claude-code-settings.json) with `additionalProperties: false` — any other name is rejected:
+These hooks are validated in the [Claude Code settings JSON schema](https://json.schemastore.org/claude-code-settings.json) with `additionalProperties: false` — any other name is rejected. Empirically confirmed via `jsonschema.validate()` on 2026-03-27:
 
-- `SessionStart`, `Setup`, `UserPromptSubmit`, `PreToolUse`, `PermissionRequest`, `PostToolUse`, `PostToolUseFailure`, `Notification`, `SubagentStart`, `SubagentStop`, `Stop`, `TeammateIdle`, `TaskCompleted`, `PreCompact`, `SessionEnd`, `InstructionsLoaded`, `ConfigChange`, `WorktreeCreate`, `WorktreeRemove`
+- `SessionStart`, `Setup`, `UserPromptSubmit`, `PreToolUse`, `PermissionRequest`, `PostToolUse`, `PostToolUseFailure`, `Notification`, `SubagentStart`, `SubagentStop`, `Stop`, `TeammateIdle`, `TaskCompleted`, `PreCompact`, `PostCompact`, `SessionEnd`, `InstructionsLoaded`, `ConfigChange`, `WorktreeCreate`, `WorktreeRemove`, `Elicitation`, `ElicitationResult`
 
 #### PostToolUseFailure: Error Handling Hook (Empirically Verified 2026-02-12)
 
@@ -403,7 +419,7 @@ These hooks are validated in the [Claude Code settings JSON schema](https://json
 **References:**
 
 - [Claude Code Hooks Reference](https://code.claude.com/docs/en/hooks) — Official documentation
-- [JSON Schema](https://json.schemastore.org/claude-code-settings.json) — Authoritative validation (19 events, `additionalProperties: false`)
+- [JSON Schema](https://json.schemastore.org/claude-code-settings.json) — Authoritative validation (22 events, `additionalProperties: false`)
 - [GitHub Issue #14859](https://github.com/anthropics/claude-code/issues/14859) — SubagentStart discussion
 - [GitHub Issue #24908](https://github.com/anthropics/claude-code/issues/24908) — PostToolUseFailure scope limitation
 
@@ -605,8 +621,38 @@ For a PreToolUse Bash hook (includes universal base fields + event-specific fiel
 ### Exit Codes
 
 - **0** — Success/allow (JSON output processed)
-- **2** — Hard block, cannot bypass (stderr only)
-- **Other** — Non-blocking error
+- **2** — Hard block, cannot bypass (stderr only, JSON on stdout is ignored)
+- **1 / Other** — Non-blocking error (stderr in verbose mode only, tool proceeds)
+
+#### Exit Code Interchangeability (PreToolUse)
+
+For **PreToolUse** hooks, two approaches achieve the **same blocking effect**:
+
+| Approach        | Mechanism                                                 | Claude Receives                  | Production Example                     |
+| --------------- | --------------------------------------------------------- | -------------------------------- | -------------------------------------- |
+| Exit 0 + JSON   | `permissionDecision: "deny"` + `permissionDecisionReason` | Structured reason via JSON field | All TypeScript hooks (`deny()` helper) |
+| Exit 2 + stderr | `echo "reason" >&2; exit 2`                               | stderr text as error message     | `pretooluse-guard.sh`                  |
+
+Both prevent the tool call from executing. The difference is in output channel:
+
+- **Exit 0 + JSON**: Preferred for structured control — supports `updatedInput`, `additionalContext`, `permissionDecision: "ask"` (prompt user). Can combine multiple fields.
+- **Exit 2 + stderr**: Simpler for bash scripts, but limited to deny-only with plain text reason. JSON on stdout is **ignored** when exit code is 2.
+
+> **Empirically validated** (2026-03-27): Agent 6 confirmed via test scripts that exit 2 overrides even `permissionDecision: "allow"` on stdout. Exit 1 is always fail-open (hook error, tool proceeds). Production evidence: `pretooluse-guard.sh` (exit 2) and all TypeScript hooks (JSON deny) coexist in the same plugin.
+
+#### Exit 2 Behavior by Hook Type
+
+Exit 2 is not PreToolUse-exclusive. Its effect varies by hook type, but **production usage is limited**:
+
+| Hook Type            | Exit 2 Effect                                                                                            | Production Evidence            |
+| -------------------- | -------------------------------------------------------------------------------------------------------- | ------------------------------ |
+| **PreToolUse**       | Blocks tool call; stderr fed to Claude                                                                   | `pretooluse-guard.sh` (proven) |
+| **UserPromptSubmit** | Blocks prompt; stderr shown to user                                                                      | Documented, no cc-skills usage |
+| **TeammateIdle**     | Keeps teammate working; stderr = feedback                                                                | Schema-confirmed               |
+| **TaskCompleted**    | Prevents task completion; stderr = feedback                                                              | Schema-confirmed               |
+| **ConfigChange**     | Blocks config change                                                                                     | Documented, no cc-skills usage |
+| **Stop**             | Documented but **zero production usage** — all cc-skills Stop hooks use `decision:block` (exit 0 + JSON) | No cc-skills evidence          |
+| **PostToolUse**      | stderr shown in verbose mode only (tool already ran)                                                     | No cc-skills usage             |
 
 ### Environment Variables
 
@@ -633,10 +679,13 @@ For a PreToolUse Bash hook (includes universal base fields + event-specific fiel
 ```json
 {
   "type": "agent",
-  "agent": { "model": "haiku", "prompt": "Review code quality" },
+  "prompt": "Review code quality",
+  "model": "haiku",
   "timeout": 60
 }
 ```
+
+> **Note**: `prompt` is a top-level field (not nested inside an `agent` object). Confirmed by JSON schema `additionalProperties: false` validation (2026-03-27).
 
 **HTTP Hook** — Sends event JSON as HTTP POST (added 2026-02):
 
@@ -729,11 +778,11 @@ Plugin hooks are declared in `hooks/hooks.json` and synced to `~/.claude/setting
 
 **Canonical examples**:
 
-| Plugin            | Events Used                     | Reference                   |
-| ----------------- | ------------------------------- | --------------------------- |
+| Plugin      | Events Used                     | Reference                   |
+| ----------- | ------------------------------- | --------------------------- |
 | tts-tg-sync | Stop                            | Simple single-event example |
-| gh-tools          | PreToolUse + PostToolUse        | Multi-event with matchers   |
-| itp-hooks         | PreToolUse + PostToolUse + Stop | Full 3-event example        |
+| gh-tools    | PreToolUse + PostToolUse        | Multi-event with matchers   |
+| itp-hooks   | PreToolUse + PostToolUse + Stop | Full 3-event example        |
 
 **Anti-pattern — flat array format**:
 
@@ -1008,25 +1057,25 @@ def hard_stop(reason: str):
 
 ### Common Pitfalls
 
-| Pitfall                                  | Problem                                                                                       | Solution                                                                                                                                                                                                                                                                                                                                                               |
-| ---------------------------------------- | --------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| **Session-locked hooks**                 | Hook changes don't take effect                                                                | Hooks snapshot at session start. Run `/hooks` to apply pending changes OR restart Claude Code                                                                                                                                                                                                                                                                          |
-| **Script not executable**                | Hook silently fails                                                                           | Run `chmod +x script.sh` on all hook scripts                                                                                                                                                                                                                                                                                                                           |
-| **Non-zero exit codes**                  | Hook blocks Claude unexpectedly                                                               | Ensure scripts return 0 on success; non-zero = error                                                                                                                                                                                                                                                                                                                   |
-| **Missing file matchers**                | Hook doesn't trigger on edits                                                                 | Use `Edit\|Write` for verified coverage. `MultiEdit` is observed in practice but not in official docs — use at your own risk                                                                                                                                                                                                                                           |
-| **Case sensitivity**                     | Matcher doesn't match                                                                         | Matchers are case-sensitive: `Bash` ≠ `bash`                                                                                                                                                                                                                                                                                                                           |
-| **Relative paths**                       | Script not found                                                                              | Use `$CLAUDE_PROJECT_DIR` or absolute paths                                                                                                                                                                                                                                                                                                                            |
-| **Timeout too short**                    | Hook killed mid-execution                                                                     | Default is 600s (10 min); set explicit lower timeout for fast-fail hooks                                                                                                                                                                                                                                                                                               |
-| **JSON syntax errors**                   | All hooks fail to load                                                                        | Validate with `cat settings.json \| python -m json.tool`                                                                                                                                                                                                                                                                                                               |
-| **Stop hook wrong schema**               | "Stop hook prevented continuation"                                                            | Use `{}` to allow stop, NOT `{"continue": false}` (see Stop Hook Schema above)                                                                                                                                                                                                                                                                                         |
-| **Local symlink caching**                | Edits to source not picked up                                                                 | Release new version, `/plugin install`, restart Claude Code (see Plugin Cache section below)                                                                                                                                                                                                                                                                           |
-| **Reading input from env vars**          | Hook receives empty input, silently fails                                                     | Use `INPUT=$(cat)` + `jq` to parse stdin JSON (see Hook Input Delivery Mechanism above)                                                                                                                                                                                                                                                                                |
-| **Using non-existent hook types**        | `"Invalid key in record"` error, settings.json rejected                                       | Valid: SessionStart, Setup, UserPromptSubmit, PreToolUse, PermissionRequest, PostToolUse, PostToolUseFailure, Notification, SubagentStart, SubagentStop, Stop, TeammateIdle, TaskCompleted, PreCompact, SessionEnd, InstructionsLoaded, ConfigChange, WorktreeCreate, WorktreeRemove (19 total). **PostToolUseError does NOT exist.**                                  |
-| **Assuming PostToolUse fires on errors** | Hook never fires for failed commands                                                          | PostToolUse ONLY fires on successful tool completion. Use PreToolUse to prevent errors instead.                                                                                                                                                                                                                                                                        |
-| **Trusting GitHub issues as features**   | Implement non-existent functionality                                                          | Issues are REQUESTS not implementations. Always verify against official Claude Code docs.                                                                                                                                                                                                                                                                              |
-| **`$CLAUDE_PLUGIN_ROOT` in hooks.json**  | Hook command resolves to empty path → "Module not found"                                      | `$CLAUDE_PLUGIN_ROOT` is only available inside Claude Code's plugin skill loading context, NOT as a shell env var. Hook commands in hooks.json are synced verbatim to settings.json and run as shell commands. **Always use `$HOME`-based absolute paths** in hook commands (e.g., `$HOME/.claude/plugins/marketplaces/cc-skills/plugins/my-plugin/hooks/handler.ts`). |
-| **Empty TOML table sections**            | mise rejects file with parse error                                                            | TOML tables (e.g., `[hooks.enter]`) containing only comments and no key-value pairs cause parse errors. Either add at least one key or remove the section entirely. For mise hooks, `.mise.local.toml` auto-loads on directory entry without needing `[hooks.enter]`.                                                                                                  |
-| **Flat array hooks.json format**         | `.hooks` is array instead of object → sync script fails with "Cannot index array with string" | Use canonical object format: `"hooks": {"Stop": [{"hooks": [{"type": "command", ...}]}]}`. The `.hooks` key must be an **object** keyed by event type, not a flat array. See Plugin hooks.json Format section above and tts-tg-sync as reference.                                                                                                                |
+| Pitfall                                  | Problem                                                                                       | Solution                                                                                                                                                                                                                                                                                                                                                                           |
+| ---------------------------------------- | --------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **Session-locked hooks**                 | Hook changes don't take effect                                                                | Hooks snapshot at session start. Run `/hooks` to apply pending changes OR restart Claude Code                                                                                                                                                                                                                                                                                      |
+| **Script not executable**                | Hook silently fails                                                                           | Run `chmod +x script.sh` on all hook scripts                                                                                                                                                                                                                                                                                                                                       |
+| **Non-zero exit codes**                  | Hook blocks Claude unexpectedly                                                               | Ensure scripts return 0 on success; non-zero = error                                                                                                                                                                                                                                                                                                                               |
+| **Missing file matchers**                | Hook doesn't trigger on edits                                                                 | Use `Edit\|Write` for verified coverage. `MultiEdit` is observed in practice but not in official docs — use at your own risk                                                                                                                                                                                                                                                       |
+| **Case sensitivity**                     | Matcher doesn't match                                                                         | Matchers are case-sensitive: `Bash` ≠ `bash`                                                                                                                                                                                                                                                                                                                                       |
+| **Relative paths**                       | Script not found                                                                              | Use `$CLAUDE_PROJECT_DIR` or absolute paths                                                                                                                                                                                                                                                                                                                                        |
+| **Timeout too short**                    | Hook killed mid-execution                                                                     | Default is 600s (10 min); set explicit lower timeout for fast-fail hooks                                                                                                                                                                                                                                                                                                           |
+| **JSON syntax errors**                   | All hooks fail to load                                                                        | Validate with `cat settings.json \| python -m json.tool`                                                                                                                                                                                                                                                                                                                           |
+| **Stop hook wrong schema**               | "Stop hook prevented continuation"                                                            | Use `{}` to allow stop, NOT `{"continue": false}` (see Stop Hook Schema above)                                                                                                                                                                                                                                                                                                     |
+| **Local symlink caching**                | Edits to source not picked up                                                                 | Release new version, `/plugin install`, restart Claude Code (see Plugin Cache section below)                                                                                                                                                                                                                                                                                       |
+| **Reading input from env vars**          | Hook receives empty input, silently fails                                                     | Use `INPUT=$(cat)` + `jq` to parse stdin JSON (see Hook Input Delivery Mechanism above)                                                                                                                                                                                                                                                                                            |
+| **Using non-existent hook types**        | `"Invalid key in record"` error, settings.json rejected                                       | Valid: SessionStart, Setup, UserPromptSubmit, PreToolUse, PermissionRequest, PostToolUse, PostToolUseFailure, Notification, SubagentStart, SubagentStop, Stop, TeammateIdle, TaskCompleted, PreCompact, PostCompact, SessionEnd, InstructionsLoaded, ConfigChange, WorktreeCreate, WorktreeRemove, Elicitation, ElicitationResult (22 total). **PostToolUseError does NOT exist.** |
+| **Assuming PostToolUse fires on errors** | Hook never fires for failed commands                                                          | PostToolUse ONLY fires on successful tool completion. Use PreToolUse to prevent errors instead.                                                                                                                                                                                                                                                                                    |
+| **Trusting GitHub issues as features**   | Implement non-existent functionality                                                          | Issues are REQUESTS not implementations. Always verify against official Claude Code docs.                                                                                                                                                                                                                                                                                          |
+| **`$CLAUDE_PLUGIN_ROOT` in hooks.json**  | Hook command resolves to empty path → "Module not found"                                      | `$CLAUDE_PLUGIN_ROOT` is only available inside Claude Code's plugin skill loading context, NOT as a shell env var. Hook commands in hooks.json are synced verbatim to settings.json and run as shell commands. **Always use `$HOME`-based absolute paths** in hook commands (e.g., `$HOME/.claude/plugins/marketplaces/cc-skills/plugins/my-plugin/hooks/handler.ts`).             |
+| **Empty TOML table sections**            | mise rejects file with parse error                                                            | TOML tables (e.g., `[hooks.enter]`) containing only comments and no key-value pairs cause parse errors. Either add at least one key or remove the section entirely. For mise hooks, `.mise.local.toml` auto-loads on directory entry without needing `[hooks.enter]`.                                                                                                              |
+| **Flat array hooks.json format**         | `.hooks` is array instead of object → sync script fails with "Cannot index array with string" | Use canonical object format: `"hooks": {"Stop": [{"hooks": [{"type": "command", ...}]}]}`. The `.hooks` key must be an **object** keyed by event type, not a flat array. See Plugin hooks.json Format section above and tts-tg-sync as reference.                                                                                                                                  |
 
 ```{=latex}
 \newpage

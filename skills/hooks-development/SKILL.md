@@ -8,6 +8,8 @@ allowed-tools: Read, Bash, Write, Edit, Glob, Grep
 
 Guide for developing Claude Code hooks with proper output visibility patterns.
 
+> **Self-Evolving Skill**: This skill improves through use. If instructions are wrong, parameters drifted, or a workaround was needed — fix this file immediately, don't defer. Only update for real, reproducible issues.
+
 ## When to Use This Skill
 
 - Creating a new PostToolUse or PreToolUse hook
@@ -137,3 +139,14 @@ When this skill is updated:
 | Session not seeing changes | Hooks cached                   | Restart Claude Code session after hook changes      |
 | Verbose mode not showing   | Disabled by default            | Enable verbose mode in Claude Code settings         |
 | jq command not found       | jq not installed               | `brew install jq`                                   |
+
+
+## Post-Execution Reflection
+
+After this skill completes, check before closing:
+
+1. **Did the command succeed?** — If not, fix the instruction or error table that caused the failure.
+2. **Did parameters or output change?** — If the underlying tool's interface drifted, update Usage examples and Parameters table to match.
+3. **Was a workaround needed?** — If you had to improvise (different flags, extra steps), update this SKILL.md so the next invocation doesn't need the same workaround.
+
+Only update if the issue is real and reproducible — not speculative.
