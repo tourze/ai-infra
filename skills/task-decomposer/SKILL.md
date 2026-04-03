@@ -1,17 +1,22 @@
 ---
 name: task-decomposer
-description: >
-  Produces structured phased task boards from feature requests: dependency-mapped work items
-  with parallelization flags, risk flags, edge case tables, and test strategy matrices.
-  Triggers on: "decompose this feature", "task breakdown with dependencies", "phased
-  implementation plan", "dependency map for", "break this into tasks with phases",
-  "work breakdown structure". The differentiator is the structured output format (phased
-  tables, parallelization flags, dependency chains) — use this skill when you need a
-  formal task board, not ad-hoc decomposition the model handles natively.
-  NOT for effort estimates, PERT calculations, or confidence intervals — use
-  estimate-calibrator instead.
+description:
+  'Produces structured phased task boards from feature requests: dependency-mapped
+  work items with parallelization flags, risk flags, edge case tables, and test strategy
+  matrices. Triggers on: "decompose this feature", "task breakdown with dependencies",
+  "phased implementation plan", "dependency map for", "break this into tasks with
+  phases", "work breakdown structure". The differentiator is the structured output
+  format (phased tables, parallelization flags, dependency chains) — use this skill
+  when you need a formal task board, not ad-hoc decomposition the model handles natively.
+  NOT for effort estimates, PERT calculations, or confidence intervals — use estimate-calibrator
+  instead.
+
+  '
 metadata:
   version: 1.1.0
+  category: development
+  tags: [task-breakdown, dependencies, planning, phased]
+  difficulty: intermediate
 ---
 
 # Task Decomposer

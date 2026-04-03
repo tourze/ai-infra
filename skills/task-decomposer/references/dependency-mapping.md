@@ -89,16 +89,16 @@ Phase 3: [3.1→2.1,2.2]            → 1 (convergence point)
 ### Simple Text Format
 
 ```text
-1.1 Database schema [M] ─────────────────┐
-1.2 API types/interfaces [S] ──────┐     │
-1.3 Auth middleware [M] ──────┐    │     │
-                              │    │     │
+1.1 Database schema [M] ────────────────┐
+1.2 API types/interfaces [S] ─────┐     │
+1.3 Auth middleware [M] ─────┐    │     │
+                             │    │     │
 2.1 Business logic [L] ──────┼────┼─────┤ (depends on 1.1)
 2.2 API endpoints [M] ───────┼────┘     │ (depends on 1.2)
-2.3 Frontend components [M] ──┘          │ (depends on 1.2)
-                                         │
-3.1 Integration testing [M] ─────────────┘ (depends on 2.1, 2.2)
-3.2 Error handling [S] ─────────────────── (depends on 2.2, 2.3)
+2.3 Frontend components [M] ─┘          │ (depends on 1.2)
+                                        │
+3.1 Integration testing [M] ────────────┘ (depends on 2.1, 2.2)
+3.2 Error handling [S] ────────────────── (depends on 2.2, 2.3)
 ```
 
 ### Mermaid Diagram
