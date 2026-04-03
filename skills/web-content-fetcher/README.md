@@ -26,7 +26,17 @@ Web Content Fetcher 是一个轻量级的网页正文提取工具，能够自动
 
 ## 安装
 
-### 作为 Claude Code Skill 安装
+### 方式一：一键安装（推荐）
+
+访问 [skills.sh](https://skills.sh/shirenchuang/web-content-fetcher/web-content-fetcher) 页面，按提示一键安装。
+
+### 方式二：命令行安装
+
+```bash
+npx skills add https://github.com/shirenchuang/web-content-fetcher --skill web-content-fetcher
+```
+
+### 方式三：手动安装
 
 ```bash
 # Clone
