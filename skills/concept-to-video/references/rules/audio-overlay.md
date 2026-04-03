@@ -55,14 +55,14 @@ ffmpeg -i video.mp4 -i voiceover.mp3 -i music.mp3 \
 
 ## ffmpeg command patterns reference
 
-| Operation | ffmpeg filter |
-| --------- | ------------- |
-| Volume control | `volume=0.3` |
-| Fade in (2s) | `afade=t=in:st=0:d=2` |
-| Fade out (3s from end) | `afade=t=out:st=END-3:d=3` |
-| Trim to N seconds | `atrim=0:N` |
-| Mix two audio streams | `[a1][a2]amix=inputs=2:duration=first` |
-| Delay audio by 2s | `adelay=2000|2000` |
+| Operation              | ffmpeg filter                          |
+| ---------------------- | -------------------------------------- | ----- |
+| Volume control         | `volume=0.3`                           |
+| Fade in (2s)           | `afade=t=in:st=0:d=2`                  |
+| Fade out (3s from end) | `afade=t=out:st=END-3:d=3`             |
+| Trim to N seconds      | `atrim=0:N`                            |
+| Mix two audio streams  | `[a1][a2]amix=inputs=2:duration=first` |
+| Delay audio by 2s      | `adelay=2000                           | 2000` |
 
 ## Prerequisites
 

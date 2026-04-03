@@ -1,18 +1,24 @@
 ---
 name: concept-to-video
-description: >
-  Turn any concept into an animated explainer video using Manim (Python). Use whenever the user
-  wants animated visualizations, motion graphics, or video output (MP4/GIF) for technical concepts.
-  Covers: architecture animations, data flows, algorithm step-throughs, pipeline explainers,
-  math proofs, comparisons, agent interactions, training loops, image embedding, multi-scene
-  composition. Supports audio overlay via ffmpeg, parametric templates, and subtitles. Works
-  headless — no browser or Node.js required. Also trigger for Manim scene edits or re-renders.
-  Trigger on: "create a video", "animate this", "make an explainer", "concept to video",
-  "manim animation", "show this as a video", "motion graphic", "visualize this process",
-  "add voiceover to video", "animate with audio", or any concept + video/animation request.
-  For branded motion graphics or React-based video, use remotion-video instead.
+description:
+  'Turn any concept into an animated explainer video using Manim (Python).
+  Use whenever the user wants animated visualizations, motion graphics, or video output
+  (MP4/GIF) for technical concepts. Covers: architecture animations, data flows, algorithm
+  step-throughs, pipeline explainers, math proofs, comparisons, agent interactions,
+  training loops, image embedding, multi-scene composition. Supports audio overlay
+  via ffmpeg, parametric templates, and subtitles. Works headless — no browser or
+  Node.js required. Also trigger for Manim scene edits or re-renders. Trigger on:
+  "create a video", "animate this", "make an explainer", "concept to video", "manim
+  animation", "show this as a video", "motion graphic", "visualize this process",
+  "add voiceover to video", "animate with audio", or any concept + video/animation
+  request. For branded motion graphics or React-based video, use remotion-video instead.
+
+  '
 metadata:
   version: 1.1.0
+  category: visualization
+  tags: [video, manim, animation, explainer]
+  difficulty: advanced
 ---
 
 # Concept to Video

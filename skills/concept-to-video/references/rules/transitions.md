@@ -59,11 +59,11 @@ class WipeTransitionExample(Scene):
 
 ## When to use each
 
-| Transition | Use when |
-| ---------- | -------- |
-| Fade | Unrelated sections; clear conceptual break |
-| Wipe | Sequential sections; showing progression/timeline |
-| No transition | Continuous animation; same objects transform |
+| Transition    | Use when                                          |
+| ------------- | ------------------------------------------------- |
+| Fade          | Unrelated sections; clear conceptual break        |
+| Wipe          | Sequential sections; showing progression/timeline |
+| No transition | Continuous animation; same objects transform      |
 
 ## Tips
 
