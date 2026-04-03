@@ -129,6 +129,7 @@ def calculate_discounted_price(original_price, discount_percent):
 - 未经用户明确要求，不得主动执行 `git add`、`git commit`；即使用户要求提交，也只能暂存和提交当前任务直接相关的文件与代码块，禁止把其他进程产出的改动或“顺手修复”一起带上。
 - 若目标文件存在非本次任务的已有改动，必须做最小化编辑，禁止覆盖、回退、重排或批量格式化他人的改动；无法安全共存时，先停下并向用户确认边界。
 - 提交前必须再次检查 `git diff --cached --stat` 与 `git diff --cached`，确认 staged diff 只包含当前任务；发现无关文件、无关 hunk 或来源不明的变更时，先移出提交范围再继续。
+- **Git 提交信息禁止使用 heredoc 语法**：`git commit -m` 必须直接传递单行字符串，不要使用 `$(cat <<'EOF' ... EOF)` 形式（hook 无法正确解析）。多行说明放到 commit body 时使用多个 `-m` 参数。
 
 ## 命令执行效率（必须遵守）
 
