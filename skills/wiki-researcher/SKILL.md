@@ -1,6 +1,10 @@
 ---
 name: wiki-researcher
 description: Conducts multi-turn iterative deep research on specific topics within a codebase with zero tolerance for shallow analysis. Use when the user wants an in-depth investigation, needs to understand how something works across multiple files, or asks for comprehensive analysis of a specific system or pattern.
+license: MIT
+metadata:
+  author: Microsoft
+  version: "1.0.0"
 ---
 
 # Wiki Researcher
