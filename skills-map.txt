@@ -421,3 +421,18 @@ https://github.com/regenrek/agent-skills/tree/main/skills/root-cause-finder => r
 https://github.com/shaowenfu/ClawTools/tree/main/skills/social-platform-safety => social-platform-safety
 
 https://github.com/davidkiss/smart-ai-skills/tree/main/skills/reflection => reflection
+
+https://github.com/claude-office-skills/skills/tree/main/ppt-visual => ppt-visual
+https://github.com/claude-office-skills/skills/tree/main/pdf-extraction => pdf-extraction
+https://github.com/claude-office-skills/skills/tree/main/proposal-writer => proposal-writer
+
+https://github.com/freshtechbro/claudedesignskills/tree/main/.claude/skills/lottie-animations => lottie-animations
+https://github.com/freshtechbro/claudedesignskills/tree/main/.claude/skills/modern-web-design => modern-web-design
+
+https://github.com/jonmumm/skills/tree/main/offensive-typesafety => offensive-typesafety
+https://github.com/jonmumm/skills/tree/main/product-design-critic => product-design-critic
+https://github.com/jonmumm/skills/tree/main/react-composable-components => react-composable-components
+https://github.com/jonmumm/skills/tree/main/react-render-performance => react-render-performance
+https://github.com/jonmumm/skills/tree/main/test-brainstorm => test-brainstorm
+
+https://github.com/martinholovsky/claude-skills-generator/tree/main/skills/windows-ui-automation => windows-ui-automation
